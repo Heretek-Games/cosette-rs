@@ -35,7 +35,12 @@ async fn main() {
         .route("/logstores/prod_score_data/shards/lb", post(logstores))
         .route("/environment", get(environment))
         .route("/module/init", get(mod_init))
-        .route("/limbo/anti-fraud/init", get(afinit));
+        .route("/limbo/anti-fraud/init", get(afinit))
+        .route("/api/v6.10/androidevent", post(logstores))
+        .route(
+            "/install_data/v5.0/com.dgames.g65002002.google",
+            get(logstores),
+        );
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:5000")
         .await
@@ -48,7 +53,6 @@ async fn main() {
 async fn logstores() -> impl IntoResponse {
     //idk man it had to be, else why would i store your data like cn devs :motorized_wheelchair:
     axum::http::StatusCode::OK
-
 }
 
 async fn environment() -> impl IntoResponse {
@@ -155,7 +159,7 @@ async fn mod_init(Query(_params): Query<HashMap<String, String>>) -> impl IntoRe
 
 async fn afinit(Query(_params): Query<HashMap<String, String>>) -> impl IntoResponse {
     let resp = json!({
-        "code": 10007,
+        "code": 200,
         "message": "not support",
         "data": null
     });
