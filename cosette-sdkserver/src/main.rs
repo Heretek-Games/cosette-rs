@@ -36,10 +36,11 @@ async fn main() {
         .route("/environment", get(environment))
         .route("/module/init", get(mod_init))
         .route("/limbo/anti-fraud/init", get(afinit))
-        .route("/api/v6.10/androidevent", post(logstores))
         .route(
-            "/install_data/v5.0/com.dgames.g65002002.google",
-            get(logstores),
+            "/api/v6.10/androidevent",
+            post(logstores), /*.route(
+                             "/install_data/v5.0/com.dgames.g65002002.google",
+                             get(logstores),*/
         );
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:5000")
@@ -160,7 +161,7 @@ async fn mod_init(Query(_params): Query<HashMap<String, String>>) -> impl IntoRe
 async fn afinit(Query(_params): Query<HashMap<String, String>>) -> impl IntoResponse {
     let resp = json!({
         "code": 200,
-        "message": "not support",
+        "message": "niggers",
         "data": null
     });
     (axum::http::StatusCode::OK, Json(resp))
