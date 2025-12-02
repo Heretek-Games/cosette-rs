@@ -1,0 +1,43 @@
+#[derive(serde::Serialize, serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct TotalLoginBonuses {
+    #[prost(message, repeated, tag = "1")]
+    pub total_login_bonuses: ::prost::alloc::vec::Vec<TotalLoginBonus>,
+}
+#[derive(serde::Serialize, serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct TotalLoginBonus {
+    #[prost(string, tag = "1")]
+    pub total_login_bonus_id: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub title: ::prost::alloc::string::String,
+    #[prost(message, repeated, tag = "3")]
+    pub prizes: ::prost::alloc::vec::Vec<TotalLoginBonusPrize>,
+}
+#[derive(serde::Serialize, serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct TotalLoginBonusPrize {
+    #[prost(string, tag = "1")]
+    pub total_login_bonus_prize_id: ::prost::alloc::string::String,
+    #[prost(int64, tag = "2")]
+    pub total_login_days: i64,
+    #[prost(enumeration = "super::super::player_inventory::v1::ItemType", tag = "3")]
+    pub item_type: i32,
+    #[prost(string, tag = "4")]
+    pub schema_key: ::prost::alloc::string::String,
+    #[prost(string, tag = "5")]
+    pub value_path: ::prost::alloc::string::String,
+    #[prost(string, tag = "6")]
+    pub inventory_message: ::prost::alloc::string::String,
+    #[prost(string, tag = "7")]
+    pub search_label: ::prost::alloc::string::String,
+    #[prost(string, tag = "8")]
+    pub system_resource_name: ::prost::alloc::string::String,
+    #[prost(sint64, tag = "9")]
+    pub system_resource_num: i64,
+    #[prost(string, tag = "10")]
+    pub transaction_payload: ::prost::alloc::string::String,
+}

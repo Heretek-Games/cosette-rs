@@ -12,29 +12,10 @@ use cbc::{
     cipher::{BlockEncryptMut, KeyIvInit, block_padding::Pkcs7},
 };
 use chrono::Local;
-use hex;
+use common::logging::init_tracing;
 use hmac::{Hmac, Mac};
-use rand::RngCore;
 use serde_json::json;
-use sha2::Sha256;
-use snap::raw::Encoder;
 use std::collections::HashMap;
-use std::path::PathBuf;
-use tokio::fs::File;
-use tokio_util::io::ReaderStream;
-use tracing::Level;
-
-pub fn init_tracing(level: Level) {
-    eprintln!(
-        r#" ______ __ __
-       / ____/___ ________ / /_/ /____ __________
-      / / / __ \/ ___/ _ \/ __/ __/ _ \______/ ___/ ___/
-     / /___/ /_/ (__ ) __/ /_/ /_/ __/_____/ / (__ )
-     \____/\____/____/\___/\__/\__/\___/ /_/ /____/
-                                                          "#
-    );
-    tracing_subscriber::fmt().with_max_level(level).init()
-}
 
 #[tokio::main]
 async fn main() {
@@ -77,84 +58,13 @@ async fn androidevent(_matched_path: MatchedPath) -> impl IntoResponse {
 
 type Aes256CbcEnc = Encryptor<Aes256>;
 
-async fn realms(
-    Query(params): Query<HashMap<String, String>>,
-    _: MatchedPath,
-) -> impl IntoResponse {
-    let json_bytes = json!({
-        "masterDataVersion": "2025.11.25-rc1",
-        "masterDataUrl": "http://127.0.0.1:5000/masterdata.json",
-        "needUpdateMasterData": true,
-        "needUpdateAssetBundle": true,
-        "hasDirtyFile": false,
-        "assetsBundleVersion": "v1.2.3",
-        "assetsBundleUrl": "http://127.0.0.1:5000/bundles.zip",
-        "pwd": null,
-        "domain": "127.0.0.1:5000",
-        "backupMasterDataUrl": "http://127.0.0.1:5000/masterdata.json",
-        "backupAssetsBundleUrl": "http://127.0.0.1:5000/bundles.zip",
-        "backupDomain": "127.0.0.1:5000"
-    })
-    .to_string()
-    .into_bytes();
-
-    // Sort query params alphabetically — REQUIRED FOR HMAC
-    let mut sorted: Vec<_> = params.into_iter().collect();
-    sorted.sort_by_key(|x| x.0.clone());
-    let query_string = sorted
-        .iter()
-        .map(|(k, v)| format!("{k}={v}"))
-        .collect::<Vec<_>>()
-        .join("&");
-
-    let mut iv = [0u8; 16];
-    rand::thread_rng().fill_bytes(&mut iv);
-
-    let key =
-        hex::decode("39795577676558545840757942425e6a2572526253564456556a456e48556a68").unwrap();
-
-    // HMAC
-    let mut mac = Hmac::<Sha256>::new_from_slice(&key).unwrap();
-    mac.update(&iv);
-    mac.update(query_string.as_bytes());
-    let hmac = mac.finalize().into_bytes();
-
-    // Raw Snappy
-    let compressed = Encoder::new().compress_vec(&json_bytes).unwrap();
-
-    println!(
-        "JSON {} → raw Snappy {} bytes",
-        json_bytes.len(),
-        compressed.len()
-    );
-    println!(
-        "First 10 bytes: {}",
-        hex::encode(&compressed[..10.min(compressed.len())])
-    );
-
-    // Payload = HMAC + raw Snappy
-    let mut payload = Vec::with_capacity(32 + compressed.len());
-    payload.extend_from_slice(&hmac);
-    payload.extend_from_slice(&compressed);
-
-    // FINAL WORKING ENCRYPTION — WORKS WITH cbc 0.1.2
-    let cipher = Aes256CbcEnc::new(&key.into(), &iv.into());
-    let mut encrypted = payload.clone(); // clone to mutable buffer
-    let encrypted_len = cipher
-        .encrypt_padded::<Pkcs7>(&mut encrypted, payload.len())
-        .unwrap()
-        .len();
-
-    let mut final_packet = Vec::with_capacity(16 + encrypted_len);
-    final_packet.extend_from_slice(&iv);
-    final_packet.extend_from_slice(&encrypted[..encrypted_len]);
-
-    let response = hex::encode(final_packet);
+async fn realms() -> impl IntoResponse {
+    let encrypted = "c643f0446bfcab86fd96859174736a5828c524409190a8c0a3ea3c6b9df1c1127801184acca78444995d9cdd4b150439ef00fee60ec167b6e57b1df9745f5427f0903ac63944b35cd9fd87a22de068181e03054a6fa39d8fd44d278d8cd1f05e5461a2a9b49526eddf4b3b9e739b3c68b1599373867b4ef3f26fee7b8b95f547101378f096cb0d614790beb482a6300a1f556d59b28670142404977d3c5b382036e9792aaed262f64ec62eb652907dca29400e17300afd74c16946c908bda74e7f867dd30352d30c3d4907f10d5de9912bb83abb24e2eb8fe207f7b1976f63e5846bf4eebf520841989a36a15795e9f5b64f5dcaff6b1dbc201f4aba7ff0d5b09d28cf866421061b23c755086bcd8caa";
 
     (
         StatusCode::OK,
         [(header::CONTENT_TYPE, "text/plain")],
-        response,
+        encrypted.to_string(),
     )
 }
 
