@@ -78,6 +78,8 @@ if open(inv_path).read():
 
 with open(inv_path, "a") as f:
     for url, method in rows:
+        if url in existing:
+            continue
         path = urllib.parse.urlparse(url).path
         if "/takasho.schema." not in path:
             continue
@@ -86,6 +88,7 @@ with open(inv_path, "a") as f:
             continue
         svc, res, fn = m.group(1), m.group(2), m.group(3)
         f.write(f"| POST | {url} | `{res}.{fn}` | ? | ? | |\n")
+        existing.add(url)
 PY
 
 after="$(grep -c '^| ' "$ENDPOINTS" 2>/dev/null || echo 0)"
