@@ -87,7 +87,13 @@ def map_type(rust_type: str, modifiers: list[str]) -> tuple[str, str]:
     if rust_type in PROST_TYPE_MAP:
         return PROST_TYPE_MAP[rust_type], ""
 
-    # Unknown — log warning, emit as-is
+    # Unknown — likely a user-defined message type (e.g.,
+    # `player_api_file_option::GoServer`). These are already in proto form
+    # (Rust path syntax) — emit as-is without spamming warnings.
+    if "::" in rust_type or (
+        rust_type and rust_type[0].isupper() and rust_type not in PROST_TYPE_MAP
+    ):
+        return rust_type, ""
     log.warning(f"unknown type: {rust_type!r} (emitting unchanged)")
     return rust_type, ""
 
@@ -122,11 +128,44 @@ def parse_struct_block(body: str) -> list[tuple[str, str, list[str], int]]:
                 field_line = lines[j]
                 f_match = FIELD_RE.match(field_line)
                 if f_match:
-                    type_str, modifiers, tag = parse_attrs(line)
+                    attr_type, modifiers, tag = parse_attrs(line)
+                    rust_type = f_match.group("type").strip()
+                    # Strip prost-generated absolute paths so PROST_TYPE_MAP
+                    # lookups succeed for primitive Rust types. This must
+                    # handle nested occurrences (e.g., inside Vec<T>).
+                    # e.g. "::prost::alloc::string::String" -> "String"
+                    # e.g. "::prost::alloc::vec::Vec<::prost::alloc::string::String>"
+                    #   -> "Vec<String>"
+                    rust_type = re.sub(r"::prost::alloc::\w+::", "", rust_type)
+                    # Strip the fully-qualified Option wrapper path.
+                    # e.g. "::core::option::Option<Foo>" -> "Option<Foo>"
+                    rust_type = re.sub(r"^::core::option::", "", rust_type)
+                    # When the rust_type is a generic wrapper like Vec<T> or
+                    # Option<T> whose inner T is a primitive, use T directly
+                    # so PROST_TYPE_MAP lookup succeeds below.
+                    inner_match = re.match(r"^(?:Vec|Option)<(.+)>$", rust_type)
+                    if inner_match:
+                        candidate = inner_match.group(1).strip()
+                        if candidate in PROST_TYPE_MAP:
+                            rust_type = candidate
+                    # When the attribute says "message" or "enumeration",
+                    # the actual type is the user-defined Rust type from the
+                    # field declaration (e.g., `player_api_file_option::GoServer`).
+                    # For primitive attribute keywords (string, int32, ...),
+                    # the canonical proto type comes from PROST_TYPE_MAP keyed
+                    # on the Rust primitive (e.g., String, i64). When the
+                    # rust_type resolves cleanly via PROST_TYPE_MAP, prefer it;
+                    # otherwise fall back to the attribute keyword.
+                    if attr_type in ("message", "enumeration"):
+                        effective_type = rust_type
+                    elif rust_type in PROST_TYPE_MAP:
+                        effective_type = rust_type
+                    else:
+                        effective_type = attr_type
                     fields.append(
                         (
                             f_match.group("name"),
-                            type_str,
+                            effective_type,
                             modifiers,
                             tag,
                         )
