@@ -34,9 +34,10 @@ if [[ ! -s "$PCAP_OUT" ]]; then
     exit 1
 fi
 
-# Validate libpcap magic (little-endian 0xA1B2C3D4)
+# Validate libpcap magic — accept either endianness (LE d4c3b2a1 == 0xA1B2C3D4,
+# BE a1b2c3d4 == 0xA1B2C3D4). Both are valid pcap.
 MAGIC=$(od -An -tx1 -N4 "$PCAP_OUT" | tr -d ' \n')
-if [[ "$MAGIC" != "a1b2c3d4" ]]; then
+if [[ "$MAGIC" != "a1b2c3d4" && "$MAGIC" != "d4c3b2a1" ]]; then
     echo "[smoke_flow_to_pcap] FAIL: bad magic ($MAGIC)" >&2
     exit 1
 fi
