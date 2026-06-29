@@ -69,3 +69,41 @@ engineer field-by-field from the decrypted payloads.
 
 This is a substantial detour from the original spec. Stopping here to
 get direction before continuing.
+
+## Update: Il2CppDumper attempt
+
+- Cloned `Perfare/Il2CppDumper` v latest; built successfully.
+- Ran on `libil2cpp.so` + `global-metadata.dat` → "Metadata file not found
+  or encrypted."
+- Inspected metadata magic: bytes `48 54 50 58` ("HTPX"), NOT the standard
+  `il2cpp` magic (`69 6c 32 63 70 70`). Confirms encrypted v29+ metadata.
+- Perfare's dumper doesn't handle v29+ encrypted metadata. Forks that
+  do: `djkaty/Il2CppDumper`, `nicehash/Il2CppDumper` (newer Unity metadata).
+
+## State: extraction blocked
+
+Both paths (traffic-derived via OxidizedRelay + binary-derived via
+Il2CppDumper) require additional work:
+
+- OxidizedRelay path: needs Frida hook that produces ChaCha20 keys (Task 6,
+  NOT yet attempted; likely blocked by takt op. v1.2.217 anti-tamper).
+- Il2CppDumper path: needs a v29+ fork + likely the decryption key
+  extracted from `libil2cpp.so` symbols.
+
+Recommended next move: use the EXISTING generated Rust types in
+`cosette-protocol/include/takasho/schema/` as the proto source. The
+fields are already known; reverse-engineer the .proto files from the
+.rs files (and where Rust types are unambiguous, hand-write the .proto
+directly). This is what the original OSINT spec called Phase 0 / option
+C — reverse-engineer from generated Rust.
+
+## Files in /tmp (for future reference)
+
+- `/tmp/oxrel/target/release/OxidizedRelay` — built, AGPL-3, not vendored.
+- `/tmp/nisdec-1782766495/bin/Release/net8.0/NisDecryptor.dll` — built,
+  but doesn't apply to Android IL2CPP games.
+- `/tmp/il2cppdumper-1782770467/Il2CppDumper/bin/Release/net6.0/Il2CppDumper.dll`
+  — built, doesn't handle v29+ encrypted metadata.
+- `/tmp/native/libil2cpp.so` — 93 MB encrypted IL2CPP blob.
+- `/tmp/native/apk-assets/assets/bin/Data/Managed/Metadata/global-metadata.dat`
+  — 13 MB encrypted metadata.
