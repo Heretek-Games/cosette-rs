@@ -393,20 +393,20 @@ git -c user.email="claude@anthropic.com" -c user.name="Claude" \
 
 ```bash
 brew install jadx apktool grpcurl protobuf
-pipx install UnityPy
+pipx install UnityPy mitmproxy
 pipx ensurepath
 ```
 
-Expected: each `brew install` line ends with success. `pipx ensurepath` prints PATH hint — restart shell if needed before subsequent steps.
+Expected: each `brew install` line ends with success. `pipx install mitmproxy` adds `mitmdump` to PATH (required by Task 5 and Task 9). `pipx ensurepath` prints PATH hint — restart shell if needed before subsequent steps.
 
 - [ ] **Step 2: Verify each binary resolves**
 
 ```bash
-which jadx apktool grpcurl protoc
+which jadx apktool grpcurl protoc mitmdump
 python3 -m UnityPy --help 2>&1 | head -3
 ```
 
-Expected: all five commands resolve. (If `python3 -m UnityPy --help` fails because UnityPy has no CLI entry point, drop that line and rely on `python3 -c "import UnityPy; print(UnityPy.__version__)"` instead.)
+Expected: all six commands resolve (UnityPy has no CLI entry point; the import check uses `python3 -c "import UnityPy"`).
 
 - [ ] **Step 3: Write smoke_tools.sh**
 
@@ -422,7 +422,7 @@ cd "$(git rev-parse --show-toplevel)"
 
 missing=()
 
-for tool in jadx apktool grpcurl protoc; do
+for tool in jadx apktool grpcurl protoc mitmdump; do
     if ! command -v "$tool" >/dev/null 2>&1; then
         echo "[smoke_tools] MISSING: $tool" >&2
         missing+=("$tool")
