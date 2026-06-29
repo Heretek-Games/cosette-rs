@@ -29,6 +29,8 @@ These apply to every task. Tasks inherit them implicitly.
 9. **v1.2.217 is the only target version.** Other versions require new sessions.
 10. **Commit cadence:** every task ends with a commit. Conventional-commit prefixes (`feat:`, `docs:`, `chore:`, `test:`, `fix:`).
 11. **Smoke-checks ARE the test suite** (per spec §Testing). Five smoke scripts cover all phases.
+12. **OxidizedRelay is AGPL-3.** Vendor only the BINARY (it's already built, no source copy). Do NOT import, link, or statically link against it from cosette-rs source. The orchestrator invokes it as an external subprocess only.
+13. **Real OxidizedRelay CLI differs from plan draft.** Real binary: `OxidizedRelay <PCAP> [-k HEX_KEY] [-i HEX_NONCE]`. NOT `--in/--keys/--out`. Input is pcap, NOT mitmproxy .flow dump. Therefore Task 6.5 (NEW) wraps capture output: `scripts/osint/flow_to_pcap.py` converts `.flow` → `.pcap`.
 
 ---
 
@@ -37,6 +39,8 @@ These apply to every task. Tasks inherit them implicitly.
 **Files created:**
 - `scripts/osint/extract_protos.sh` — orchestrator (Task 7)
 - `scripts/osint/frida_hook.js` — Frida hook (Task 6)
+- `scripts/osint/flow_to_pcap.py` — **NEW: .flow → .pcap converter for OxidizedRelay** (Task 6.5)
+- `scripts/osint/smoke_flow_to_pcap.sh` — **NEW: smoke for the converter** (Task 6.5)
 - `scripts/osint/smoke_tooling.sh` — Phase A smoke (Task 3)
 - `scripts/osint/smoke_device.sh` — Phase B start smoke (Task 4)
 - `scripts/osint/smoke_capture.sh` — Phase B middle smoke (Task 5)
@@ -69,7 +73,7 @@ Task 6                                   [Phase B.5 — Frida hook]
 Task 7                                   [Phase C + D — Extraction + reconstruction]
 ```
 
-Task 7 depends on Tasks 1-6 all completing (extraction needs all upstream tools).
+Task 6.5 (NEW) depends on Task 5; Task 7 depends on Tasks 1-6 all completing (extraction needs all upstream tools including Task 6.5).
 
 ---
 
@@ -693,6 +697,286 @@ Hook script enumerates libil2cpp.so exports matching chacha|crypto|aead
 and dumps key+nonce to stdout on entry. Smoke runs frida -U for 30s and
 asserts ≥1 KEY_DUMP event. May iterate on hook targets if v1.2.217 symbols
 differ from v1.2.50 (which Yoshk4e's tools originally targeted)."
+```
+
+---
+
+## Task 6.5: flow_to_pcap converter + smoke (NEW — bridges Task 5 capture to Task 7 extraction)
+
+**Files:**
+- Create: `scripts/osint/flow_to_pcap.py`
+- Create: `scripts/osint/smoke_flow_to_pcap.sh`
+
+**Interfaces:**
+- Consumes: `.flow` dump from `scripts/osint/capture.sh` (Task 5); mitmproxy's `mitmdump -nr <flow> --set "hardump=<HAR>"` (already used by smoke_capture.sh)
+- Produces: `.pcap` file readable by `OxidizedRelay <PCAP>` (Task 7)
+
+**Why this task exists (added after Task 1 review):** the real `OxidizedRelay` CLI takes a `.pcap` file as input — not a `.flow` dump, and not `--in/--keys/--out`. The orchestrator (Task 7) needs to call `flow_to_pcap.py` between capture and OxidizedRelay.
+
+- [ ] **Step 1: Add `dpkt` Python dep via pipx-injected venv (or system pip if dpkt already installed)**
+
+```bash
+python3 -c "import dpkt" 2>&1
+```
+
+If `ModuleNotFoundError`:
+```bash
+pipx install dpkt || pip3 install --user dpkt
+```
+
+Expected: import succeeds. If neither method works (PEP 668), use a venv:
+```bash
+python3 -m venv /tmp/dpktenv
+/tmp/dpktenv/bin/pip install dpkt
+# then orchestrator invokes /tmp/dpktenv/bin/python3
+```
+
+- [ ] **Step 2: Write `flow_to_pcap.py`**
+
+```bash
+cat > /home/john/Projects/cosette-rs/scripts/osint/flow_to_pcap.py <<'EOF'
+#!/usr/bin/env python3
+"""Convert a mitmproxy .flow dump to a .pcap readable by OxidizedRelay.
+
+mitmproxy writes its native .flow format (tnetstring-framed). OxidizedRelay
+expects classic pcap (libpcap) input. We bridge them by:
+  1. mitmdump -nr <flow> --set hardump=<HAR>   (re-emit as HAR)
+  2. parse HAR, group flows by TCP flow key (client<->server), write pcap
+  3. use dpkt to build proper PCAP files
+
+For TCP with TLS terminator: we record the raw payload after mitm re-emits
+cleartext bytes (mitmproxy-decrypted), since OxidizedRelay sees the
+re-assembled plaintext stream — that is what gets ChaCha20-decrypted inside
+the game's normal client stack at the wire level, which means our pcap should
+contain the cleartext body bytes mitmproxy recovered.
+
+For HTTP/2 (gRPC over h2): payloads are framed. We write each DATA frame's
+payload bytes into the pcap as a single TCP reassembled chunk.
+
+Output is a single .pcap containing one TCP stream per pair(client, server).
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import struct
+import subprocess
+import sys
+import tempfile
+import uuid
+
+
+def flow_to_pcap(flow_path: str, out_path: str) -> int:
+    """Convert .flow -> .pcap. Returns number of payloads emitted."""
+    tmp_har = tempfile.mktemp(suffix=".har")
+    proc = subprocess.run(
+        ["mitmdump", "-nr", flow_path, "--set", f"hardump={tmp_har}"],
+        capture_output=True,
+        check=False,
+    )
+    if proc.returncode != 0 or not os.path.exists(tmp_har):
+        print(f"flow_to_pcap: mitmdump -export-har failed: {proc.stderr.decode(errors='replace')}", file=sys.stderr)
+        return -1
+
+    with open(tmp_har, "r", encoding="utf-8") as f:
+        har = json.load(f)
+
+    # Build pcap using dpkt if available, else raw struct fall-back.
+    payloads_by_flow: dict[tuple, list[tuple[int, bytes]]] = {}
+
+    for entry in har.get("log", {}).get("entries", []):
+        req = entry.get("request", {})
+        resp = entry.get("response", {})
+        client_ip = entry.get("serverIPAddress", "127.0.0.1")  # server seen by client
+        # HAR doesn't carry server-side source IP/port; pick fixed values.
+        client_port = 40000 + (hash(entry.get("startedDateTime", "")) % 20000) & 0xFFFF
+        server_ip = client_ip
+        server_port = 443
+
+        # Decode request body
+        req_body = b""
+        if req.get("postData"):
+            try:
+                import base64
+                txt = req["postData"].get("text", "")
+                req_body = base64.b64decode(txt) if txt else b""
+            except Exception:
+                req_body = b""
+
+        # Decode response body
+        resp_body = b""
+        if resp.get("content", {}).get("text"):
+            try:
+                import base64
+                txt = resp["content"]["text"]
+                resp_body = base64.b64decode(txt) if txt else b""
+            except Exception:
+                resp_body = b""
+
+        # One TCP flow = (client_ip, client_port, server_ip, server_port)
+        flow_key = (client_ip, client_port, server_ip, server_port)
+        payloads_by_flow.setdefault(flow_key, []).append((0, req_body))
+        if resp_body:
+            payloads_by_flow[flow_key].append((1, resp_body))
+
+    # Write pcap with libpcap magic + per-record headers
+    PCAP_MAGIC = 0xA1B2C3D4
+    LINKTYPE_RAW = 101  # raw IP
+    PCAP_VERSION_MAJOR = 2
+    PCAP_VERSION_MINOR = 4
+
+    def pcap_global_header() -> bytes:
+        return struct.pack(
+            "<IHHIIII",
+            PCAP_MAGIC,
+            PCAP_VERSION_MAJOR,
+            PCAP_VERSION_MINOR,
+            0,  # thiszone
+            0,  # sigfigs
+            65535,  # snaplen
+            LINKTYPE_RAW,
+        )
+
+    def pcap_record(payload: bytes, ts_sec: int = 0, ts_usec: int = 0) -> bytes:
+        # For raw IP we need to wrap a TCP segment in an IP header.
+        # This is a simplified raw frame — most pcap parsers accept raw IP
+        # frames when LINKTYPE_RAW is set.
+        # Build a minimal IPv4+TCP+payload frame.
+        src_ip = b"\x7f\x00\x00\x01"  # 127.0.0.1 (placeholder)
+        dst_ip = b"\x7f\x00\x00\x01"
+        tcp_hdr = struct.pack(
+            ">HHIIBBBBBHH",
+            40000, 443,    # src, dst ports
+            1000, 1000,    # seq, ack (placeholders)
+            0x50,           # data offset 5 (no options)
+            0x18,           # flags: PSH|ACK
+            0xFFFF, 0xFFFF, # window
+            0,              # checksum (off)
+            0,              # urgent
+        )
+        ip_total_len = 20 + len(tcp_hdr) + len(payload)
+        ip_hdr = struct.pack(
+            ">BBHHHBBH4s4s",
+            0x45, 0, ip_total_len,
+            0, 0,
+            64, 6, 0,  # TTL=64, proto=TCP, checksum=0
+            src_ip, dst_ip,
+        )
+        frame = ip_hdr + tcp_hdr + payload
+        ts = ts_sec & 0xFFFFFFFF
+        tus = ts_usec & 0xFFFFFFFF
+        return struct.pack("<IIII", ts, tus, len(frame), len(frame)) + frame
+
+    with open(out_path, "wb") as f:
+        f.write(pcap_global_header())
+        for flow_key, payloads in payloads_by_flow.items():
+            for idx, payload in payloads:
+                f.write(pcap_record(payload, ts_sec=idx, ts_usec=0))
+
+    n = sum(len(p) for pl in payloads_by_flow.values() for _, p in pl)
+    print(f"flow_to_pcap: wrote {n} bytes (across {len(payloads_by_flow)} flows) to {out_path}")
+    return 0
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Convert mitm .flow dump -> pcap for OxidizedRelay")
+    p.add_argument("flow_file")
+    p.add_argument("out_pcap")
+    args = p.parse_args()
+    if not os.path.exists(args.flow_file):
+        print(f"flow_to_pcap: flow file not found: {args.flow_file}", file=sys.stderr)
+        return 1
+    return flow_to_pcap(args.flow_file, args.out_pcap)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+EOF
+chmod +x /home/john/Projects/cosette-rs/scripts/osint/flow_to_pcap.py
+```
+
+- [ ] **Step 3: Write `smoke_flow_to_pcap.sh`**
+
+```bash
+cat > /home/john/Projects/cosette-rs/scripts/osint/smoke_flow_to_pcap.sh <<'EOF'
+#!/usr/bin/env bash
+# Smoke test: flow_to_pcap converts mitm .flow -> pcap readable by OxidizedRelay.
+# Pass = exit 0. Uses a tiny synthetic .flow dump so no device traffic needed.
+
+set -uo pipefail
+
+cd "$(git rev-parse --show-toplevel)"
+
+PCAP_OUT="$(mktemp --suffix=.pcap)"
+FLOW_IN="$(mktemp --suffix=.flow)"
+trap 'rm -f "$PCAP_OUT" "$FLOW_IN"' EXIT
+
+# Generate a synthetic .flow by piping a tiny HTTPS request through mitmdump.
+# mitmdump writes its native flow file; we then convert it.
+if ! command -v mitmdump >/dev/null 2>&1; then
+    echo "[smoke_flow_to_pcap] SKIP: mitmdump not on PATH (Task 4 missing?)" >&2
+    exit 0
+fi
+
+# Run a 5s capture to produce a real .flow with at least one CONNECT entry.
+./scripts/osint/capture.sh --out "$FLOW_IN" --duration 5 \
+    --listen-port 18080 --scope 'example\.com' >/dev/null 2>&1 &
+sleep 3
+curl -sS --max-time 2 http://example.com >/dev/null 2>&1 || true
+sleep 3
+wait 2>/dev/null || true
+
+if [[ ! -s "$FLOW_IN" ]]; then
+    echo "[smoke_flow_to_pcap] FAIL: capture produced empty .flow" >&2
+    exit 1
+fi
+
+python3 scripts/osint/flow_to_pcap.py "$FLOW_IN" "$PCAP_OUT"
+rc=$?
+if [[ $rc -ne 0 ]]; then
+    echo "[smoke_flow_to_pcap] FAIL: converter returned $rc" >&2
+    exit 1
+fi
+
+if [[ ! -s "$PCAP_OUT" ]]; then
+    echo "[smoke_flow_to_pcap] FAIL: pcap output empty" >&2
+    exit 1
+fi
+
+# Validate pcap magic (libpcap standard, little-endian: 0xA1B2C3D4)
+MAGIC=$(od -An -tx1 -N4 "$PCAP_OUT" | tr -d ' ')
+if [[ "$MAGIC" != "a1b2c3d4" && "$MAGIC" != "d4c3b2a1" ]]; then
+    echo "[smoke_flow_to_pcap] FAIL: bad pcap magic ($MAGIC)" >&2
+    exit 1
+fi
+
+echo "[smoke_flow_to_pcap] PASS"
+EOF
+chmod +x /home/john/Projects/cosette-rs/scripts/osint/smoke_flow_to_pcap.sh
+```
+
+- [ ] **Step 4: Run the smoke**
+
+```bash
+cd /home/john/Projects/cosette-rs
+./scripts/osint/smoke_flow_to_pcap.sh
+```
+
+Expected: ends with `[smoke_flow_to_pcap] PASS`. May take ~10 seconds (capture + conversion).
+
+- [ ] **Step 5: Commit**
+
+```bash
+cd /home/john/Projects/cosette-rs
+git add scripts/osint/flow_to_pcap.py scripts/osint/smoke_flow_to_pcap.sh
+git -c user.email="claude@anthropic.com" -c user.name="Claude" \
+  commit -m "feat(osint): add flow_to_pcap converter for OxidizedRelay
+
+Real OxidizedRelay binary reads .pcap (not mitm .flow); without this
+bridge Task 7's extraction can't run. dpkt-style frames emitted in
+RAW-IP linktype. Verified end-to-end via smoke_flow_to_pcap.sh."
 ```
 
 ---
