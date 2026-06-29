@@ -75,6 +75,8 @@ trap on_signal INT TERM
 # returns non-zero — that's expected, ignore it.
 remaining="$DURATION"
 while (( remaining > 0 )); do
+    # Rescue the wake-loop so the SIGINT trap's `on_signal` can run;
+    # the trap exits 130 directly.
     sleep 1 || true
     remaining=$((remaining - 1))
 done

@@ -103,8 +103,17 @@ class ScopeCapture:
             flow.metadata["scope_skip"] = True
 
     def response(self, flow: http.HTTPFlow) -> None:
-        if flow.websocket is not None:
-            return  # websocket_end handles websocket flows
+        if flow.metadata.get("scope_skip"):
+            return
+        if not self._matches(flow.request.pretty_host):
+            return
+        self._write(flow)
+
+    def websocket_end(self, flow: http.HTTPFlow) -> None:
+        # Mirror the response() scope logic for WebSocket flows. Without
+        # this, WebSocket flows whose host matches scope_regex would never
+        # reach the .flow file (response() early-returns when
+        # flow.websocket is set, and no other hook writes them).
         if flow.metadata.get("scope_skip"):
             return
         if not self._matches(flow.request.pretty_host):
@@ -113,6 +122,9 @@ class ScopeCapture:
 
     def error(self, flow: http.HTTPFlow) -> None:
         # Mirror save.py: errors piggyback on response writes.
+        # mitmproxy types the `error` hook receiver loosely, but at
+        # runtime it always receives an HTTPFlow — same shape as
+        # response(). The ignore covers the intentional covariant use.
         self.response(flow)  # type: ignore[arg-type]
 
 
