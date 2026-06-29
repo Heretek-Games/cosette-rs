@@ -38,19 +38,46 @@ echo "[capture] starting mitmdump on :$PORT, scope='$SCOPE', duration=${DURATION
 echo "[capture] writing to: $OUT"
 
 # --set confdir picks up any pre-installed CA cert
-# --save-stream-file streams flows to disk as they're captured
+# -s loads the scope-filter addon; --set scope_regex/scope_out configure it.
+# The addon writes the .flow file itself (mitmdump's --save-stream-file has no
+# regex filter, so we can't rely on it for scope enforcement).
 mitmdump \
     --listen-port "$PORT" \
     --set "confdir=$HOME/.mitmproxy" \
-    --save-stream-file "$OUT" \
     --set "block_global=false" \
     --anticache \
+    -s "$(dirname "$0")/scope_addon.py" \
+    --set "scope_out=$OUT" \
+    --set "scope_regex=$SCOPE" \
     &
 MITM_PID=$!
 
-trap 'kill "$MITM_PID" 2>/dev/null || true' EXIT
+# Traps:
+#   INT/TERM  - Ctrl-C or kill: stop mitmdump immediately and exit 130.
+#               A bare `sleep "$DURATION"` ignores these until it returns
+#               naturally, so we use a 1-second wake loop instead.
+#   EXIT      - Always try to clean up mitmdump, regardless of how we exit.
+cleanup() {
+    if kill -0 "$MITM_PID" 2>/dev/null; then
+        kill "$MITM_PID" 2>/dev/null || true
+        wait "$MITM_PID" 2>/dev/null || true
+    fi
+}
+on_signal() {
+    cleanup
+    exit 130
+}
+trap cleanup EXIT
+trap on_signal INT TERM
 
-sleep "$DURATION"
+# Wake-up loop: each iteration sleeps 1s, so Ctrl-C is honored within ~1s
+# regardless of DURATION. Signal interrupts the inner `sleep` and `wait`
+# returns non-zero — that's expected, ignore it.
+remaining="$DURATION"
+while (( remaining > 0 )); do
+    sleep 1 || true
+    remaining=$((remaining - 1))
+done
 
 echo "[capture] duration elapsed; stopping mitmdump"
 kill "$MITM_PID" 2>/dev/null || true
