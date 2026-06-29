@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_zone_chest_masters;
+
+message BattleZoneChestMaster {
+  string master_version = 1;
+  int64 battle_zone_chest_master_id = 2;
+  int64 battle_zone_master_id = 3;
+  string chest_rewards = 4;
+  int64 open_condition = 5;
+}
+
+message BattleZoneChestMasters {
+  message battle_zone_chest_masters = 1;
+}

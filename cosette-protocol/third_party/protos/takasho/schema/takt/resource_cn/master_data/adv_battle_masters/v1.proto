@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.adv_battle_masters;
+
+message AdvBattleMaster {
+  string master_version = 1;
+  int64 adv_battle_master_id = 2;
+  int64 use_stamina = 3;
+  int64 battle_id = 4;
+  int64 exp_player = 5;
+  int64 exp_battle_character = 6;
+  int64 game_money = 7;
+  int64 drop_master_id = 8;
+  int64 chapter = 9;
+  int64 section = 10;
+  string first_clear_rewards = 11;
+}
+
+message AdvBattleMasters {
+  message adv_battle_masters = 1;
+}

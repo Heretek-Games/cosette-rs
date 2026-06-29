@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_hit_effect_masters;
+
+message BattleHitEffectMaster {
+  string master_version = 1;
+  int64 battle_hit_effect_master_id = 2;
+}
+
+message BattleHitEffectMasters {
+  message battle_hit_effect_masters = 1;
+}

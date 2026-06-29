@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.activity_check_in_masters;
+
+message ActivityCheckInMaster {
+  string master_version = 1;
+  int64 activity_check_in_master_id = 2;
+  int64 limit_time = 5;
+  string conditions = 6;
+}
+
+message ActivityCheckInMasters {
+  message activity_check_in_masters = 1;
+}

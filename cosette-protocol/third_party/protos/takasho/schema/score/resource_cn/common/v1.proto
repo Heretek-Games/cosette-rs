@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.common;
+
+message Limit {
+  int64 count = 1;
+  sint64 next_cycle_start_at = 2;
+  sint64 updated_at = 3;
+}
+
+message Rewards {
+  message rewards = 1;
+  message first_clear_rewards = 2;
+}

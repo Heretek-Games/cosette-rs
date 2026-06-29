@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_achievement_masters;
+
+message BattleAchievementMaster {
+  string master_version = 1;
+  int64 battle_achievement_master_id = 2;
+  enumeration = "BattleAchievementTypeEnum" battle_achievement_type_ids = 3;
+  string rewards = 4;
+}
+
+message BattleAchievementMasters {
+  message battle_achievement_masters = 1;
+}

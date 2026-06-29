@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.content_to_takasho_resource_masters;
+
+import "takasho/schema/super/content_type_masters/v1/Type.proto";
+
+import "takasho/schema/super/super/super/super/common_featureset/resource/player_inventory/v1/ItemType.proto";
+
+message ContentToTakashoResourceMaster {
+  string master_version = 1;
+  int64 content_to_takasho_resource_master_id = 2;
+  enumeration = "super::super::content_type_masters::v1::Type" content_type = 11;
+  string takasho_name = 14;
+}
+
+message ContentToTakashoResourceMasters {
+  message content_to_takasho_resource_masters = 1;
+}

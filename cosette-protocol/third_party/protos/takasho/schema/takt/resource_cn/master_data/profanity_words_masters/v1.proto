@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.profanity_words_masters;
+
+message ProfanityWordsMaster {
+  string master_version = 1;
+  int64 profanity_words_master_id = 2;
+  string content = 3;
+}
+
+message ProfanityWordsMasters {
+  message profanity_words_masters = 1;
+}

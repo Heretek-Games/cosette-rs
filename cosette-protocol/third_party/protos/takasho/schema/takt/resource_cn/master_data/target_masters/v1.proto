@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.target_masters;
+
+message TargetMaster {
+  string master_version = 1;
+  int64 target_master_id = 2;
+  int64 previous_target_ids = 11;
+  int64 target_category = 3;
+  int64 parent_id = 4;
+  string unlock_conditions = 5;
+  int64 target_type_id = 6;
+  int64 mission_type_value1 = 7;
+  int64 mission_type_value2 = 8;
+  int64 mission_type_value3 = 9;
+  string rewards = 10;
+  int64 required_total_index = 12;
+  int64 mission_type_value4 = 13;
+}
+
+message TargetMasters {
+  message target_masters = 1;
+}

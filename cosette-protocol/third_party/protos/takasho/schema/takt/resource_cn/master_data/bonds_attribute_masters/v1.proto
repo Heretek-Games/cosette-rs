@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.bonds_attribute_masters;
+
+message BondsAttributeMaster {
+  string master_version = 1;
+  int64 bonds_attribute_master_id = 2;
+  int64 battle_character_master_id = 3;
+  int64 plate_id = 4;
+  int64 require_bonds_level = 5;
+  string unlock_reward_contents = 6;
+}
+
+message BondsAttributeMasters {
+  message bonds_attribute_masters = 1;
+}

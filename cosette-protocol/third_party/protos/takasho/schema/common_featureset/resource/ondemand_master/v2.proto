@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.ondemand_master;
+
+message Entry {
+  string key = 1;
+  bytes = "vec" value = 2;
+}

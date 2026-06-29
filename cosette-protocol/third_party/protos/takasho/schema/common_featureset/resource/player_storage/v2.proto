@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.player_storage;
+
+message Entry {
+  string player_id = 1;
+  string key = 2;
+  bytes = "vec" value = 3;
+  sint64 created_at = 4;
+  sint64 updated_at = 5;
+}
+
+message Criterion {
+  string key = 1;
+  enumeration = "criterion::MatchingType" matching_type = 2;
+}

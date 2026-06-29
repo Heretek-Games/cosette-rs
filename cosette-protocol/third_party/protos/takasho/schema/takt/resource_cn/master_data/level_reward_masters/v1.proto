@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.level_reward_masters;
+
+message LevelRewardMaster {
+  string master_version = 1;
+  int64 level_reward_master_id = 2;
+  int64 require_player_level = 3;
+  string rewards = 4;
+}
+
+message LevelRewardMasters {
+  message level_reward_masters = 1;
+}

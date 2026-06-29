@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.activity_masters;
+
+message ActivityMaster {
+  string master_version = 1;
+  int64 activity_master_id = 2;
+  int64 battle_character_master_id = 3;
+  int64 activity_check_in_master_id = 4;
+  int64 activity_mission_master_id = 5;
+}
+
+message ActivityMasters {
+  message activity_masters = 1;
+}

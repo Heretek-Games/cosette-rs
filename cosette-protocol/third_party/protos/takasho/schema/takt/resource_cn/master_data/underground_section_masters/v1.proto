@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.underground_section_masters;
+
+message UndergroundSectionMaster {
+  string master_version = 1;
+  int64 underground_section_master_id = 2;
+  int64 underground_chapter_master_id = 3;
+  string name = 11;
+  string unlock_condition = 12;
+  string start_cost_contents = 13;
+  bool is_extra = 14;
+}
+
+message UndergroundSectionMasters {
+  message underground_section_masters = 1;
+}

@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.master_sections;
+
+message PlayerMasterSection {
+  string player_id = 1;
+  int64 master_section_master_id = 2;
+  int64 arrived_time = 3;
+  string db_chose_effects = 4;
+  int64 chose_side_effects = 5;
+  int64 arrived_level = 6;
+  int64 arrived_deck = 7;
+  int64 arrived_turns = 8;
+  message chose_effects = 9;
+  int64 last_update_at = 10;
+  int64 now_effects = 11;
+  int64 now_side_effects = 12;
+  int64 points = 13;
+  string battle_key = 14;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerMasterSectionEffectStatus {
+  int64 effect_master_id = 1;
+  int64 cd = 2;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.player_mini_missions;
+
+message PlayerMiniMission {
+  string player_id = 1;
+  int64 mini_mission_completed = 30;
+  int64 mini_mission_activated = 40;
+  string mini_mission_datas = 50;
+  int64 mini_mission_handling_characters = 60;
+  string character_spawn_locations = 70;
+}

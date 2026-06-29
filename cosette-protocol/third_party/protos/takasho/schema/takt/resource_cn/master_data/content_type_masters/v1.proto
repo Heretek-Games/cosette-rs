@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.content_type_masters;
+
+message ContentTypeMaster {
+  string master_version = 1;
+  enumeration = "Type" content_type_master_id = 2;
+  int64 content_id = 3;
+  string name = 90;
+}
+
+message ContentTypeMasters {
+  message content_type_masters = 1;
+}

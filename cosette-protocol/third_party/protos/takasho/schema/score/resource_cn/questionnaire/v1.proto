@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.questionnaire;
+
+message PlayerQuestionnaire {
+  string player_id = 1;
+  string questionnaire_id = 2;
+  sint64 finished_at = 3;
+  string data_center_questionnaire_id = 11;
+  string group_id = 12;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message GlobalQuestionnaire {
+  string questionnaire_id = 1;
+  string affcodes = 2;
+  int64 realm_ids = 3;
+  int64 days_after_server_opening = 4;
+  enumeration = "PlayerConstrainType" player_constrain_type = 5;
+  int64 player_constrain_type_value = 6;
+  sint64 starting_time_in_second_accuracy = 7;
+  sint64 ending_time_in_second_accuracy = 8;
+  string rewards = 9;
+  string questionnaire_url = 10;
+  string data_center_questionnaire_id = 11;
+  string questionnaire_title = 12;
+  string group_id = 13;
+  string rewards_mail_title = 21;
+  string rewards_mail_text_content = 22;
+  bool online = 23;
+  sint64 index = 24;
+  string ja_title = 25;
+  string ja_content = 26;
+  string zh_tw_title = 27;
+  string zh_tw_content = 28;
+  string en_title = 29;
+  string en_content = 30;
+  string ko_title = 31;
+  string ko_content = 32;
+  string th_title = 33;
+  string th_content = 34;
+  string questionnaire_ja_title = 40;
+  string questionnaire_zh_tw_title = 41;
+  string questionnaire_en_title = 42;
+  string questionnaire_ko_title = 43;
+  string questionnaire_th_title = 44;
+  string player_constrain_type_values = 50;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

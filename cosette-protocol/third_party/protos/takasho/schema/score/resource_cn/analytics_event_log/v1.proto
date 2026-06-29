@@ -1,0 +1,157 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.analytics_event_log;
+
+message PlayerState {
+  string player_id = 1;
+  string idp_account_id = 2;
+  string session_id = 3;
+  int64 realm_id = 4;
+  int64 lv = 5;
+  int64 paid_gem = 6;
+  int64 free_gem = 7;
+  int64 gold = 8;
+}
+
+message ARst {
+  string obj = 1;
+  int64 before = 2;
+  int64 after = 3;
+  int64 diff = 4;
+}
+
+message Empty {
+}
+
+message RoleLoginV1Payload {
+  message state = 1;
+}
+
+message RoleCreateV1Payload {
+  message a_rst = 1;
+}
+
+message RoleGuideV1Payload {
+  int64 guide_id = 1;
+  message a_rst = 2;
+}
+
+message RoleNameV1Payload {
+  string new_name = 1;
+  message a_rst = 2;
+}
+
+message ItemUseV1Payload {
+  int64 item_id = 1;
+  int64 num = 2;
+  int64 position = 3;
+  message a_rst = 4;
+}
+
+message ItemSellV1Payload {
+  int64 item_id = 1;
+  int64 num = 2;
+  message a_rst = 4;
+}
+
+message CardLevelUpV1Payload {
+  int64 card_id = 1;
+  int64 card_level = 2;
+  message a_rst = 3;
+}
+
+message CardGradeUpV1Payload {
+  int64 card_id = 1;
+  int64 card_grade = 2;
+  int64 panel_id = 3;
+  message a_rst = 4;
+}
+
+message CardStarUpV1Payload {
+  int64 card_id = 1;
+  int64 card_star = 2;
+  message a_rst = 3;
+}
+
+message EquipFitV1Payload {
+  int64 equip_id = 1;
+  int64 card_id = 2;
+  int64 position = 4;
+  message a_rst = 5;
+}
+
+message EquipLevelUpV1Payload {
+  int64 equip_id = 1;
+  int64 equip_level = 2;
+  message a_rst = 3;
+}
+
+message EquipGradeUpV1Payload {
+  int64 equip_id = 1;
+  int64 equip_grade = 2;
+  message a_rst = 3;
+}
+
+message EquipStarUpV1Payload {
+  int64 equip_id = 1;
+  int64 equip_star = 2;
+  message a_rst = 3;
+}
+
+message PveSectionUpdateV1Payload {
+  int64 stage_id = 1;
+  string flag = 2;
+  int64 time = 3;
+  message a_rst = 4;
+}
+
+message PveSectionFinishV1Payload {
+  int64 stage_id = 1;
+  message a_rst = 2;
+}
+
+message PveBattleFinishV1Payload {
+  int64 stage_id = 1;
+  int64 battle_id = 2;
+  enumeration = "TypeEventStatus" result = 3;
+  int64 team = 4;
+  int64 time = 5;
+  message a_rst = 6;
+}
+
+message PveSectionStartV1Payload {
+  int64 stage_id = 1;
+  int64 battle_id = 2;
+  message a_rst = 4;
+}
+
+message UseKeywordV1Payload {
+  int64 card_id = 1;
+  int64 keyword = 2;
+  message a_rst = 4;
+}
+
+message ExploreUnlockEventV1Payload {
+  int64 explore_id = 1;
+}
+
+message ExploreStartEventV1Payload {
+  int64 explore_id = 1;
+  message a_rst = 2;
+}
+
+message ExploreFinishEventAdvV1Payload {
+  int64 explore_id = 1;
+  int64 adv_id = 2;
+}
+
+message ExploreFinishEventV1Payload {
+  int64 explore_id = 1;
+  int64 is_partial = 2;
+  message a_rst = 3;
+}
+
+message ExploreGiftV1Payload {
+  int64 card_id = 1;
+  int64 item_id = 2;
+}

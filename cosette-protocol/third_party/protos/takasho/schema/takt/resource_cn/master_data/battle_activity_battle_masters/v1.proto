@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_activity_battle_masters;
+
+message BattleActivityBattleMaster {
+  string master_version = 1;
+  int64 battle_activity_battle_master_id = 2;
+  int64 battle_activity_master_id = 30;
+  string battle_name = 40;
+  int64 sort = 50;
+  int64 stage_id = 51;
+  int64 stage_type = 52;
+  int64 quest_id = 53;
+  int64 battle_id = 60;
+  int64 battle_id_repeat = 65;
+  int64 pre_piot_id = 70;
+  string require_condition = 80;
+  string rewards = 90;
+  int64 battle_type = 100;
+  string consume = 110;
+  int64 drop_id = 120;
+}
+
+message BattleActivityBattleMasters {
+  message battle_activity_battle_masters = 1;
+}

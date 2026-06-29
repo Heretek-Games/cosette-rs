@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package takasho.schema;
+
+message PlayerApiFileOption {
+  message go_server = 1;
+  message csharp_client = 2;
+  message annotation = 3;
+}
+
+message AdminApiFileOption {
+  message go_server = 1;
+  message annotation = 2;
+}
+
+message PlayerApiMethodOption {
+  message go_server = 1;
+}
+
+message AdminApiMethodOption {
+  message go_server = 1;
+}

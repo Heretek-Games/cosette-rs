@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.credit_config_masters;
+
+message CreditConfigMaster {
+  string master_version = 1;
+  int64 credit_config_master_id = 2;
+  int64 threshold = 3;
+  int64 days = 4;
+}
+
+message CreditConfigMasters {
+  message credit_config_masters = 1;
+}

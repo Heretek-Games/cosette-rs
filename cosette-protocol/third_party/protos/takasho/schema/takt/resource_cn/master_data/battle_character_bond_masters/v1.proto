@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_character_bond_masters;
+
+message BattleCharacterBondMaster {
+  string master_version = 1;
+  int64 battle_character_bond_master_id = 2;
+  string name = 11;
+  int64 favorite = 12;
+  int64 like = 13;
+  int64 normal = 14;
+  int64 hate = 15;
+  int64 favorite_teabreak = 21;
+  int64 like_teabreak = 22;
+  int64 normal_teabreak = 23;
+}
+
+message BattleCharacterBondMasters {
+  message battle_character_bond_masters = 1;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.announcement;
+
+message Announcement {
+  string id = 1;
+  string language_code = 2;
+  string title = 3;
+  sint64 opened_at = 4;
+  sint64 closed_at = 5;
+  bytes = "vec" value = 6;
+  message contents = 7;
+}
+
+message AnnouncementContent {
+  string schema_key = 1;
+  bytes = "vec" value = 2;
+}

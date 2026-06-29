@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.private_talk_character_masters;
+
+message PrivateTalkCharacterMaster {
+  string master_version = 1;
+  int64 private_talk_character_master_id = 2;
+  int64 battle_character_master_id = 3;
+}
+
+message PrivateTalkCharacterMasters {
+  message private_talk_character_masters = 1;
+}

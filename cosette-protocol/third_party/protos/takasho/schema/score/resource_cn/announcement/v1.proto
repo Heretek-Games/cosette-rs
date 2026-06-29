@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.announcement;
+
+message Announcement {
+  string announcement_id = 1;
+  string affcodes = 2;
+  int64 priority = 3;
+  string overview_bar_text = 4;
+  enumeration = "announcement::TagType" overview_bar_tag = 5;
+  string title = 6;
+  string text = 7;
+  bool flag = 8;
+  sint64 published_at = 9;
+  sint64 end_at = 10;
+  string ja_title = 11;
+  string ja_content = 12;
+  string zh_tw_title = 13;
+  string zh_tw_content = 14;
+  string en_title = 15;
+  string en_content = 16;
+  string ko_title = 17;
+  string ko_content = 18;
+  string th_title = 19;
+  string th_content = 20;
+  string overview_bar_ja_text = 21;
+  string overview_bar_zh_tw_text = 22;
+  string overview_bar_en_text = 23;
+  string overview_bar_ko_text = 24;
+  string overview_bar_th_text = 25;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+import "takasho/schema/super/global_server_settings/v1/AnnouncementPopType.proto";
+
+message Announcements {
+  message announcements = 1;
+}

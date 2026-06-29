@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_shake_masters;
+
+message BattleShakeMaster {
+  string master_version = 1;
+  int64 battle_shake_master_id = 2;
+}
+
+message BattleShakeMasters {
+  message battle_shake_masters = 1;
+}

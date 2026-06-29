@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.player_achievement;
+
+import "takasho/schema/super/achievement/v1/Achievement.proto";
+
+message PlayerAchievement {
+  message achievement = 1;
+  sint64 last_unlocked_at = 2;
+}

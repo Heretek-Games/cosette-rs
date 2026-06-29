@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.badge_set_masters;
+
+message BadgeSetMaster {
+  string master_version = 1;
+  int64 badge_set_master_id = 2;
+}
+
+message BadgeSetMasters {
+  message badge_set_masters = 1;
+}

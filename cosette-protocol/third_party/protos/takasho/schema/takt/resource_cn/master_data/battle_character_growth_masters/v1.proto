@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_character_growth_masters;
+
+message BattleCharacterGrowthMaster {
+  string master_version = 1;
+  int64 battle_character_growth_master_id = 2;
+  int64 character_id = 3;
+  int64 min_level = 11;
+  int64 max_level = 12;
+  int64 incr_hp = 13;
+  int64 incr_atk = 14;
+  int64 incr_def = 15;
+  int64 incr_int = 16;
+  int64 incr_res = 17;
+  int64 incr_dex = 18;
+  int64 incr_crt = 19;
+  int64 incr_crd = 20;
+  int64 incr_acrt = 21;
+  int64 incr_crdr = 22;
+}
+
+message BattleCharacterGrowthMasters {
+  message battle_character_growth_masters = 1;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.monthly_pass_masters;
+
+import "takasho/schema/super/super/super/super/score/resource_cn/system/v1/Region.proto";
+
+message MonthlyPassMaster {
+  string master_version = 1;
+  int64 monthly_pass_master_id = 2;
+  string bonus = 3;
+  string contents = 4;
+}
+
+message MonthlyPassMasters {
+  message monthly_pass_masters = 1;
+}

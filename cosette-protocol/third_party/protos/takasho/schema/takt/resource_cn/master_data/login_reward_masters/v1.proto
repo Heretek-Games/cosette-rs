@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.login_reward_masters;
+
+message LoginRewardMaster {
+  string master_version = 1;
+  int64 login_reward_master_id = 2;
+  int64 login_activity_master_id = 3;
+  int64 day = 4;
+  string rewards = 5;
+}
+
+message LoginRewardMasters {
+  message login_reward_masters = 1;
+}

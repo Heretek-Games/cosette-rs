@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_pass_season_stage_masters;
+
+message BattlePassSeasonStageMaster {
+  string master_version = 1;
+  int64 battle_pass_season_stage_master_id = 2;
+  int64 stage_level = 3;
+  int64 battle_pass_season_id = 4;
+  string purchase_rewards = 5;
+  int64 shop_product_master_id = 6;
+}
+
+message BattlePassSeasonStageMasters {
+  message battle_pass_season_stage_masters = 1;
+}

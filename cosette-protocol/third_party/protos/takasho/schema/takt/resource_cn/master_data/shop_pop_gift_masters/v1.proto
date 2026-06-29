@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.shop_pop_gift_masters;
+
+message ShopPopGiftMaster {
+  string master_version = 1;
+  int64 shop_pop_gift_master_id = 2;
+  string contents = 3;
+  int64 former_id = 4;
+  int64 duration = 5;
+  enumeration = "GiftPopType" pop_type = 6;
+  int64 pop_times = 7;
+  enumeration = "TriggerType" trigger_type = 8;
+  int64 trigger_param1 = 9;
+  int64 trigger_param2 = 10;
+  enumeration = "Region" region = 11;
+}
+
+message ShopPopGiftMasters {
+  message shop_pop_gift_masters = 1;
+}

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.realms;
+
+import "takasho/schema/super/super/super/common_featureset/resource/realm/v1/Realm.proto";
+
+message Realms {
+  message realms = 1;
+}

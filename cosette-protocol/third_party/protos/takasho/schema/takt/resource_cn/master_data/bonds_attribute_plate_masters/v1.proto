@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.bonds_attribute_plate_masters;
+
+message BondsAttributePlateMaster {
+  string master_version = 1;
+  int64 bonds_attribute_plate_master_id = 2;
+  int64 plate_id = 3;
+  int64 plate_lv = 4;
+  string resources_required = 5;
+  string attribute_growth = 6;
+}
+
+message BondsAttributePlateMasters {
+  message bonds_attribute_plate_masters = 1;
+}

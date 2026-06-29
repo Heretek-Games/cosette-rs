@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_character_masters;
+
+message BattleCharacterMaster {
+  string master_version = 99;
+  int64 battle_character_master_id = 1;
+  int64 character_master_id = 2;
+  int64 character_type_id = 3;
+  int64 sort_id = 4;
+  string name = 5;
+  enumeration = "Rarity" rarity = 11;
+  int64 initial_rank = 12;
+  int64 camps = 13;
+  int64 job = 14;
+  string notes = 15;
+  int64 initial_lv = 16;
+  int64 initial_grade = 17;
+  int64 favorite_bond_items = 18;
+  string unlock_reward_contents = 19;
+  string get_rewards = 20;
+  int64 initial_hp = 21;
+  int64 initial_atk = 22;
+  int64 initial_def = 23;
+  int64 initial_dex = 24;
+  int64 initial_int = 25;
+  int64 initial_res = 26;
+  int64 initial_crt = 27;
+  int64 initial_crd = 28;
+  int64 initial_acrt = 29;
+  int64 initial_crdr = 30;
+  int64 hp_growth_value = 31;
+  int64 atk_growth_value = 32;
+  int64 def_growth_value = 33;
+  int64 dex_growth_value = 34;
+  int64 int_growth_value = 35;
+  int64 res_growth_value = 36;
+  int64 crt_growth_value = 37;
+  int64 crd_growth_value = 38;
+  int64 acrt_growth_value = 39;
+  int64 crdr_growth_value = 40;
+  int64 skill_1_id = 41;
+  int64 skill_2_id = 42;
+  int64 skill_3_id = 43;
+  int64 musical_effect_id = 44;
+  int64 passive_skill_1_id = 45;
+  int64 passive_skill_2_id = 46;
+  int64 counter_command_id = 47;
+  int64 chain_attack_command_id = 48;
+  int64 follow_attack_command_id = 49;
+  int64 optional_command_ids = 50;
+  int64 initial_ap = 51;
+  int64 after_contract_ap = 52;
+  int64 character_tags = 53;
+  bool is_open = 60;
+}
+
+message BattleCharacterMasters {
+  message battle_character_masters = 1;
+}

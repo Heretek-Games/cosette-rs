@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.box_loot_box;
+
+import "takasho/schema/super/consume_resource_set/v1/ConsumeResourceSet.proto";
+
+message BoxLootBoxProduct {
+  string box_loot_box_product_id = 1;
+  string inventory_message = 2;
+  sint64 opened_at = 3;
+  sint64 closed_at = 4;
+  sint64 item_amount = 5;
+  sint64 box_reset_count_limit = 6;
+  bool has_extra = 7;
+  message extras = 8;
+  message consume_resource_sets = 9;
+}
+
+import "takasho/schema/super/player_inventory/v1/ItemType.proto";
+
+message BoxLootBoxContent {
+  string box_loot_box_product_id = 1;
+  string box_loot_box_content_id = 2;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 3;
+  string schema_key = 4;
+  bytes = "vec" value = 5;
+  sint64 amount = 6;
+  string search_label = 7;
+}
+
+message Extra {
+  string box_loot_box_extra_id = 1;
+  string inventory_message = 2;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 3;
+  string schema_key = 4;
+  bytes = "vec" value = 5;
+  string resource_name = 6;
+  sint64 resource_num = 7;
+  string search_label = 8;
+}
+
+message BoxLootBoxContentWithPlayerRemainContent {
+  string box_loot_box_product_id = 1;
+  string box_loot_box_content_id = 2;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 3;
+  string schema_key = 4;
+  bytes = "vec" value = 5;
+  sint64 amount = 6;
+  sint64 player_remain_content_amount = 7;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message OndemandMasters {
+  message ondemand_master_entries = 1;
+}
+
+message OndemandMasterEntry {
+  string key = 1;
+  string value_path = 2;
+  sint64 opened_at = 3;
+  sint64 closed_at = 4;
+}

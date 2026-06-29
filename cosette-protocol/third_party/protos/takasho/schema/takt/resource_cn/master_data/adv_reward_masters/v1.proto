@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.adv_reward_masters;
+
+message AdvRewardMaster {
+  string master_version = 1;
+  int64 adv_reward_master_id = 2;
+  int64 chapter = 3;
+  int64 section = 4;
+  string flag = 5;
+  int64 battle_character_master_id = 6;
+  int64 value = 7;
+  enumeration = "RewardType" many_times = 8;
+  string rewards = 9;
+}
+
+message AdvRewardMasters {
+  message adv_reward_masters = 1;
+}

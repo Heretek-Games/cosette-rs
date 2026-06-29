@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.disguise_own_masters;
+
+message DisguiseOwnMaster {
+  string master_version = 1;
+  int64 disguise_own_master_id = 2;
+  int64 disguise_master_id = 3;
+}
+
+message DisguiseOwnMasters {
+  message disguise_own_masters = 1;
+}

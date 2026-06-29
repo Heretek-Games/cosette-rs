@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crm_web_mission_masters;
+
+message CrmWebMissionMaster {
+  string master_version = 1;
+  int64 crm_web_mission_master_id = 2;
+  int64 mission_category = 3;
+  int64 previous_mission_ids = 4;
+  string unlock_conditions = 5;
+  int64 mission_type_id = 6;
+  int64 required_total_index = 7;
+  int64 mission_type_value1 = 8;
+  int64 mission_type_value2 = 9;
+  int64 mission_type_value_3 = 10;
+}
+
+message CrmWebMissionMasters {
+  message crm_web_mission_masters = 1;
+}

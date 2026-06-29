@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message OpEvents {
+  message op_events = 1;
+}
+
+import "takasho/schema/super/op_event/v1/OpEventType.proto";
+
+import "takasho/schema/consume_resource_set/ConsumeResourceSet.proto";
+
+message OpEvent {
+  string op_event_id = 1;
+  enumeration = "super::super::op_event::v1::OpEventType" op_event_type = 2;
+  int64 open_after_player_elapsed_time_seconds = 3;
+  int64 close_after_player_elapsed_time_seconds = 4;
+  int64 player_level = 5;
+  string objective_ids = 6;
+  int64 open_after_server_elapsed_time_seconds = 7;
+  int64 close_after_server_elapsed_time_seconds = 8;
+  string transaction_payload = 9;
+  sint64 opened_at = 10;
+  sint64 closed_at = 11;
+  message consume_resource_sets = 12;
+}

@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.explore;
+
+import "takasho/schema/super/common/v1/Limit.proto";
+
+message PlayerExploreEvent {
+  string player_id = 1;
+  int64 explore_event_master_id = 2;
+  int64 unlocked_explore_adv_master_ids = 3;
+  int64 unlocked_explore_adv_master_ids_history = 4;
+  enumeration = "Status" status = 5;
+  string flags = 6;
+  sint64 unlocked_at = 11;
+  sint64 started_at = 12;
+  sint64 expired_at = 13;
+  int64 used_clock = 17;
+  int64 total_finished_count = 18;
+  bool liked = 19;
+  message limit = 20;
+  string limit_db = 21;
+  bool can_start = 22;
+  int64 current_battle_stage_master_id = 23;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerExploreFreeExplore {
+  string player_id = 1;
+  int64 explore_free_explore_master_id = 2;
+  enumeration = "Status" status = 3;
+  int64 explore_object_master_id = 4;
+  int64 explore_point_master_id = 5;
+  sint64 started_at = 11;
+  sint64 expired_at = 12;
+  int64 total_finished_count = 16;
+  message limit = 20;
+  string limit_db = 21;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerExplore {
+  string player_id = 2;
+  int64 energy = 11;
+  message current_battle_characters = 12;
+  string flags = 13;
+  string db_current_battle_characters = 16;
+  sint64 next_battle_character_master_refresh_at = 17;
+  sint64 next_refresh_at = 18;
+  message events = 21;
+  message free_explores = 22;
+  int64 homepage_show_character = 31;
+  int64 homepage_show_npc = 32;
+  int64 homepage_show_update_at = 33;
+  int64 homepage_daily_update_at = 34;
+  int64 homepage_daily_seed = 35;
+  int64 daily_treasures = 36;
+  string unlocked_scenes = 37;
+  int64 bond_teabreak_characters = 38;
+  int64 get_keyword_daily_count = 39;
+  int64 open_treasure_daily_count = 40;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerExploreBattleCharacter {
+  int64 battle_character_master_id = 1;
+  int64 explore_point_master_id = 2;
+}

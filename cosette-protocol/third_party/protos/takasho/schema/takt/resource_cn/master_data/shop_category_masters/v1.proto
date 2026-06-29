@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.shop_category_masters;
+
+message ShopCategoryMaster {
+  string master_version = 1;
+  int64 shop_category_master_id = 2;
+  string name = 3;
+  int64 shop_master_id = 4;
+}
+
+message ShopCategoryMasters {
+  message shop_category_masters = 1;
+}

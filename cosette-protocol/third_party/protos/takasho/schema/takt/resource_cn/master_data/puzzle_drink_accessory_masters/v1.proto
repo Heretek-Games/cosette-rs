@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.puzzle_drink_accessory_masters;
+
+message PuzzleDrinkAccessoryMaster {
+  string master_version = 1;
+  int64 puzzle_drink_accessory_master_id = 2;
+}
+
+message PuzzleDrinkAccessoryMasters {
+  message puzzle_drink_accessory_masters = 1;
+}

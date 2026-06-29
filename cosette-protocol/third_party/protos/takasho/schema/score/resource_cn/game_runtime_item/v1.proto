@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.game_runtime_item;
+
+message Value {
+  string value_key = 1;
+  string id = 3;
+  sint64 count = 4;
+  string name = 5;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.gacha_content_masters;
+
+message GachaContentMaster {
+  string master_version = 1;
+  int64 gacha_content_master_id = 2;
+  int64 gacha_odd_master_id = 3;
+  int64 resource_id = 4;
+  int64 weight = 5;
+  string show_icon = 6;
+  bool reset_guarantee = 7;
+  bool reset_common_guarantee = 8;
+}
+
+message GachaContentMasters {
+  message gacha_content_masters = 1;
+}

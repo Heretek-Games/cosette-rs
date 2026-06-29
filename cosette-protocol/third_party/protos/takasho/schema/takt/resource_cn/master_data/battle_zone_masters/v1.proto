@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_zone_masters;
+
+message BattleZoneMaster {
+  string master_version = 1;
+  int64 battle_zone_master_id = 2;
+  int64 related_id = 4;
+  bool has_star_rewards = 5;
+  int64 require_star_num_1 = 6;
+  string star_reward_contents_1 = 7;
+  int64 require_star_num_2 = 8;
+  string star_reward_contents_2 = 9;
+  int64 require_star_num_3 = 10;
+  string star_reward_contents_3 = 11;
+}
+
+message BattleZoneMasters {
+  message battle_zone_masters = 1;
+}

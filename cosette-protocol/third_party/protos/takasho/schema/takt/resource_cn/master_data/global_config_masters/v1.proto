@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.global_config_masters;
+
+message GlobalConfigMaster {
+  string master_version = 1;
+  enumeration = "Id" global_config_master_id = 2;
+  int64 data = 3;
+}
+
+message GlobalConfigMasters {
+  message global_config_masters = 1;
+}

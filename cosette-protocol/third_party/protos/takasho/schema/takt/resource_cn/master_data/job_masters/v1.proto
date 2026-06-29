@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.job_masters;
+
+message JobMaster {
+  string master_version = 1;
+  int64 job_master_id = 2;
+  string job_icon = 3;
+}
+
+message JobMasters {
+  message job_masters = 1;
+}

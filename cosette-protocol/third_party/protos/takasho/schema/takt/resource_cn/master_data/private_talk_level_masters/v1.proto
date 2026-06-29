@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.private_talk_level_masters;
+
+message PrivateTalkLevelMaster {
+  string master_version = 1;
+  int64 private_talk_level_master_id = 2;
+  int64 keyword_level = 3;
+  int64 bond_level = 4;
+}
+
+message PrivateTalkLevelMasters {
+  message private_talk_level_masters = 1;
+}

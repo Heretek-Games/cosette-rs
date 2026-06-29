@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_event_masters;
+
+message CrusadeEventMaster {
+  string master_version = 1;
+  int64 crusade_event_master_id = 2;
+  int64 battle_master_id = 4;
+  int64 values = 5;
+  int64 drop_treasure_group_master_id = 6;
+  int64 drop_master_id = 7;
+  int64 next_events = 8;
+  bool free = 9;
+  int64 hp_recover_value = 20;
+  int64 ap_recover_value = 21;
+}
+
+message CrusadeEventMasters {
+  message crusade_event_masters = 1;
+}

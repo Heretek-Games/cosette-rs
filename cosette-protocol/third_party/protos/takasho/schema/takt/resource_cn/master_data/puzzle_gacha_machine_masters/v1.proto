@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.puzzle_gacha_machine_masters;
+
+message PuzzleGachaMachineMaster {
+  string master_version = 1;
+  int64 puzzle_gacha_machine_master_id = 2;
+  int64 gacha_item_id = 3;
+  int64 trigger_weight = 4;
+  string scenario_id = 5;
+  string rewards = 6;
+}
+
+message PuzzleGachaMachineMasters {
+  message puzzle_gacha_machine_masters = 1;
+}

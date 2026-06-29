@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.login_activity_masters;
+
+message LoginActivityMaster {
+  string master_version = 1;
+  int64 login_activity_master_id = 2;
+  enumeration = "DisplayType" display_type = 3;
+  enumeration = "LoginActivityType" permanent_type = 4;
+  int64 sort_id = 5;
+  string start_time = 6;
+  string end_time = 7;
+}
+
+message LoginActivityMasters {
+  message login_activity_masters = 1;
+}

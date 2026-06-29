@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.underground_level_masters;
+
+message UndergroundLevelMaster {
+  string master_version = 1;
+  int64 underground_level_master_id = 2;
+  string name = 11;
+}
+
+message UndergroundLevelMasters {
+  message underground_level_masters = 1;
+}

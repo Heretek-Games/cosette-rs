@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.battle_check_by_types;
+
+message BattleCheckByTypes {
+  int64 id = 1;
+  int64 precision = 2;
+  int64 method = 3;
+}

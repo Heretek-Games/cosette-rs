@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.character_rank_up_masters;
+
+message CharacterRankUpV2Master {
+  string master_version = 1;
+  int64 character_rank_up_v2_master_id = 2;
+  int64 battle_character_master_id = 3;
+  enumeration = "Rank" rank = 11;
+  int64 sub_rank = 12;
+  bool auto_active = 13;
+  int64 prev_rank = 14;
+  string need_voice_range = 15;
+  string voice_range = 16;
+  string require_contents = 20;
+  int64 buff_skill = 21;
+  int64 buff_skill2 = 22;
+  int64 initial_skill = 23;
+  int64 replace_skill = 24;
+  int64 musical_effect_id = 31;
+}
+
+message CharacterRankUpV2Masters {
+  message character_rank_up_v2_masters = 1;
+}

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.wallet;
+
+message Wallet {
+  string virtual_currency_name = 1;
+  enumeration = "wallet::Platform" platform = 2;
+  message balance = 3;
+}

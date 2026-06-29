@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_battle_masters;
+
+message CrusadeBattleMaster {
+  string master_version = 1;
+  int64 crusade_battle_master_id = 2;
+  int64 battle_stage_id = 3;
+  string first_cost = 4;
+  string cost = 5;
+  string first_rewards = 6;
+  string rewards = 7;
+}
+
+message CrusadeBattleMasters {
+  message crusade_battle_masters = 1;
+}

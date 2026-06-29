@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.login_reward;
+
+message PlayerLoginReward {
+  string player_id = 1;
+  int64 login_activity_master_id = 2;
+  int64 login_reward_ids = 3;
+  sint64 last_login_in_at = 81;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.explore_homepage_character_masters;
+
+message ExploreHomepageCharacterMaster {
+  string master_version = 1;
+  int64 explore_homepage_character_master_id = 2;
+  int64 character_master_id = 3;
+  string unlock_conditions = 4;
+}
+
+message ExploreHomepageCharacterMasters {
+  message explore_homepage_character_masters = 1;
+}

@@ -1,0 +1,326 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.player_api;
+
+message PlayerEventLogSendV1 {
+}
+
+message LoginBonusCountUpProgressV1 {
+}
+
+message LoginBonusGetAvailableV1 {
+}
+
+message LoginBonusGetReceivedV1 {
+}
+
+message GameMessageGetUnreadMessageV1 {
+}
+
+message GameMessageGetMessageV1 {
+}
+
+message GameMessageReceiveMessageV1 {
+}
+
+message BoxLootBoxGetAvailableV1 {
+}
+
+message BoxLootBoxPurchaseV1 {
+}
+
+message BoxLootBoxResetV1 {
+}
+
+message BoxLootBoxGetDetailV1 {
+}
+
+message PlayerRankingRegisterV1 {
+}
+
+message PlayerRankingRegisterV2 {
+}
+
+message PlayerRankingGetTopRankingV1 {
+}
+
+message PlayerRankingGetRankingAroundMeV1 {
+}
+
+message PlayerRankingGetAvailableV1 {
+}
+
+message PlayerRankingReceivePrizeV1 {
+}
+
+message ServerVersionGetV1 {
+}
+
+message AnnouncementGetAvailableV1 {
+}
+
+message RestorationValidateBannedWordsV1 {
+}
+
+message StepUpLootBoxGetAvailableV1 {
+}
+
+message StepUpLootBoxPurchaseV1 {
+}
+
+message StepUpLootBoxGetProbabilityV1 {
+}
+
+message StepUpLootBoxGetDetailV1 {
+}
+
+message StepUpLootBoxV2GetAvailableV1 {
+}
+
+message StepUpLootBoxV2PurchaseV1 {
+}
+
+message StepUpLootBoxV2GetProbabilityV1 {
+}
+
+message StepUpLootBoxV2GetDetailV1 {
+}
+
+message SystemAuthorizeCnV1 {
+}
+
+message SystemAuthorizeV3 {
+}
+
+message SystemAuthorizeV2 {
+}
+
+message SystemGetPlayerStatusV1 {
+}
+
+message SystemGetPlayerStatusV2 {
+}
+
+message SystemSetPlayerStatusV1 {
+}
+
+message SystemDeletePlayerStatusV1 {
+}
+
+message GetRealmsV1 {
+}
+
+message PlayerInventoryGetInventoriesV1 {
+}
+
+message PlayerInventoryGetReceivedInventoriesV1 {
+}
+
+message PlayerInventoryReceiveV1 {
+}
+
+message PlayerInventoryGetInventoriesAndCountV1 {
+}
+
+message GameProductGetAvailableV1 {
+}
+
+message GameProductPurchaseV1 {
+}
+
+message GameProductPurchaseV2 {
+}
+
+message GameProductPurchaseAndSavePlayerStorageV1 {
+}
+
+message GameProductPurchaseAndSavePlayerStorageV2 {
+}
+
+message PlayerPreferenceGetPreferenceV1 {
+}
+
+message PlayerPreferenceSetPreferenceV1 {
+}
+
+message PlayerPreferenceSetPreferenceAndSavePlayerStorageV1 {
+}
+
+message PlayerPreferenceSetPreferenceAndSavePlayerStorageV2 {
+}
+
+message PlayerPreferenceGetMonthlyBillingLimitV1 {
+}
+
+message PlayerPreferenceGetMonthlyPurchaseSummaryV1 {
+}
+
+message PlayerAchievementGetAvailableV1 {
+}
+
+message PlayerAchievementGetAvailableByIDsV1 {
+}
+
+message PlayerAchievementUnlockV1 {
+}
+
+message PlayerAchievementUnlockAndSavePlayerStorageV1 {
+}
+
+message ValidateBannedWordV1 {
+}
+
+message TotalLoginBonusGetAvailableV1 {
+}
+
+message TotalLoginBonusReceiveV1 {
+}
+
+message FriendGetListV1 {
+}
+
+message FriendSendRequestV1 {
+}
+
+message FriendApproveRequestV1 {
+}
+
+message FriendDeleteV1 {
+}
+
+message FriendGetReceivedRequestsListV1 {
+}
+
+message FriendGetMyRequestsListV1 {
+}
+
+message FriendDeleteMyRequestV1 {
+}
+
+message FriendApproveRequestsV1 {
+}
+
+message FriendDeleteMyRequestsV1 {
+}
+
+message PlayerStorageSetEntriesV2 {
+}
+
+message PlayerStorageGetEntriesV2 {
+}
+
+message PlayerStorageGetOtherPlayerEntriesV2 {
+}
+
+message BaasProductGetAvailableByIDsV1 {
+}
+
+message GetMonthlyBillingLimitV1 {
+}
+
+message GetMonthlyVirtualCurrencyAmountV1 {
+}
+
+message WalletGetBalancesV1 {
+}
+
+message WalletGetBalancesV2 {
+}
+
+message PlayerKeyValueStoreGetPlayerKeyValuesV1 {
+}
+
+message PlayerKeyValueStoreIncrementPlayerKeyValuesV1 {
+}
+
+message PlayerKeyValueStoreIncrementPlayerKeyValuesAndSavePlayerStorageV1 {
+}
+
+message PlayerKeyValueStoreUpdatePlayerKeyValuesAndSavePlayerStorageV1 {
+}
+
+message OndemandMasterGetEntriesV2 {
+}
+
+message LootBoxGetAvailableV1 {
+}
+
+message LootBoxPurchaseV1 {
+}
+
+message LootBoxGetProbabilityV1 {
+}
+
+message LootBoxGetDetailV1 {
+}
+
+message LootBoxV2GetAvailableV1 {
+}
+
+message LootBoxV2PurchaseV1 {
+}
+
+message LootBoxV2GetProbabilityV1 {
+}
+
+message LootBoxV2GetDetailV1 {
+}
+
+message LootBoxV3GetAvailableV1 {
+}
+
+message LootBoxV3PurchaseV1 {
+}
+
+message LootBoxV3GetProbabilityV1 {
+}
+
+message LootBoxV3GetDetailV1 {
+}
+
+message OpinionGetUrlV1 {
+}
+
+message OpEventGetAvailableV1 {
+}
+
+import "takasho/schema/resource/op_event/v1/OpEvent.proto";
+
+import "takasho/schema/resource/op_fund_unlock/v1/OpFundUnlock.proto";
+
+message OpEventWithStatus {
+  message op_event = 1;
+  bool can_unlock = 2;
+  bool finished = 3;
+  message fund_unlocks = 11;
+}
+
+message OpEventPurchaseV1 {
+}
+
+message UnlockFundV1 {
+}
+
+message PlayerSearchV1 {
+}
+
+message PlayerSearchV2 {
+}
+
+message PushNotificationSetConfigV1 {
+}
+
+message PushNotificationGetConfigV1 {
+}
+
+message AchievementGetAvailableV1 {
+}
+
+message AchievementGetAvailableByIDsV1 {
+}
+
+message AchievementUnlockV1 {
+}
+
+message AchievementUnlockAndSavePlayerStorageV1 {
+}

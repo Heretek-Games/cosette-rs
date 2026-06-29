@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.friend;
+
+message ReceivedFriendRequest {
+  message from_player = 1;
+  sint64 sent_at = 2;
+  string schema_key = 3;
+  bytes = "vec" value = 4;
+}
+
+message MyFriendRequest {
+  message to_player = 1;
+  sint64 sent_at = 2;
+  string schema_key = 3;
+  bytes = "vec" value = 4;
+}
+
+import "takasho/schema/super/player_storage/v2/Entry.proto";
+
+message Player {
+  string player_id = 1;
+  message player_storage_entries = 2;
+  sint64 last_logged_in_at = 3;
+  string nickname = 4;
+  sint64 followed_at = 5;
+}

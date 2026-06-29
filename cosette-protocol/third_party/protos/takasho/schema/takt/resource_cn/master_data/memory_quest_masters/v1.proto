@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.memory_quest_masters;
+
+message MemoryQuestMaster {
+  string master_version = 1;
+  int64 memory_quest_master_id = 2;
+  int64 pre_memory_quest_master_id = 3;
+  int64 chapter = 4;
+  int64 require_chapter_master_id = 5;
+  int64 quest_id = 6;
+  enumeration = "MemoryQuestType" memory_quest_type = 11;
+  int64 use_stamina = 12;
+  int64 battle_master_id = 13;
+  int64 limit_daily_count = 14;
+  enumeration = "MemoryQuestSort" memory_quest_sort = 15;
+  int64 round_num = 21;
+  int64 death_num = 22;
+  int64 exp_player = 23;
+  int64 exp_battle_character = 24;
+  int64 game_money = 25;
+  string first_clear_reward_contents = 26;
+  int64 drop_master_ids = 27;
+  string skip_reward_contents = 29;
+}
+
+message MemoryQuestMasters {
+  message memory_quest_masters = 1;
+}

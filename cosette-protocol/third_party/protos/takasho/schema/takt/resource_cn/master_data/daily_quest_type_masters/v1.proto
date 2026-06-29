@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.daily_quest_type_masters;
+
+message DailyQuestTypeMaster {
+  string master_version = 1;
+  int64 daily_quest_type_master_id = 2;
+  int64 drop_reward_times = 3;
+  int64 display_drop_reward_contents = 4;
+  int64 require_stage_id = 5;
+}
+
+message DailyQuestTypeMasters {
+  message daily_quest_type_masters = 1;
+}

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.player_scene_datas;
+
+message PlayerSceneData {
+  string player_id = 1;
+  string been_map_list = 20;
+}

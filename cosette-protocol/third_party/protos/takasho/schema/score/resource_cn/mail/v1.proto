@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.mail;
+
+message GlobalMail {
+  string global_mail_id = 1;
+  string sender = 2;
+  string customized_sender_name = 3;
+  int64 player_level = 11;
+  int64 server_ids = 12;
+  string affcodes = 13;
+  string title = 21;
+  string text_content = 22;
+  string image_url = 23;
+  string external_url = 24;
+  string external_url_desc = 25;
+  string function_link = 26;
+  string rewards = 27;
+  sint64 mail_sending_time = 28;
+  sint64 mail_expiring_time = 29;
+  int64 life_time_before_read_in_hour = 30;
+  int64 life_time_after_read_in_hour = 31;
+  string ja_title = 32;
+  string ja_content = 33;
+  string zh_tw_title = 34;
+  string zh_tw_content = 35;
+  string en_title = 36;
+  string en_content = 37;
+  string ko_title = 38;
+  string ko_content = 39;
+  string th_title = 40;
+  string th_content = 41;
+  bool after_send_time_cant_receive = 42;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerMail {
+  string player_id = 1;
+  string mail_id = 2;
+  enumeration = "SenderType" sender_type = 3;
+  string sender = 4;
+  string sender_name = 5;
+  string title = 21;
+  string text_content = 22;
+  string image_url = 23;
+  string external_url = 24;
+  string external_url_desc = 25;
+  string function_link = 26;
+  string rewards = 27;
+  int64 life_time_before_read_in_hour = 30;
+  int64 life_time_after_read_in_hour = 31;
+  string ja_title = 32;
+  string ja_content = 33;
+  string zh_tw_title = 34;
+  string zh_tw_content = 35;
+  string en_title = 36;
+  string en_content = 37;
+  string ko_title = 38;
+  string ko_content = 39;
+  string th_title = 40;
+  string th_content = 41;
+  sint64 mail_received_time = 51;
+  sint64 life_time_end_at = 52;
+  sint64 read_at = 61;
+  sint64 deleted_at = 62;
+  sint64 rewards_received_at = 63;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message BannedWords {
+  message banned_words = 1;
+}
+
+message BannedWordSet {
+  string language_code = 1;
+  string words = 2;
+}

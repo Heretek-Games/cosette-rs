@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.buff_attach_masters;
+
+message BuffAttachMaster {
+  string master_version = 1;
+  int64 buff_attach_master_id = 2;
+  int64 buff_id = 3;
+  int64 target_type = 4;
+  int64 turn = 5;
+  int64 stock = 6;
+  int64 success_percent = 7;
+  int64 precondition_buffs = 8;
+}
+
+message BuffAttachMasters {
+  message buff_attach_masters = 1;
+}

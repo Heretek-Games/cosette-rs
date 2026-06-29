@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.tutorial_masters;
+
+message TutorialMaster {
+  string master_version = 1;
+  int64 tutorial_master_id = 2;
+}
+
+message TutorialMasters {
+  message tutorial_masters = 1;
+}

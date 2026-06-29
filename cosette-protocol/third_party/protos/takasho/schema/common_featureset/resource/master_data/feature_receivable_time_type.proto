@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message FeatureReceivableTimeTypes {
+  message feature_receivable_time_types = 1;
+}
+
+import "takasho/schema/super/feature_receivable_time_type/v1/ReceivableTimeType.proto";
+
+message FeatureReceivableTimeType {
+  sint64 feature_type = 1;
+  sint64 receivable_sec = 3;
+  sint64 receivable_day = 4;
+}

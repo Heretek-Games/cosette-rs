@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.mission_sub_category_masters;
+
+message MissionSubCategoryMaster {
+  string master_version = 1;
+  int64 mission_sub_category_master_id = 2;
+}
+
+message MissionSubCategoryMasters {
+  message mission_sub_category_masters = 1;
+}

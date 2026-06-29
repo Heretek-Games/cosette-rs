@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.player_battle_activitys;
+
+message PlayerBattleActivity {
+  string player_id = 1;
+  int64 battle_activity_master_id = 2;
+  int64 piots = 3;
+  int64 battles = 4;
+  string battles_star = 40;
+  int64 hang_battle_id = 5;
+  int64 hang_start_time = 6;
+  int64 hang_rounds = 7;
+  int64 hang_per_battle_time = 8;
+  string battle_min_time = 9;
+  int64 battle_start_time = 10;
+  int64 current_battle_id = 11;
+}

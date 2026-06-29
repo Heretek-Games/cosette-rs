@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.private_talk_result_masters;
+
+message PrivateTalkResultMaster {
+  string master_version = 1;
+  int64 private_talk_result_master_id = 2;
+  int64 talk_point = 3;
+  int64 bond_value = 4;
+}
+
+message PrivateTalkResultMasters {
+  message private_talk_result_masters = 1;
+}

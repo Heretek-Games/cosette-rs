@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.player_event_log;
+
+message PlayerEventLog {
+  string event_category = 1;
+  string event_id = 2;
+  bytes = "vec" payload = 3;
+  string player_state = 4;
+}
+
+message LootBoxV3 {
+  string transaction_id = 1;
+  string loot_box_product_id = 2;
+  int64 num = 3;
+  string content_ids = 4;
+  message consume_resources = 5;
+  bytes = "vec" content_values = 6;
+}
+
+message StepUpLootBoxV2 {
+  string transaction_id = 1;
+  string step_up_loot_box_product_id = 2;
+  int64 step = 3;
+  int64 next_step = 4;
+  string content_ids = 5;
+  message consume_resources = 6;
+  bytes = "vec" content_values = 7;
+}
+
+message ConsumeResource {
+  string consume_resource_key = 1;
+  int64 consume_resource_num = 2;
+}
+
+message FriendV1 {
+  enumeration = "friend_v1::ActionType" action_type = 1;
+  string target_player_ids = 2;
+  int64 friends_num = 3;
+  int64 max_friends_num = 4;
+}
+
+message ConsumeVc {
+  string id = 1;
+  message currencies = 2;
+}
+
+message BoxLootBox {
+  string transaction_id = 1;
+  string gacha_id = 2;
+  int64 exec_num = 3;
+  string get_item_ids = 4;
+  string paid_id = 5;
+  int64 paid_amount = 6;
+  int64 af_box_remain = 7;
+}
+
+message SystemAuthorizeV3 {
+  string player_id = 1;
+  bool new_player = 2;
+}

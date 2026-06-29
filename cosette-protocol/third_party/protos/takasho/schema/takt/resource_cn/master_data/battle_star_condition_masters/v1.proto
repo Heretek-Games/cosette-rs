@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_star_condition_masters;
+
+message BattleStarConditionMaster {
+  string master_version = 1;
+  int64 battle_star_condition_master_id = 2;
+  int64 type_id = 3;
+  int64 param = 4;
+}
+
+message BattleStarConditionMasters {
+  message battle_star_condition_masters = 1;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_level_masters;
+
+message CrusadeLevelMaster {
+  string master_version = 1;
+  int64 crusade_level_master_id = 2;
+  int64 crusade_environment_master_id = 3;
+  int64 crusade_map_show_master_ids = 4;
+  int64 recommend_level = 5;
+  int64 supports = 6;
+  string resource_limitation = 7;
+  string unlock_condition = 8;
+}
+
+message CrusadeLevelMasters {
+  message crusade_level_masters = 1;
+}

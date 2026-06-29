@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.shop_masters;
+
+message ShopMaster {
+  string master_version = 1;
+  int64 shop_master_id = 2;
+  string name = 3;
+  int64 require_player_level = 4;
+  int64 activity_types = 5;
+  bool need_config_time = 6;
+}
+
+message ShopMasters {
+  message shop_masters = 1;
+}

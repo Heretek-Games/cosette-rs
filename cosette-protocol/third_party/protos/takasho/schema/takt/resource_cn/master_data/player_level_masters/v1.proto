@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.player_level_masters;
+
+message PlayerLevelMaster {
+  string master_version = 1;
+  int64 player_level_master_id = 2;
+  int64 level = 3;
+  int64 exp = 4;
+  int64 stamina_limit = 5;
+  int64 add_stamina = 6;
+}
+
+message PlayerLevelMasters {
+  message player_level_masters = 1;
+}

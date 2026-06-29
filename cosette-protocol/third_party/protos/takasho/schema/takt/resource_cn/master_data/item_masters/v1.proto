@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.item_masters;
+
+import "takasho/schema/super/content_type_masters/v1/Type.proto";
+
+message ItemMaster {
+  string master_version = 1;
+  int64 item_master_id = 2;
+  enumeration = "super::super::content_type_masters::v1::Type" content_type = 11;
+  int64 sort_id = 12;
+  enumeration = "Rarity" rarity = 13;
+  int64 drop_master_id = 14;
+  int64 sell_price = 16;
+  int64 exp = 17;
+  string name = 90;
+}
+
+message ItemMasters {
+  message item_masters = 1;
+}

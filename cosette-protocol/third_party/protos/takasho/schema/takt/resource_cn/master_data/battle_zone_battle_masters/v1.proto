@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_zone_battle_masters;
+
+message BattleZoneBattleMaster {
+  string master_version = 1;
+  int64 battle_zone_battle_master_id = 2;
+  int64 battle_zone_master_id = 3;
+  int64 battle_master_id = 4;
+  int64 pre_id = 5;
+  int64 use_stamina = 6;
+  string first_clear_rewards = 7;
+  bool is_boss = 9;
+  int64 exp_player = 10;
+  int64 exp_battle_character = 11;
+}
+
+message BattleZoneBattleMasters {
+  message battle_zone_battle_masters = 1;
+}

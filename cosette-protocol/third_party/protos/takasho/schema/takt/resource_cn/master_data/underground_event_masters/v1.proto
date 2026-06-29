@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.underground_event_masters;
+
+message UndergroundEventMaster {
+  string master_version = 1;
+  int64 underground_event_master_id = 2;
+  int64 underground_section_master_id = 3;
+  string name = 11;
+  string finish_condition = 12;
+  string rewards = 13;
+  string first_clear_rewards = 14;
+  int64 progress_weight = 15;
+  int64 progress_weight2 = 22;
+  bool hide = 16;
+  bool repeatable = 17;
+  bool accomplish = 18;
+  int64 stamina = 19;
+  int64 battle_stage_master_id = 21;
+}
+
+message UndergroundEventMasters {
+  message underground_event_masters = 1;
+}

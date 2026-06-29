@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_pass_season_masters;
+
+import "takasho/schema/super/super/super/super/score/resource_cn/system/v1/Region.proto";
+
+message BattlePassSeasonMaster {
+  string master_version = 1;
+  int64 battle_pass_season_master_id = 2;
+  int64 stage_count = 3;
+  int64 max_level = 4;
+  string start_time = 5;
+  string end_time = 6;
+  string purchase_cost = 7;
+  int64 exp_level = 8;
+  int64 week_exp_limit = 9;
+}
+
+message BattlePassSeasonMasters {
+  message battle_pass_season_masters = 1;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.phoneme_buff_random_masters;
+
+message PhonemeBuffRandomMaster {
+  string master_version = 1;
+  int64 phoneme_buff_random_master_id = 2;
+  int64 buff_id = 3;
+  int64 rarity = 4;
+  string attribute_range = 5;
+  string reconsitution = 6;
+}
+
+message PhonemeBuffRandomMasters {
+  message phoneme_buff_random_masters = 1;
+}

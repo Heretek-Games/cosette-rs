@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.phoneme_buff_masters;
+
+message PhonemeBuffMaster {
+  string master_version = 1;
+  int64 phoneme_buff_master_id = 2;
+  string name = 3;
+  int64 phoneme_buff_group_master_id = 4;
+  int64 weight = 11;
+  int64 max_stack = 12;
+  int64 priority = 13;
+  string attributes = 14;
+  int64 attribute_id = 20;
+  string buff_skill = 30;
+}
+
+message PhonemeBuffMasters {
+  message phoneme_buff_masters = 1;
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_treasure_masters;
+
+message CrusadeTreasureMaster {
+  string master_version = 1;
+  int64 crusade_treasure_master_id = 2;
+  enumeration = "CrusadeTreasureKind" kind = 3;
+  int64 times = 4;
+  int64 active_event_type = 5;
+  int64 work_on_type = 6;
+  int64 relation_plain = 8;
+  int64 relation_percent = 9;
+  int64 final_times = 10;
+  int64 initial_times = 11;
+  enumeration = "CrusadeTreasureActiveType" active_type = 12;
+  string unlock = 13;
+  int64 step_length = 14;
+  int64 max_active_times = 15;
+}
+
+message CrusadeTreasureMasters {
+  message crusade_treasure_masters = 1;
+}

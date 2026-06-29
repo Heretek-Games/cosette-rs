@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.master_section_judgment_masters;
+
+message MasterSectionJudgmentMaster {
+  string master_version = 1;
+  int64 master_section_judgment_master_id = 2;
+  int64 battle_stage_master_id = 3;
+  int64 required_effect_number = 4;
+  int64 cd = 5;
+  int64 integral_weight = 6;
+  int64 base_integral = 7;
+}
+
+message MasterSectionJudgmentMasters {
+  message master_section_judgment_masters = 1;
+}

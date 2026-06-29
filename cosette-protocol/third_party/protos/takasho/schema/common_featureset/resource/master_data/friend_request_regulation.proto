@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message FriendRequestRegulation {
+  message friend_request_regulation = 1;
+}
+
+message Regulation {
+  sint64 rerequest_time = 1;
+  sint64 max_send_friend_request = 2;
+  sint64 max_receivable_friend_request = 3;
+}

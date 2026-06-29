@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.wallet;
+
+message Wallet {
+  message virtual_currencies = 1;
+  message player_key_values = 2;
+}

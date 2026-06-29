@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.total_login_bonus;
+
+message TotalLoginBonus {
+  string total_login_bonus_id = 1;
+  message prizes = 2;
+}
+
+import "takasho/schema/super/player_inventory/v1/ItemType.proto";
+
+message TotalLoginBonusPrize {
+  string total_login_bonus_id = 1;
+  string total_login_bonus_prize_id = 2;
+  int64 total_login_days = 3;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 4;
+  string schema_key = 5;
+  bytes = "vec" value = 6;
+  string search_label = 7;
+  string system_resource_name = 8;
+  sint64 system_resource_num = 9;
+}

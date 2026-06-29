@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.equipment_rank_up_masters;
+
+message EquipmentRankUpMaster {
+  string master_version = 1;
+  int64 equipment_rank_up_master_id = 2;
+  int64 equipment_master_id = 3;
+  int64 rank = 4;
+  string require_contents = 6;
+  string require_equipments = 61;
+  int64 hp_rank_up_value = 7;
+  int64 hp_rank_up_add_value = 8;
+  int64 atk_rank_up_value = 9;
+  int64 atk_rank_up_add_value = 10;
+  int64 def_rank_up_value = 11;
+  int64 def_rank_up_add_value = 12;
+  int64 int_rank_up_value = 13;
+  int64 int_rank_up_add_value = 14;
+  int64 res_rank_up_value = 15;
+  int64 res_rank_up_add_value = 16;
+  int64 dex_rank_up_value = 17;
+  int64 dex_rank_up_add_value = 18;
+  int64 crt_rank_up_value = 19;
+  int64 crt_rank_up_add_value = 20;
+  int64 crd_rank_up_value = 21;
+  int64 crd_rank_up_add_value = 22;
+  int64 acrt_rank_up_value = 23;
+  int64 acrt_rank_up_add_value = 24;
+  int64 crdr_rank_up_value = 25;
+  int64 crdr_rank_up_add_value = 26;
+  int64 skill_id = 27;
+  string decompose_content = 28;
+}
+
+message EquipmentRankUpMasters {
+  message equipment_rank_up_masters = 1;
+}

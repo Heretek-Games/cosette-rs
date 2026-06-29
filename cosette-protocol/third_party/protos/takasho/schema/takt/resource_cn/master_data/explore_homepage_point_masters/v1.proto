@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.explore_homepage_point_masters;
+
+message ExploreHomepagePointMaster {
+  string master_version = 1;
+  int64 explore_homepage_point_master_id = 2;
+  int64 homepage_show_master_id = 3;
+  int64 character_master_id = 4;
+  int64 point_master_id = 5;
+}
+
+message ExploreHomepagePointMasters {
+  message explore_homepage_point_masters = 1;
+}

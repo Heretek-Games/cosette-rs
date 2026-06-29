@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.equipment_level_up_masters;
+
+message EquipmentLevelUpMaster {
+  string master_version = 1;
+  int64 equipment_level_up_master_id = 2;
+  int64 level = 3;
+  int64 exp_n = 4;
+  int64 exp_r = 5;
+  int64 exp_sr = 6;
+  int64 exp_ssr = 7;
+}
+
+message EquipmentLevelUpMasters {
+  message equipment_level_up_masters = 1;
+}

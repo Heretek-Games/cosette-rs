@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message StepUpLootBoxes {
+  message step_up_loot_box_products = 1;
+}
+
+message StepUpLootBoxProduct {
+  string step_up_loot_box_product_id = 1;
+  sint64 opened_at = 2;
+  sint64 closed_at = 3;
+  bool is_loop = 4;
+  message steps = 5;
+}
+
+import "takasho/schema/consume_resource_set/ConsumeResourceSet.proto";
+
+message StepUpLootBoxStep {
+  sint64 step_up_loot_box_step_num = 1;
+  string inventory_message = 2;
+  message content_sets = 3;
+  bool has_extra = 4;
+  message extras = 5;
+  sint64 repeat_times = 6;
+  message consume_resource_sets = 7;
+  string transaction_payload = 8;
+}
+
+message StepUpLootBoxContentSet {
+  string step_up_loot_box_content_set_id = 1;
+  sint64 lot_num = 2;
+  message labels = 3;
+}
+
+message StepUpLootBoxLabel {
+  string step_up_loot_box_label = 1;
+  sint64 weight = 2;
+  message contents = 3;
+}
+
+import "takasho/schema/super/player_inventory/v1/ItemType.proto";
+
+message StepUpLootBoxContent {
+  string step_up_loot_box_content_id = 1;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 2;
+  string schema_key = 3;
+  string value_path = 4;
+  sint64 weight = 5;
+  string system_resource_name = 6;
+  sint64 system_resource_num = 7;
+  string search_label = 8;
+}
+
+message StepUpLootBoxExtra {
+  string step_up_loot_box_extra_id = 1;
+  string inventory_message = 2;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 3;
+  string schema_key = 4;
+  string value_path = 5;
+  string system_resource_name = 6;
+  sint64 system_resource_num = 7;
+  string search_label = 8;
+  string transaction_payload = 9;
+}

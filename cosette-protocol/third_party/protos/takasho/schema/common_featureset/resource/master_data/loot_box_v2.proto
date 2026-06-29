@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message LootBoxes {
+  message loot_box_products = 1;
+}
+
+import "takasho/schema/consume_resource_set/ConsumeResourceSet.proto";
+
+message LootBoxProduct {
+  string loot_box_product_id = 1;
+  string inventory_message = 2;
+  sint64 opened_at = 3;
+  sint64 closed_at = 4;
+  bool has_extra = 5;
+  message extras = 6;
+  bool has_limit = 7;
+  message limit = 8;
+  message consume_resource_sets = 9;
+  message content_sets = 10;
+  message pickups = 11;
+  string transaction_payload = 12;
+}
+
+message LootBoxContentSet {
+  string loot_box_content_set_id = 1;
+  sint64 lot_num = 2;
+  message labels = 3;
+}
+
+message LootBoxLabel {
+  string loot_box_label = 1;
+  sint64 weight = 2;
+  message contents = 3;
+}
+
+import "takasho/schema/super/player_inventory/v1/ItemType.proto";
+
+message LootBoxContent {
+  string loot_box_content_id = 1;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 2;
+  string schema_key = 3;
+  string value_path = 4;
+  sint64 weight = 5;
+  string search_label = 6;
+}
+
+message Extra {
+  string loot_box_extra_id = 1;
+  string inventory_message = 2;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 3;
+  string schema_key = 4;
+  string value_path = 5;
+  string system_resource_name = 6;
+  sint64 system_resource_num = 7;
+  string search_label = 8;
+  string transaction_payload = 9;
+}
+
+import "takasho/schema/super/loot_box/v2/LimitType.proto";
+
+message Limit {
+  enumeration = "super::super::loot_box::v2::LimitType" limit_type = 1;
+  sint64 limit_num = 2;
+  string date_line = 3;
+}
+
+message Pickup {
+  string loot_box_pickup_id = 1;
+  message pickup_contents = 2;
+  message pickup_extras = 3;
+}
+
+message PickupContent {
+  string loot_box_pickup_content_id = 1;
+}
+
+message PickupExtra {
+  string loot_box_pickup_extra_id = 1;
+  string inventory_message = 2;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 3;
+  string schema_key = 4;
+  bytes = "vec" value = 5;
+  string value_path = 6;
+  string system_resource_name = 7;
+  sint64 system_resource_num = 8;
+  string search_label = 9;
+  string transaction_payload = 10;
+}

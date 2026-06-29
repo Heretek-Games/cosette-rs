@@ -1,0 +1,1861 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.analytics_event_log;
+
+message RoleInfo {
+  string role_key = 1;
+  string role_id = 2;
+  string zone_id = 3;
+  string level = 4;
+  string vip = 5;
+  string player_id = 6;
+  string role_name = 7;
+}
+
+message ARst {
+  string obj = 1;
+  int64 before = 2;
+  int64 after = 3;
+  int64 diff = 4;
+}
+
+message BaseInfo {
+  sint64 last_login_day = 1;
+  sint64 create_day = 2;
+}
+
+message CoinInfo {
+  int64 diamond = 1;
+  int64 free_diamond = 2;
+  int64 stone = 3;
+  int64 free_stone = 4;
+  int64 gold = 5;
+  int64 strength = 6;
+  int64 exp = 7;
+}
+
+message StageInfo {
+  int64 normal_stage = 1;
+  int64 hard_stage = 2;
+  int64 guide = 3;
+  message dq_stage_info = 4;
+}
+
+message DqStageInfo {
+  int64 dq_chapter_id = 1;
+  int64 dq_id = 2;
+}
+
+message CardInfo {
+  int64 level = 1;
+  int64 star = 2;
+  int64 grade = 3;
+  int64 skill = 4;
+  string arrange = 5;
+  int64 sub_star = 6;
+}
+
+message EquipInfo {
+  int64 level = 1;
+  int64 star = 2;
+  int64 grade = 3;
+  int64 card_id = 4;
+  int64 keyword = 5;
+}
+
+message PlayerEquipInfo {
+  int64 equip_id = 1;
+  string unique_id = 2;
+  string equip_name = 3;
+  message equip_info = 4;
+}
+
+message PhonemeInfo {
+  int64 level = 1;
+  int64 slot = 2;
+  int64 card_id = 3;
+  message buff_values = 4;
+}
+
+message PlayerPhonemeInfo {
+  int64 phoneme_id = 1;
+  string unique_id = 2;
+  message phoneme_info = 3;
+}
+
+message FightInfo {
+  int64 round = 1;
+  int64 dead_card = 2;
+  message damage = 3;
+  message skill_use = 4;
+  bool condition = 5;
+  string auto = 6;
+  int64 monster = 7;
+}
+
+message FightResultInfo {
+  string successful = 1;
+  int64 achievements = 2;
+  int64 stars = 3;
+}
+
+message ItemInfo {
+  int64 item_id = 1;
+  int64 item_count = 2;
+}
+
+message Team {
+  int64 battle_character_ids = 1;
+}
+
+message PlotInfo {
+}
+
+message ExploreInfo {
+}
+
+message ExtraInfo {
+}
+
+message GoodsInfo {
+  int64 item_id = 1;
+  string item_name = 2;
+  int64 position = 3;
+  string discount = 4;
+  int64 category = 5;
+  int64 num = 6;
+}
+
+message BadgeInfo {
+  int64 badge_id = 1;
+  string name = 2;
+}
+
+message ServerRoleSnapshotPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerRoleCreatePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerRoleLoginPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerRoleGuidePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerRoleLevelUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerRoleRenamePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerRefreshTargetListPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUnlockTargetsPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerFinishTargetsPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerFunctionUnlockPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerMonthlyCheckinPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerGiftCodeRedeemPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerRoleDeletePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerGameSharePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerRoleSetAvatarPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerRoleFrameChangePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerStageEnterPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerStageFightPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerStageFightStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerStageFightEndPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerStagePlotPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerStageFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerExploreUnlockPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerExploreStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerExploreTaskPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUseKeywordPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerExploreFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerExploreFreePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerExplorePuzzlePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerExplorePuzzleDrinkMakingPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerPresentSendPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerExploreGachaMachinePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerAutoDrinkMakingPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerHometownShowPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerHometownDailyPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattleStarsPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattleCheatPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerMusicFightPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerMusicSweepPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerDqFightPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerDqFightStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerDqFightEndPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerDqSweepPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerDqSweepStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerDqSweepFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCardSnapshotPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCardLevelUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCardStarUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCardResetRankPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCardGradeUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCardFeelingPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCardBondRewardPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerContractUnlockPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEquipSnapshotPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEquipLevelUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEquipStarUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEquipGradeUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEquipArrangePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEquipWakeUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEquipDecomposePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerPhonemeSnapshotPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerPhonemeLevelUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerPhonemeFitPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerPhonemeDecomposePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerPhonemeBuffGachaPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerPhonemeBuffConfirmPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerPhonemeSuitFitPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerTaskReachPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerTaskRewardPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerTaskAllRewardPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerTaskPointRewardPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerActivityCheckinRewardPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerActivityMissionRewardPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerActivityMissionAllRewardPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerNewbieReceiveLevelRewardPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBadgeReceivePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEmailReceivePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEmailOpenPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerEmailRewardPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerQuestionnaireSubmitPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerItemSnapshotPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerItemUsePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerGameGachaPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerGameGachaPreferPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBzFightPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBzChestsPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBzStagePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerShopBuyPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerMonthlyPassPurchasePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerMonthlyPassRewardsPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerGameBillCreatePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerGameBillClaimPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerGameBillFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerGameBillCancelPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattlePassPurchasePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattlePassLevelPurchasePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattlePassRewardsPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattlePassAllRewardsPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerGemToStonePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerFirstPurchaseFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUndergroundFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUndergroundClaimPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUndergroundSetCaptainPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUndergroundStartSectionPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUndergroundStartChapterPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUndergroundUnlockSectionPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUndergroundUnlockChapterPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUndergroundStartBattlePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerUndergroundFinishBattlePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeChoosePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeSetDeckPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeMovePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeEventStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeEventFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeRestartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeBattleStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeBattleFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeActivityEnterPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeActivityArriveNodePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeActivityCollectionRewardsPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeActivityEventStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeActivityEventFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeActivityUndergroundStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerCrusadeActivityUndergroundFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerDeviceBindPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerDisguisePurchasePayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerDisguiseFitPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattleActivityFightPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattleActivityFightStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattleActivityFightFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattleActivityPlotPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattleActivityHangStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerBattleActivityHangEndPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerMasterSectionBattleStartPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerMasterSectionBattleFinishPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ServerMasterSectionLevelUpPayload {
+  string log_store = 1;
+  string request_stamp = 2;
+  string log_id = 3;
+  string app_id = 4;
+  string lcx_id = 5;
+  message role_info = 6;
+  int64 event_time = 7;
+  string event_name = 8;
+  message body = 11;
+}
+
+message ClientGameStartPayload {
+  int64 event_id = 1;
+  int64 action_id = 2;
+  string action_name = 3;
+}
+
+message ClientMoviePlay {
+  int64 event_id = 1;
+  int64 movie_id = 2;
+  string movie_name = 3;
+  int64 state = 4;
+  int64 duration_time = 5;
+}
+
+message ClientLandIntoPayload {
+  int64 event_id = 1;
+}
+
+message ClientSdkRegPayload {
+  int64 event_id = 1;
+  int64 state = 2;
+  int64 code_id = 3;
+}
+
+message ClientSdkLoginPayload {
+  int64 event_id = 1;
+  int64 state = 2;
+  string code_id = 3;
+}
+
+message ClientUpdateAfterSdkPayload {
+  int64 event_id = 1;
+  int64 action_id = 2;
+  string action_name = 3;
+  int64 pack = 4;
+  int64 state = 5;
+  int64 duration_time = 6;
+}
+
+message ClientGameLoadingPayload {
+  int64 event_id = 1;
+  int64 action_id = 2;
+  string action_name = 3;
+  int64 state = 4;
+  int64 duration_time = 5;
+}
+
+message ClientRoleCreatePayload {
+  int64 event_id = 1;
+  int64 state = 2;
+  string fail_reason = 3;
+}
+
+message ClientRoleLoginPayload {
+  int64 event_id = 1;
+  int64 state = 2;
+  string fail_reason = 3;
+}
+
+message ClientHallIntoPayload {
+  int64 event_id = 1;
+  int64 duration_time = 2;
+}
+
+message ClientRoleLogoutPayload {
+  int64 event_id = 1;
+  int64 scene_id = 2;
+  int64 state = 3;
+}
+
+message ClientPageArrivePayload {
+  int64 event_id = 1;
+  int64 level_page_id = 2;
+  int64 arrive_page_id = 3;
+  int64 state = 4;
+}
+
+message ClientButtonClickPayload {
+  int64 event_id = 1;
+  string button_type = 2;
+  int64 button_id = 3;
+  string button_name = 4;
+  int64 state = 5;
+}

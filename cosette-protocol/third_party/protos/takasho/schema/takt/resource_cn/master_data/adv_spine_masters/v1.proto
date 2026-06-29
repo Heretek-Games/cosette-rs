@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.adv_spine_masters;
+
+message AdvSpineMaster {
+  string master_version = 1;
+  int64 adv_spine_master_id = 2;
+  string object_name = 11;
+  string instruction = 12;
+  string body = 13;
+  string expression = 14;
+}
+
+message AdvSpineMasters {
+  message adv_spine_masters = 1;
+}

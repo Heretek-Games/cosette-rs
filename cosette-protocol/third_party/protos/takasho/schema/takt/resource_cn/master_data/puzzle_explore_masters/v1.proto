@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.puzzle_explore_masters;
+
+message PuzzleExploreMaster {
+  string master_version = 1;
+  int64 puzzle_explore_master_id = 2;
+  enumeration = "PuzzleType" type_id = 3;
+  int64 battle_character_master_id = 4;
+  string first_rewards = 5;
+  string win_rewards = 6;
+  string lose_rewards = 7;
+  string consume_contents = 8;
+}
+
+message PuzzleExploreMasters {
+  message puzzle_explore_masters = 1;
+}

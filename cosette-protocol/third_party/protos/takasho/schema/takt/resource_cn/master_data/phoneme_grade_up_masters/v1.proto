@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.phoneme_grade_up_masters;
+
+message PhonemeGradeUpMaster {
+  string master_version = 1;
+  int64 phoneme_grade_up_master_id = 2;
+  int64 phoneme_master_id = 3;
+  int64 grade = 4;
+  int64 level_cap = 5;
+  string require_contents = 6;
+  int64 hp_grade_up_value = 7;
+  int64 atk_grade_up_value = 8;
+  int64 def_grade_up_value = 9;
+  int64 int_grade_up_value = 10;
+  int64 res_grade_up_value = 11;
+  int64 dex_grade_up_value = 12;
+  int64 crt_grade_up_value = 13;
+  int64 crd_grade_up_value = 14;
+  int64 acrt_grade_up_value = 15;
+  int64 crdr_grade_up_value = 16;
+}
+
+message PhonemeGradeUpMasters {
+  message phoneme_grade_up_masters = 1;
+}

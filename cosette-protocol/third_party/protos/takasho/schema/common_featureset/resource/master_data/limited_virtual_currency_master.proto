@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message LimitedVirtualCurrencyMasters {
+  message limited_virtual_currency_masters = 1;
+}
+
+message LimitedVirtualCurrencyMaster {
+  string virtual_currency_key = 1;
+  sint64 expires_in = 3;
+  enumeration = "limited_virtual_currency_master::ExpirationUnit" expiration_unit = 2;
+}

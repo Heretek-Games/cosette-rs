@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.buff_masters;
+
+message BuffMaster {
+  string master_version = 1;
+  int64 buff_master_id = 2;
+  string effect_id = 3;
+  string icon_path = 4;
+  string show_text = 5;
+  int64 target_type = 6;
+  int64 effect_value = 7;
+  int64 turn = 11;
+  int64 max_stock = 12;
+  int64 replace_type = 13;
+  int64 success_timing = 14;
+  int64 success_percent = 15;
+  int64 active_event = 16;
+  string active_condition = 17;
+  int64 active_condition_param = 18;
+  int64 buff_type = 19;
+  int64 child_buff_id = 20;
+  int64 disperse_type = 21;
+  int64 priority = 22;
+  int64 cool_down = 23;
+  int64 params = 24;
+}
+
+message BuffMasters {
+  message buff_masters = 1;
+}

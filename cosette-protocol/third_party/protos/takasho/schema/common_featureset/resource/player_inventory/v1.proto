@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.player_inventory;
+
+message Criterion {
+  int64 count = 1;
+  enumeration = "Route" routes = 2;
+  string search_labels = 3;
+  string page_token = 4;
+  sint64 expired_at_before = 5;
+  sint64 expired_at_after = 6;
+  message order = 7;
+}
+
+message Order {
+  enumeration = "OrderField" field = 1;
+  enumeration = "OrderDirection" direction = 2;
+}
+
+message PlayerInventory {
+  string id = 1;
+  string player_id = 2;
+  enumeration = "ItemType" item_type = 3;
+  string schema_key = 4;
+  bytes = "vec" value = 5;
+  enumeration = "Route" route = 6;
+  string message = 7;
+  string search_label = 8;
+  sint64 opened_at = 9;
+  sint64 expired_at = 10;
+  string system_resource_name = 11;
+  sint64 system_resource_num = 12;
+  sint64 created_at = 13;
+}
+
+message ReceivedPlayerInventory {
+  string id = 1;
+  string original_inventory_id = 2;
+  string player_id = 3;
+  enumeration = "ItemType" item_type = 4;
+  string schema_key = 5;
+  bytes = "vec" value = 6;
+  enumeration = "Route" route = 7;
+  string message = 8;
+  string search_label = 9;
+  sint64 opened_at = 10;
+  sint64 expired_at = 11;
+  string system_resource_name = 12;
+  sint64 system_resource_num = 13;
+  sint64 created_at = 14;
+  sint64 received_at = 15;
+}

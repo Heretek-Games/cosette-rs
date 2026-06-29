@@ -1,0 +1,823 @@
+syntax = "proto3";
+
+package takasho.schema.score;
+
+message OpActivityGetAvailableV1 {
+}
+
+message UtilsPingV1 {
+}
+
+message BattleActivities {
+}
+
+message BattleActivityPiot {
+}
+
+message BattleActivityBattle {
+}
+
+message UserBattleActivityInfo {
+}
+
+message FinishUserBattleActivityPiot {
+}
+
+message StartUserBattleActivityBattle {
+}
+
+message FinishUserBattleActivityBattle {
+}
+
+message FinishUserBattleActivityBattle1 {
+}
+
+message UserNextBattleActivity {
+}
+
+message HangBattleActivity {
+}
+
+message FinishHangBattleActivity {
+}
+
+message DisguiseGetListV1 {
+}
+
+message DisguisePurchaseV1 {
+}
+
+message DisguiseFitV1 {
+}
+
+message BattleZoneStartBattleV1 {
+}
+
+message BattleZoneFinishBattleV1 {
+}
+
+message BattleZoneEnterBattleZoneV1 {
+}
+
+message FinishBattleZoneV1 {
+}
+
+message BattleZoneOpenChestsV1 {
+}
+
+message BattleZoneReachStageV1 {
+}
+
+message AcquireAssetsV1 {
+}
+
+message MonthlyCheckinGetListAndCheckinV1 {
+}
+
+message BattleAchievementGetV1 {
+}
+
+message ReceiveSceneDataArg {
+}
+
+message GetSceneDataArg {
+}
+
+message MailGetMails {
+}
+
+message MailOpenMail {
+}
+
+message MailRemoveMail {
+}
+
+message MailRemoveReadAndReceivedMails {
+}
+
+message MailReceiveRewards {
+}
+
+message MailReceiveAllRewards {
+}
+
+message BattlePassGetBattlePassProfileV1 {
+}
+
+message BattlePassReceiveBattlePassRewardsV1 {
+}
+
+message BattlePassReceiveAllBattlePassRewardsV1 {
+}
+
+message BattlePassPurchaseLevelV1 {
+}
+
+message GetLoginActivityV1 {
+}
+
+message ReceiveLoginRewardsV1 {
+}
+
+message DailyQuestGetTodayV1 {
+}
+
+message DailyQuestStartV1 {
+}
+
+message DailyQuestFinishV1 {
+}
+
+message DailyQuestGetAvailableV1 {
+}
+
+message DailyQuestStartSweepV1 {
+}
+
+message DailyQuestSweepStatusV1 {
+}
+
+message DailyQuestSweepFinishV1 {
+}
+
+message BondGetDataV1 {
+}
+
+message BondGetBattleCharacterDataV1 {
+}
+
+message BondFinishBondsAchievementV1 {
+}
+
+message BondUnlockBondsAttributeV1 {
+}
+
+message BondImproveBondsAttributePlateV1 {
+}
+
+message BondUnlockBondsInfoV1 {
+}
+
+message BattleServerCheck {
+}
+
+message BattleDeckAttrsV1 {
+}
+
+message BattleCharacterBaseAttrs {
+  int64 hp = 1;
+  int64 atk = 2;
+  int64 def = 3;
+  int64 int_atk = 4;
+  int64 int_res = 5;
+  int64 dex = 6;
+  int64 crt = 7;
+  int64 crd = 8;
+  int64 acrt = 9;
+  int64 crdr = 10;
+  int64 ap = 11;
+}
+
+message BattleCharacterProfile {
+  int64 character_id = 1;
+  message attrs = 2;
+  int64 skill_ids = 3;
+}
+
+message CheatCheck {
+}
+
+message CheatCharacter {
+  int64 character_id = 1;
+  bool is_ally = 2;
+  message cheat_attrs = 3;
+  message cheat_skills = 4;
+}
+
+message DeactivateApplyV1 {
+}
+
+message DeactivateStatusV1 {
+}
+
+message DeactivateCancelV1 {
+}
+
+message PhonemeEquipV1 {
+}
+
+message PhonemeLevelUpV1 {
+}
+
+message PhonemeGradeUpV1 {
+}
+
+message PhonemeEquipBuffV1 {
+}
+
+message PhonemeBuffGachaV1 {
+}
+
+message PhonemeBuffGachaConfirmV1 {
+}
+
+message PhonemeDecomposeV1 {
+}
+
+message PhonemeConstructV1 {
+}
+
+message PhonemeConstructConfirmV1 {
+}
+
+message PhonemeDeleteBuffV1 {
+}
+
+message PhonemeSuitV1 {
+}
+
+message PhonemeUnEquipSuitV1 {
+}
+
+message PhonemeLockV1 {
+}
+
+message PhonemeUnLockV1 {
+}
+
+message BattleCharacterUseExpItemV1 {
+}
+
+message BattleCharacterRankUpV1 {
+}
+
+message BattleCharacterActivatePanelV1 {
+}
+
+message BattleCharacterSetSkillsV1 {
+}
+
+message BattleCharacterEngagedV1 {
+}
+
+message BattleCharacterRankUpV2 {
+}
+
+message MasterSectionGetTodayV1 {
+}
+
+message MasterSectionStartBattleV1 {
+}
+
+message MasterSectionFinishBattleV1 {
+}
+
+message MasterSectionGetRankV1 {
+}
+
+import "takasho/schema/resource_cn/crusade/v1/PlayerCrusade.proto";
+
+import "takasho/schema/resource_cn/crusade/v1/PlayerCrusadeTreasure.proto";
+
+message CrusadeMapInfo {
+  message map_info = 1;
+  message info = 3;
+  message treasures = 4;
+  message unlocks = 5;
+}
+
+message CrusadeEnterV1 {
+}
+
+message CrusadeGetInfoV1 {
+}
+
+message CrusadeChooseLevelV1 {
+}
+
+message CrusadeGetTeamInfoV1 {
+}
+
+message CrusadeSetDeckV1 {
+}
+
+message CrusadeMoveV1 {
+}
+
+message CrusadeStartEventV1 {
+}
+
+message CrusadeFinishEventV1 {
+}
+
+message CrusadeChooseOptionV1 {
+}
+
+message CrusadeStartBattleV1 {
+}
+
+message CrusadeFinishBattleV1 {
+}
+
+message CrusadeFinishMapV1 {
+}
+
+message CrusadeRestartV1 {
+}
+
+message CrusadeStartUndergroundEventV1 {
+}
+
+message CrusadeFinishUndergroundEventV1 {
+}
+
+message CrusadeArriveNodeForActivityV1 {
+}
+
+message CrusadeFinishCollectionV1 {
+}
+
+message CrusadeReceiveRewardsV1 {
+}
+
+message CrusadeStartSweepV1 {
+}
+
+message CrusadeFinishSweepV1 {
+}
+
+import "takasho/schema/resource_cn/crusade/v1/CrusadeSweepStatus.proto";
+
+message CrusadeSweepInfo {
+  int64 crusade_type_id = 1;
+  int64 crusade_battle_id = 2;
+  int64 start_at = 4;
+  int64 end_at = 5;
+  int64 times = 6;
+  int64 cost_per_time = 7;
+  message current_sweep_characters = 8;
+  message crusade_sweep_battle_record = 9;
+  int64 finished_count = 10;
+}
+
+message CrusadeSweepBattleRecord {
+  int64 crusade_battle_id = 1;
+  int64 time_cost = 2;
+  message db_sweep_characters = 3;
+}
+
+message CrusadeSweepCharacter {
+  int64 battle_character_id = 1;
+  int64 rank = 2;
+  int64 level = 3;
+}
+
+message IpServiceGetIpLocationV1 {
+}
+
+message DeviceBindingV1 {
+}
+
+message PopGiftGetListV1 {
+}
+
+message Progress {
+  int64 chapter_id = 1;
+  int64 current = 2;
+  int64 total = 3;
+}
+
+message UndergroundGetProfileV1 {
+}
+
+message UndergroundStartChapterV1 {
+}
+
+message UndergroundGetChapterV1 {
+}
+
+message UndergroundStartSectionV1 {
+}
+
+message UndergroundFinishEventV1 {
+}
+
+message UndergroundClaimEventV1 {
+}
+
+message UndergroundSetDisplayBattleCharactersV1 {
+}
+
+message UndergroundGetSectionV1 {
+}
+
+message UndergroundStartBattleV1 {
+}
+
+message UndergroundFinishBattleV1 {
+}
+
+message UndergroundGetAllChaptersV1 {
+}
+
+message PveGetChapterStatusV1 {
+}
+
+message PveStartSectionV1 {
+}
+
+message PveUpdateSectionV1 {
+}
+
+message PveFinishSectionV1 {
+}
+
+message PveStartBattleV1 {
+}
+
+message PveFinishBattleV1 {
+}
+
+message PveUnlockChapterV1 {
+}
+
+message YidunCheckHeartBeat {
+}
+
+message YidunBasicCheck {
+}
+
+message YidunLoadConfig {
+}
+
+message GameShareV1 {
+}
+
+message ExploreGetProfileV1 {
+}
+
+message ExploreFinishFreeExploreV1 {
+}
+
+message ExploreStartEventV1 {
+}
+
+message ExploreFinishAdvV1 {
+}
+
+message ExploreFinishEventV1 {
+}
+
+message ExploreGiftV1 {
+}
+
+message ExploreSetFlagsV1 {
+}
+
+message ExploreUpdateGlobalFlagsV1 {
+}
+
+message ExploreToggleLikeV1 {
+}
+
+message ExploreStartAdvBattleV1 {
+}
+
+message ExploreFinishAdvBattleV1 {
+}
+
+message ExploreHomepageScenesV1 {
+}
+
+message ExploreHomepageDailyV1 {
+}
+
+message ExploreWatchSpecialTeabreakStoryV1 {
+}
+
+message WalletClaimBillV1 {
+}
+
+message WalletCancelBillV1 {
+}
+
+message MemoryQuestGetDataV1 {
+}
+
+message MemoryQuestStartBattleV1 {
+}
+
+message MemoryQuestFinishV1 {
+}
+
+message MemoryQuestFinishSkipV1 {
+}
+
+message MemoryQuestReceiveChapterRewardContentsV1 {
+}
+
+message TargetRefreshTargetListV1 {
+}
+
+message TargetUnlockTargetV1 {
+}
+
+message TargetFinishTargetV1 {
+}
+
+message QuestionnaireGetQuestionnairesV1 {
+}
+
+message QuestionnaireSubmitQuestionnaireV1 {
+}
+
+import "takasho/schema/resource_cn/questionnaire/v1/GlobalQuestionnaire.proto";
+
+message GlobalQuestionnaireWithUrl {
+  message global_questionnaire = 1;
+  string full_url = 2;
+  bool is_finished = 3;
+}
+
+message ActivityGetMissionStatusV1 {
+}
+
+message ActivityReceiveMissionRewardsV1 {
+}
+
+message ActivityReceiveAllMissionRewardsV1 {
+}
+
+message ActivityGetCheckInRewardsV1 {
+}
+
+message ActivityGetAllCheckInRewardsV1 {
+}
+
+message ActivityGetCheckInStatusV1 {
+}
+
+message ActivityGetLevelRewardStatusV1 {
+}
+
+message ActivityReceiveLevelRewardV1 {
+}
+
+message ReddotGetReddotInfoV1 {
+}
+
+message ReddotCrusadeSweepInfo {
+  int64 crusade_type_id = 1;
+  bool is_reddot = 2;
+  int64 end_at = 4;
+  int64 start_at = 5;
+}
+
+message EquipmentFitV1 {
+}
+
+message EquipmentLevelUpV1 {
+}
+
+message EquipmentGradeUpV1 {
+}
+
+message EquipmentRankUpV1 {
+}
+
+message EquipmentLockV1 {
+}
+
+message EquipmentWakeUpV1 {
+}
+
+message EquipmentDecomposeV1 {
+}
+
+message ShopPurchaseV1 {
+}
+
+message ShopGetShopProductsInfoV1 {
+}
+
+message ShopGetShopProductsReddotV1 {
+}
+
+message ProductInfo {
+  int64 product_id = 1;
+  int64 purchased_count = 2;
+  sint64 start_time = 3;
+  sint64 end_time = 4;
+  bool has_rebate = 5;
+  int64 shop_id = 6;
+}
+
+message ShopGetShopsInfoV1 {
+}
+
+message ShopInfo {
+  int64 shop_id = 1;
+  sint64 start_time = 2;
+  sint64 end_time = 3;
+  sint64 pre_start_time = 4;
+}
+
+message ShopConvertGemToStoneV1 {
+}
+
+message PuzzleFinishExplorePuzzleV1 {
+}
+
+message PuzzleFinishDrinkMakingPuzzleV1 {
+}
+
+message PuzzleFinishGachaMachinePuzzleV1 {
+}
+
+message GetCrmDynamicCodeV1 {
+}
+
+message GetCrmGiftV1 {
+}
+
+message ReceiveMiniMissionDataArg {
+}
+
+message GetMiniMissionDataArg {
+}
+
+message GiftCodeRedeemV1 {
+}
+
+message PlacementPlaceV1 {
+}
+
+message LoginV1 {
+}
+
+message MissionGetAvailableV1 {
+}
+
+message MissionReceiveMissionRewardsV1 {
+}
+
+message MissionReceiveAllMissionRewardsV1 {
+}
+
+message MissionReceivePointMissionRewardsV1 {
+}
+
+message GachaGetAvailableV1 {
+}
+
+message GachaPurchaseV1 {
+}
+
+message GachaGetHistoriesV1 {
+}
+
+message GachaSetPreferV1 {
+}
+
+message GachaGetWeightV1 {
+}
+
+message GachaOdd {
+  int64 gacha_odd_id = 1;
+  message contents = 2;
+  int64 weight = 3;
+}
+
+message GachaContent {
+  int64 gacha_content_id = 1;
+  int64 weight = 2;
+}
+
+message ScoreDebugGiveItemV1 {
+}
+
+message ScoreDebugConsumeContentV1 {
+}
+
+message ScoreDebugResetExploreV1 {
+}
+
+message ScoreDebugAddExploreEventV1 {
+}
+
+message MockAuthorizeV1 {
+}
+
+message ScoreDebugToGodV1 {
+}
+
+message ScoreDebugFinishAllChapterV1 {
+}
+
+message ScoreDebugClearTutorialFeatureV1 {
+}
+
+message ScoreDebugSkipBattleZoneBattleV1 {
+}
+
+message ScoreDebugReachBattleAchievementV1 {
+}
+
+message ScoreDebugRemoveBattleAchievementV1 {
+}
+
+message ScoreDebugFinishUndergroundEventV1 {
+}
+
+message ScoreDebugUnlockChapterV1 {
+}
+
+message ScoreDebugMonthlyCheckinSetCheckinCountV1 {
+}
+
+message ScoreDebugUnlockFunctionV1 {
+}
+
+message ScoreDebugUnlockAllFunctionV1 {
+}
+
+message ScoreDebugCrusadeReceiveTreasureV1 {
+}
+
+message ScoreDebugArriveCrusadeNodePointV1 {
+}
+
+message ScoreDebugGiveBadgeV1 {
+}
+
+message ScoreDebugUnlockBattlePassStageV1 {
+}
+
+message ScoreDebugGiveMonthlyPassV1 {
+}
+
+message ScoreDebugWalletCreateBillV1 {
+}
+
+message ScoreDebugWalletFinishBillV1 {
+}
+
+message ScoreDebugCrusadeFinishEventV1 {
+}
+
+message UpdateBattleCharacterBondV1 {
+}
+
+message SetProfileIconV1 {
+}
+
+message SetProfileIconFrameV1 {
+}
+
+message SetProfileBackgroundV1 {
+}
+
+message SetProfileDeckV1 {
+}
+
+message SetProfileIntroTextV1 {
+}
+
+message SetTutorialStepV1 {
+}
+
+message SetTutorialFeatureV1 {
+}
+
+message StaminaPurchaseV1 {
+}
+
+message UseItemV1 {
+}
+
+message SetDeckV1 {
+}
+
+message SellItemV1 {
+}
+
+message PlayerSetNameV1 {
+}
+
+message SetAdvLocationV1 {
+}
+
+message SetProfileBadgeV1 {
+}
+
+message SetProfileBadgeV2 {
+}
+
+message UseKeywordV1 {
+}
+
+message DeletePlayerV1 {
+}
+
+message PreDeletePlayerInfo {
+}

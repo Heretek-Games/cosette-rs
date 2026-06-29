@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message PlatformDenyClientVersionSettings {
+  message platform_deny_client_version_settings = 1;
+}
+
+import "takasho/schema/super/system/v1/PlatformType.proto";
+
+message PlatformDenyClientVersionSetting {
+  enumeration = "super::super::system::v1::PlatformType" platform_type = 1;
+  string payload = 2;
+}

@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.crusade;
+
+message PlayerCrusadeSweepBattleRecord {
+  string player_id = 1;
+  int64 crusade_battle_id = 2;
+  int64 crusade_type_id = 3;
+  int64 least_battle_time = 4;
+  int64 normal_count = 5;
+  int64 last_normal_timestamp = 6;
+  int64 skip_count = 7;
+  int64 last_skip_timestamp = 8;
+  string db_crusade_sweep_characters = 9;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerCrusadeHistory {
+  string player_id = 1;
+  int64 crusade_type_master_id = 2;
+  int64 treasure_count = 5;
+  int64 coin_count = 6;
+  int64 pass_count = 7;
+  int64 option_character_count = 8;
+  int64 move_count = 9;
+  int64 finish_event_count = 10;
+  int64 finish_battle_count = 11;
+  int64 treasure_type_count = 12;
+  int64 finished_levels = 13;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerCrusadeSweep {
+  string player_id = 1;
+  int64 crusade_type_id = 2;
+  int64 crusade_battle_id = 3;
+  enumeration = "CrusadeSweepStatus" status = 4;
+  sint64 start_at = 5;
+  sint64 end_at = 6;
+  int64 times = 7;
+  int64 cost_per_time = 8;
+  string db_crusade_sweep_characters = 9;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerCrusadeCharacterStatus {
+  int64 id = 1;
+  bool available = 2;
+  bool has = 3;
+  int64 hp = 4;
+  int64 ap = 5;
+  message delta = 6;
+}
+
+message PlayerExtraChoice {
+  int64 id = 2;
+  enumeration = "PlayerExtraChoiceFromType" from = 3;
+  int64 parent_id = 4;
+  int64 extra = 5;
+}
+
+message PlayerCrusade {
+  string player_id = 1;
+  int64 crusade_type_id = 2;
+  int64 crusade_level_master_id = 3;
+  int64 map_master_id = 4;
+  int64 node_master_id = 5;
+  int64 event_master_id = 6;
+  int64 crusade_battle_id = 7;
+  int64 underground_section_id = 8;
+  int64 supports = 9;
+  int64 last_update_time = 10;
+  message character_status = 11;
+  string db_character_status = 12;
+  int64 route_nodes = 14;
+  int64 route_events = 15;
+  enumeration = "PlayerCrusadeStatus" status = 16;
+  string resource = 17;
+  int64 max_level = 18;
+  int64 remain_restart_times = 19;
+  message extra_choices = 20;
+  string db_extra_choices = 21;
+  int64 seed = 22;
+  int64 env = 23;
+  message free_events = 24;
+  string db_free_events = 25;
+  int64 finished_crusade_battle_id = 26;
+  int64 unlocked_crusade_battle_id = 27;
+  message next_events = 28;
+  string db_next_events = 29;
+  sint64 expired_at = 30;
+  int64 receive_rewards_times = 31;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerCrusadeRecord {
+  int64 id = 1;
+  int64 receive_at = 2;
+  int64 times = 3;
+  int64 durability = 4;
+}
+
+message PlayerCrusadeTreasure {
+  string player_id = 1;
+  int64 crusade_type_id = 2;
+  int64 unlock = 3;
+  string available = 4;
+  message treasures = 5;
+  int64 collections = 6;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

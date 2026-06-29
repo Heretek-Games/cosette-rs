@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.gacha_odd_masters;
+
+message GachaOddMaster {
+  string master_version = 1;
+  int64 gacha_odd_master_id = 2;
+  int64 gacha_master_id = 3;
+  int64 first_single_weight = 4;
+  int64 single_weight = 5;
+  int64 first_combo_weight = 6;
+  int64 combo_weight = 7;
+  int64 sr_guaranteed_weight = 8;
+  bool can_up_weight = 9;
+  bool choose = 10;
+  bool is_ssr_pool = 11;
+}
+
+message GachaOddMasters {
+  message gacha_odd_masters = 1;
+}

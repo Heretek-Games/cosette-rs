@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.character_object_name_masters;
+
+message CharacterObjectNameMaster {
+  string master_version = 1;
+  int64 character_object_name_master_id = 2;
+  string name = 3;
+  string object_name = 4;
+}
+
+message CharacterObjectNameMasters {
+  message character_object_name_masters = 1;
+}

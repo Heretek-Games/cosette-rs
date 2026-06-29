@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.character_grade_up_masters;
+
+message CharacterGradeUpMaster {
+  string master_version = 1;
+  int64 character_grade_up_master_id = 2;
+  int64 grade = 3;
+  int64 level_cap = 4;
+}
+
+message CharacterGradeUpMasters {
+  message character_grade_up_masters = 1;
+}

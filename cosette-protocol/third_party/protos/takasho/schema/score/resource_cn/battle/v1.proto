@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.battle;
+
+message BattleStartParam {
+  string master_version = 1;
+}
+
+message BattleStartResult {
+  string master_version = 1;
+  int64 seed = 2;
+}
+
+message BattleEndParam {
+  message battle_achieves = 1;
+  message start = 2;
+  message end = 3;
+  int64 round = 11;
+  int64 dead_card = 12;
+  message damage = 13;
+  message skill_use = 14;
+  bool auto = 15;
+  int64 monster = 16;
+  bool win = 17;
+  int64 achievements = 18;
+}
+
+message BattleEndResult {
+  bool valid = 1;
+  string message = 2;
+  bool star_first_satisfied = 3;
+  bool star_second_satisfied = 4;
+  bool star_third_satisfied = 5;
+  message reward_contents = 6;
+  message first_clear_reward = 7;
+  message achievements_reward = 8;
+  bool is_first = 9;
+  int64 achievements = 10;
+}
+
+message BattleAchievement {
+  int64 monster_killed_count = 1;
+  int64 beat_off_enemy_count = 2;
+  int64 pull_enemy_count = 3;
+  int64 beaten_off_by_enemy_count = 4;
+  int64 pulled_by_enemy_count = 5;
+  message buffed_counts = 6;
+  int64 support_count = 7;
+}

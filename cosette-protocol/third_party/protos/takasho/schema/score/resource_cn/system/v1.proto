@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.system;
+
+message AssetsInfo {
+  string master_data_url = 1;
+  string assets_bundle_url = 2;
+  string master_data_version = 3;
+  string assets_bundle_version = 4;
+  string domain = 5;
+}
+
+import "takasho/schema/super/player/v1/Player.proto";
+
+import "takasho/schema/super/item/v1/PlayerItem.proto";
+
+import "takasho/schema/super/character/v1/PlayerBattleCharacter.proto";
+
+import "takasho/schema/super/equipment/v1/PlayerEquipment.proto";
+
+import "takasho/schema/super/player/v1/PlayerWalletResponse.proto";
+
+import "takasho/schema/super/player/v1/PlayerTutorialInfo.proto";
+
+import "takasho/schema/super/super/super/common_featureset/resource/player_preference/v1/PlayerPreference.proto";
+
+import "takasho/schema/super/character/v1/PlayerBattleCharacterBond.proto";
+
+import "takasho/schema/super/chapter/v1/PlayerChapter.proto";
+
+import "takasho/schema/super/battle_zone/v1/PlayerBattleZone.proto";
+
+import "takasho/schema/super/deck/v1/PlayerDeck.proto";
+
+import "takasho/schema/super/keyword/v1/PlayerKeyword.proto";
+
+import "takasho/schema/super/badge/v1/PlayerBadge.proto";
+
+import "takasho/schema/super/function_unlock/v1/PlayerFunctionUnlock.proto";
+
+import "takasho/schema/super/level_reward/v1/PlayerLevelReward.proto";
+
+import "takasho/schema/super/target/v1/PlayerTarget.proto";
+
+import "takasho/schema/super/phoneme/v1/PlayerPhoneme.proto";
+
+import "takasho/schema/super/battle_pass/v1/PlayerBattlePass.proto";
+
+import "takasho/schema/super/monthly_pass/v1/PlayerMonthlyPass.proto";
+
+import "takasho/schema/super/pop_gift/v1/PlayerPopGift.proto";
+
+import "takasho/schema/super/credit/v1/PlayerCreditPointResponse.proto";
+
+import "takasho/schema/super/disguise/v1/PlayerDisguise.proto";
+
+import "takasho/schema/super/background/v1/PlayerBackground.proto";
+
+import "takasho/schema/super/icon_frame/v1/PlayerIconFrame.proto";
+
+message CommonResponse {
+  message player = 1;
+  message items = 2;
+  message battle_characters = 3;
+  message equipments = 4;
+  message wallet = 5;
+  message tutorial_info = 6;
+  message player_preference = 7;
+  message bonds = 8;
+  int64 received_energy = 9;
+  int64 delta_player_level = 10;
+  message chapters = 21;
+  int64 opened_chapters = 22;
+  message battle_zone = 23;
+  message decks = 24;
+  message keywords = 25;
+  int64 missions = 26;
+  int64 unlocked_underground_chapters = 27;
+  message badges = 28;
+  message functions = 29;
+  message level_rewards = 30;
+  message targets = 31;
+  message phonemes = 32;
+  message battle_pass_info = 33;
+  message monthly_pass_info = 34;
+  message pop_gifts = 35;
+  message credit = 36;
+  int64 perfect_drink_making_types = 37;
+  message disguises = 38;
+  message backgrounds = 39;
+  message icon_frames = 40;
+}
+
+import "takasho/schema/super/global_server_settings/v1/Maintenance.proto";
+
+message SystemInfo {
+  message maintenance = 1;
+  sint64 server_time = 2;
+  string in_game_announcement_url = 3;
+  int64 server_timezone = 4;
+  bool acquire_token = 5;
+}
+
+import "takasho/schema/super/super/super/common_featureset/resource/system/v1/PlatformType.proto";
+
+message AssetBundleVersion {
+  string asset_bundle_version_id = 1;
+  string asset_bundle_version = 2;
+  string description = 3;
+  bool enable = 4;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

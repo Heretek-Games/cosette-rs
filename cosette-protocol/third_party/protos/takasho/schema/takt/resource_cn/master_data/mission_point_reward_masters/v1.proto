@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.mission_point_reward_masters;
+
+import "takasho/schema/super/mission_masters/v1/MissionCategory.proto";
+
+message MissionPointRewardMaster {
+  string master_version = 1;
+  int64 mission_point_reward_master_id = 2;
+  int64 target_point = 4;
+  string rewards = 5;
+  int64 badge_master_id = 6;
+}
+
+message MissionPointRewardMasters {
+  message mission_point_reward_masters = 1;
+}

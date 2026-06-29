@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message MasterVersion {
+  string version = 1;
+  string description = 2;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_option_result_masters;
+
+message CrusadeOptionResultMaster {
+  string master_version = 1;
+  int64 crusade_option_result_master_id = 2;
+  enumeration = "CrusadeOptionEffectTarget" effective_object = 3;
+  enumeration = "CrusadeOptionEffectType" effect_type = 4;
+  int64 effect_value = 5;
+  int64 treasure_random = 6;
+  int64 extra_drop = 8;
+}
+
+message CrusadeOptionResultMasters {
+  message crusade_option_result_masters = 1;
+}

@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message LootBoxes {
+  message loot_box_products = 1;
+}
+
+message LootBoxProduct {
+  string loot_box_product_id = 1;
+  string virtual_currency_key = 2;
+  sint64 virtual_currency_amount = 3;
+  string inventory_message = 4;
+  sint64 opened_at = 5;
+  sint64 closed_at = 6;
+  message content_sets = 7;
+  bool has_extra = 8;
+  message extra = 9;
+  bool has_limit = 10;
+  message limit = 11;
+}
+
+message LootBoxContentSet {
+  string loot_box_content_set_id = 1;
+  sint64 lot_num = 2;
+  message contents = 3;
+}
+
+import "takasho/schema/super/player_inventory/v1/ItemType.proto";
+
+message LootBoxContent {
+  string loot_box_content_id = 1;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 2;
+  string schema_key = 3;
+  string value_path = 4;
+  sint64 weight = 5;
+  string label = 6;
+  string search_label = 7;
+}
+
+message Extra {
+  string inventory_message = 1;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 2;
+  string schema_key = 3;
+  bytes = "vec" value = 4;
+  string value_path = 5;
+  string resource_name = 6;
+  sint64 resource_num = 7;
+  string search_label = 8;
+  string transaction_payload = 9;
+}
+
+import "takasho/schema/super/loot_box/v1/LimitType.proto";
+
+message Limit {
+  enumeration = "super::super::loot_box::v1::LimitType" limit_type = 1;
+  sint64 limit_num = 2;
+  string date_line = 3;
+}

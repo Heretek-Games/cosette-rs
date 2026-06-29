@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.character_rank_up_masters;
+
+message CharacterRankUpMaster {
+  string master_version = 1;
+  int64 character_rank_up_master_id = 2;
+  int64 battle_character_master_id = 3;
+  enumeration = "Rank" rank = 11;
+  string require_contents = 12;
+  int64 hp_growth_value = 21;
+  int64 atk_growth_value = 22;
+  int64 def_growth_value = 23;
+  int64 dex_growth_value = 24;
+  int64 int_growth_value = 25;
+  int64 res_growth_value = 26;
+  int64 crt_growth_value = 27;
+  int64 crd_growth_value = 28;
+  int64 acrt_growth_value = 29;
+  int64 crdr_growth_value = 30;
+  int64 musical_effect_id = 31;
+}
+
+message CharacterRankUpMasters {
+  message character_rank_up_masters = 1;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_collections_rewards_masters;
+
+message CrusadeCollectionsRewardsMaster {
+  string master_version = 1;
+  int64 crusade_collections_rewards_master_id = 2;
+  int64 master_ids = 3;
+  string rewards = 5;
+}
+
+message CrusadeCollectionsRewardsMasters {
+  message crusade_collections_rewards_masters = 1;
+}

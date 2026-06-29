@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crm_gift_masters;
+
+message CrmGiftMaster {
+  string master_version = 1;
+  int64 crm_gift_master_id = 2;
+  int64 crm_event_master_id = 3;
+  string name = 4;
+  string description = 5;
+  string affcode = 6;
+  string realm_id = 7;
+  string start_time = 9;
+  string end_time = 10;
+  enumeration = "LimitType" limit_type = 11;
+  int64 limit_count = 12;
+  int64 mail_template_master_id = 13;
+  string rewards = 14;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message CrmGiftMasters {
+  message crm_gift_masters = 1;
+}

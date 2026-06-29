@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.explore_point_masters;
+
+message ExplorePointMaster {
+  string master_version = 1;
+  int64 explore_point_master_id = 2;
+  string name = 3;
+  string map_id = 4;
+  int64 explore_scene_master_id = 11;
+  int64 battle_character_master_ids = 12;
+  int64 explore_object_master_ids = 13;
+}
+
+message ExplorePointMasters {
+  message explore_point_masters = 1;
+}

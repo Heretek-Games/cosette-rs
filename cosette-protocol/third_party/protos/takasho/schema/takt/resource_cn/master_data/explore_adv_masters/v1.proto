@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.explore_adv_masters;
+
+message ExploreAdvMaster {
+  string master_version = 1;
+  int64 explore_adv_master_id = 2;
+  string name = 3;
+  int64 explore_event_master_id = 4;
+  bool is_section_end = 5;
+  int64 clock_cost = 7;
+  string rewards = 8;
+  int64 puzzle_id = 11;
+  int64 adv_battle_id = 12;
+  string bond_rewards = 21;
+}
+
+message ExploreAdvMasters {
+  message explore_adv_masters = 1;
+}

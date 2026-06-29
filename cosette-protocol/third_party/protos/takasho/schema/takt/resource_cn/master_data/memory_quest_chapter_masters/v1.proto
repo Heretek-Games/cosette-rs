@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.memory_quest_chapter_masters;
+
+import "takasho/schema/super/memory_quest_masters/v1/MemoryQuestType.proto";
+
+message MemoryQuestChapterMaster {
+  string master_version = 1;
+  int64 memory_quest_chapter_master_id = 2;
+  int64 chapter = 3;
+  int64 require_star_num_1 = 11;
+  string star_reward_contents_1 = 12;
+  int64 require_star_num_2 = 13;
+  string star_reward_contents_2 = 14;
+  int64 require_star_num_3 = 15;
+  string star_reward_contents_3 = 16;
+  int64 require_star_num = 21;
+}
+
+message MemoryQuestChapterMasters {
+  message memory_quest_chapter_masters = 1;
+}

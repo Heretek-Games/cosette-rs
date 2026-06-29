@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.activities;
+
+message OpActivities {
+  int64 op_activity_id = 1;
+  string affcodes = 2;
+  int64 realms = 3;
+  enumeration = "OpActivityCode" code = 4;
+  string name = 5;
+  int64 start_time = 6;
+  int64 end_time = 7;
+  string payload = 8;
+  string payload2 = 13;
+  bool multi = 9;
+  string banner_path = 10;
+  bool is_open = 11;
+  int64 sort = 12;
+  bool is_pre_publish = 14;
+  string players = 15;
+  enumeration = "OpActivityBanner" with_banner = 16;
+  int64 client_config_id = 17;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerOpActivityRecords {
+  int64 op_activity_id = 1;
+  string player_id = 2;
+  string realm = 3;
+  int64 update_time = 4;
+  string pay_load = 5;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

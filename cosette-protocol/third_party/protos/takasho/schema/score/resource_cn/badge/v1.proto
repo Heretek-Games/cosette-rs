@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.badge;
+
+message PlayerBadge {
+  string player_id = 1;
+  int64 badge_master_id = 2;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

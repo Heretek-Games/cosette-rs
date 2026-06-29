@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.mission;
+
+message PlayerMission {
+  string player_id = 1;
+  int64 mission_master_id = 2;
+  sint64 receive_rewards_at = 11;
+  int64 progress = 12;
+  bool can_receive = 13;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+import "takasho/schema/super/super/super/takt/resource_cn/master_data/mission_masters/v1/MissionCategory.proto";
+
+message PlayerMissionProgress {
+  string player_id = 1;
+  int64 battle_win_count = 11;
+  int64 memory_quest_play_through_count = 12;
+  int64 daily_quest_play_through_count = 13;
+  int64 panel_unlock_count = 14;
+  int64 equipment_level_up_count = 15;
+  int64 stamina_spent = 16;
+  int64 battle_character_level_up_count = 17;
+  int64 explore_event_finish_count = 18;
+  string sending_gift_count = 19;
+  int64 puzzle_play_through_count = 20;
+  int64 private_talk_count = 21;
+  int64 purchase_stamina_with_gem_count = 22;
+  int64 puzzle_drink_making_count = 23;
+  string characters_gift_count = 24;
+  string draw_card_with_characters_count = 26;
+  sint64 latest_update_at = 81;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerMissionPoint {
+  string player_id = 1;
+  int64 category1_mission_points = 2;
+  int64 category2_mission_points = 3;
+  int64 category3_mission_points = 4;
+  int64 category1_received_mission_point_reward_master_ids = 5;
+  int64 category2_received_mission_point_reward_master_ids = 6;
+  int64 category3_received_mission_point_reward_master_ids = 7;
+  sint64 category1_refresh_at = 11;
+  sint64 category2_refresh_at = 12;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

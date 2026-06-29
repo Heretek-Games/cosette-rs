@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.phoneme_masters;
+
+message PhonemeMaster {
+  string master_version = 1;
+  int64 phoneme_master_id = 2;
+  string name = 99;
+  enumeration = "Rarity" rarity = 3;
+  int64 max_level = 4;
+  int64 exp_supply = 6;
+  string attributes = 50;
+  string entries_num = 56;
+  int64 entries_library = 57;
+  string decomposition = 58;
+}
+
+message PhonemeMasters {
+  message phoneme_masters = 1;
+}

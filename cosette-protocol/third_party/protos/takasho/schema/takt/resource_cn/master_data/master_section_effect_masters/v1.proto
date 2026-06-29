@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.master_section_effect_masters;
+
+message MasterSectionEffectMaster {
+  string master_version = 1;
+  int64 master_section_effect_master_id = 2;
+  int64 skill_master_ids = 4;
+  string unlock_conditions = 5;
+  int64 integral = 6;
+  int64 patch_ids = 7;
+  enumeration = "AttachType" attach_type = 8;
+  int64 attach_id = 9;
+}
+
+message MasterSectionEffectMasters {
+  message master_section_effect_masters = 1;
+}

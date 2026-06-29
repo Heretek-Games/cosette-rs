@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_type_masters;
+
+message CrusadeTypeMaster {
+  string master_version = 1;
+  int64 crusade_type_master_id = 2;
+  string start = 3;
+  string end = 4;
+  int64 extra_rank = 5;
+  int64 extra_buff = 6;
+}
+
+message CrusadeTypeMasters {
+  message crusade_type_masters = 1;
+}

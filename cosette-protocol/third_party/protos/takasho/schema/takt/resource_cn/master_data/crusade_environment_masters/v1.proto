@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_environment_masters;
+
+message CrusadeEnvironmentMaster {
+  string master_version = 1;
+  int64 crusade_environment_master_id = 2;
+  int64 initial_treasure_id = 3;
+  int64 crusade_type_master_id = 4;
+  string time = 7;
+  int64 crusade_adv_master_id = 8;
+}
+
+message CrusadeEnvironmentMasters {
+  message crusade_environment_masters = 1;
+}

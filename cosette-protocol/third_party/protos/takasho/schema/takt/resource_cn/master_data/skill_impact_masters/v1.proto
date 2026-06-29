@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.skill_impact_masters;
+
+message SkillImpactMaster {
+  string master_version = 1;
+  int64 skill_impact_master_id = 2;
+  string effect_id = 3;
+  int64 effect_value_1 = 4;
+  int64 effect_value_2 = 5;
+  int64 effect_value_3 = 6;
+  int64 effect_value_4 = 7;
+  int64 effect_value_5 = 8;
+  int64 effect_value_6 = 9;
+  int64 effect_value_7 = 10;
+}
+
+message SkillImpactMasters {
+  message skill_impact_masters = 1;
+}

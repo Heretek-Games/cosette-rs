@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.player_op_fund_unlock_history;
+
+message PlayerOpFundUnlockHistory {
+  string player_op_event_history_id = 1;
+  string player_id = 2;
+  string op_fund_unlock_id = 3;
+  string op_event_id = 4;
+  int64 unlocked_at = 5;
+}

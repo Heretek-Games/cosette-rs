@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message ConsumeResourceSet {
+  string consume_resource_set_id = 1;
+  enumeration = "ResourceType" resource_type = 2;
+  sint64 amount = 3;
+  message consume_resources = 4;
+}
+
+message ConsumeResource {
+  string resource_key = 1;
+  sint64 priority = 2;
+}

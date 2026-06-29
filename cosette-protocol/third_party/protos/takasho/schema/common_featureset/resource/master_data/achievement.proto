@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message Achievements {
+  message achievements = 1;
+}
+
+import "takasho/schema/super/achievement/v1/ResetType.proto";
+
+message Achievement {
+  string achievement_id = 1;
+  string category = 2;
+  string value_path = 3;
+  sint64 opened_at = 4;
+  sint64 closed_at = 5;
+  enumeration = "super::super::achievement::v1::ResetType" reset_type = 6;
+  string date_line = 7;
+  sint64 day_of_week = 8;
+  message prizes = 9;
+}
+
+import "takasho/schema/super/player_inventory/v1/ItemType.proto";
+
+message AchievementPrize {
+  string achievement_prize_id = 1;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 2;
+  string schema_key = 3;
+  string value_path = 4;
+  string inventory_message = 5;
+  string search_label = 6;
+  string system_resource_name = 7;
+  sint64 system_resource_num = 8;
+  string transaction_payload = 9;
+}

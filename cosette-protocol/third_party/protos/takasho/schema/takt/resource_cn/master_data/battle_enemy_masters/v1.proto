@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_enemy_masters;
+
+message BattleEnemyMaster {
+  string master_version = 99;
+  int64 battle_enemy_master_id = 1;
+  int64 character_id = 2;
+  int64 level_initial = 4;
+  int64 level_max = 5;
+  int64 hp_initial = 6;
+  int64 hp_max = 7;
+  int64 defend_initial = 8;
+  int64 defend_max = 9;
+  int64 intelligence_initial = 10;
+  int64 intelligence_max = 11;
+  int64 mind_initial = 12;
+  int64 mind_max = 13;
+  int64 speed = 14;
+  int64 base_timeline = 15;
+  enumeration = "SpeciesType" species_type = 17;
+  int64 property_rate_fire = 18;
+  int64 property_rate_ice = 19;
+  int64 property_rate_wind = 20;
+  int64 property_rate_thunder = 21;
+  int64 property_rate_holy = 22;
+  int64 property_rate_dark = 23;
+  int64 poison_resist_rate_0 = 24;
+  int64 poison_resist_rate_1 = 25;
+  int64 poison_resist_rate_2 = 26;
+  int64 paralysis_resist_rate_0 = 27;
+  int64 paralysis_resist_rate_1 = 28;
+  int64 paralysis_resist_rate_2 = 29;
+  int64 sleep_resist_rate_0 = 30;
+  int64 sleep_resist_rate_1 = 31;
+  int64 sleep_resist_rate_2 = 32;
+  int64 enemy_command_0 = 33;
+  int64 enemy_command_1 = 34;
+  int64 enemy_command_2 = 35;
+  int64 enemy_command_3 = 36;
+  int64 enemy_command_4 = 37;
+  int64 base_action_id = 38;
+  int64 exceptional_action_id_1 = 39;
+  int64 exceptional_action_id_2 = 40;
+  int64 exceptional_action_id_3 = 41;
+  bool passive_skilled = 42;
+}
+
+message BattleEnemyMasters {
+  message battle_enemy_masters = 1;
+}

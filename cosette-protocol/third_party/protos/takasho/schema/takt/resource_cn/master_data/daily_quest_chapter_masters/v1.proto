@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.daily_quest_chapter_masters;
+
+message DailyQuestChapterMaster {
+  string master_version = 1;
+  int64 daily_quest_chapter_master_id = 2;
+  int64 daily_quest_type_master_id = 3;
+  int64 open_weekdays = 4;
+  int64 require_stage_id = 5;
+}
+
+message DailyQuestChapterMasters {
+  message daily_quest_chapter_masters = 1;
+}

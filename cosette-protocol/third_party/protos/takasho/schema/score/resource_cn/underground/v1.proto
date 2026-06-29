@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.underground;
+
+message PlayerUndergroundChapter {
+  string player_id = 1;
+  int64 underground_chapter_master_id = 2;
+  enumeration = "ChapterStatus" status = 3;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerUndergroundEvent {
+  string player_id = 1;
+  int64 underground_event_master_id = 2;
+  enumeration = "EventStatus" status = 3;
+  int64 finished_count = 81;
+  int64 current_battle_stage_master_id = 11;
+  int64 last_update_time = 90;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerUnderground {
+  string player_id = 2;
+  int64 captain = 3;
+  int64 display_battle_character_ids = 21;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerUndergroundSection {
+  string player_id = 1;
+  int64 underground_section_master_id = 2;
+  enumeration = "SectionStatus" status = 3;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

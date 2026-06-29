@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_event_option_masters;
+
+message CrusadeEventOptionMaster {
+  string master_version = 1;
+  int64 crusade_event_option_master_id = 2;
+  enumeration = "EventOptionChooseType" choose = 3;
+  int64 choose_value = 4;
+  enumeration = "EventOptionAppendType" append_type = 5;
+  int64 append_type_value = 6;
+  int64 append_value = 7;
+  enumeration = "EventOptionAppendType" feedback_type = 8;
+  int64 feedback_type_value = 9;
+  int64 feedback_value = 10;
+  int64 success_results = 12;
+  int64 fail_results = 13;
+  int64 drop_master_id = 14;
+  int64 success_adv = 15;
+  int64 fail_adv = 16;
+  int64 special_success_adv = 17;
+  int64 special_fail_adv = 18;
+}
+
+message CrusadeEventOptionMasters {
+  message crusade_event_option_masters = 1;
+}

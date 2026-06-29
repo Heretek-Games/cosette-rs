@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.character;
+
+import "takasho/schema/super/super/super/takt/resource_cn/master_data/battle_character_masters/v1/Rarity.proto";
+
+message PlayerBattleCharacter {
+  string player_id = 1;
+  int64 battle_character_master_id = 3;
+  int64 exp = 13;
+  int64 rank = 14;
+  int64 activated_sub_rank_ids = 15;
+  int64 activated_character_panel_master_ids = 16;
+  int64 grade = 17;
+  int64 engaged = 18;
+  int64 skill_ids = 21;
+  int64 skill_slot_status = 22;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+  int64 suits = 70;
+  int64 suit_buff_ids = 71;
+}
+
+message PlayerBattleCharacterBond {
+  string player_id = 1;
+  int64 battle_character_master_id = 3;
+  int64 bonds = 11;
+  int64 bond_achievement_master_ids = 12;
+  int64 talk_level = 13;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerBattleCharacterHistory {
+  string player_id = 1;
+  int64 battle_character_master_id = 2;
+  int64 battle_win_count = 11;
+  int64 private_talk_count = 12;
+  string finished_explore_puzzle_count = 13;
+  int64 finished_explore_puzzle_set = 14;
+  int64 finished_explore_invite_event_count = 15;
+  int64 unlocked_bonds_infos = 22;
+  int64 finished_explore_event_set = 16;
+  int64 killed_count_in_battle = 17;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerBattleCharacterBondsAttribute {
+  string player_id = 1;
+  int64 bonds_attribute_master_id = 2;
+  int64 bonds_attribute_plate_level = 11;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.battle_check_by_ids;
+
+message BattleCheckByIds {
+  int64 id = 1;
+  int64 battle_id = 2;
+  int64 precision = 4;
+  bool is_always_open = 5;
+  bool is_always_close = 6;
+  int64 check_method = 7;
+}

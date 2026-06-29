@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.memory_quest;
+
+message PlayerMemoryQuest {
+  string player_id = 1;
+  int64 memory_quest_master_id = 2;
+  bool star1 = 4;
+  bool star2 = 5;
+  bool star3 = 6;
+  sint64 last_challenge_time = 11;
+  int64 challenged_count = 12;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerMemoryQuestChapter {
+  string player_id = 1;
+  int64 memory_quest_chapter_master_id = 2;
+  sint64 received_star_reward_contents_1_time = 3;
+  sint64 received_star_reward_contents_2_time = 4;
+  sint64 received_star_reward_contents_3_time = 5;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.mission_masters;
+
+message MissionMaster {
+  string master_version = 1;
+  int64 mission_master_id = 2;
+  enumeration = "MissionCategory" mission_category = 3;
+  int64 previous_mission_ids = 4;
+  int64 require_player_level = 5;
+  int64 require_chapter_master_id = 6;
+  int64 mission_type_id = 7;
+  int64 mission_type_value1 = 8;
+  int64 mission_type_value2 = 9;
+  int64 mission_type_value3 = 10;
+  int64 get_point = 11;
+  string rewards = 12;
+  int64 panel_rank = 21;
+  enumeration = "PanelMissionType" panel_mission_type = 22;
+  int64 badge_master_id = 23;
+  int64 mission_sub_category_master_id = 24;
+  int64 required_total_index = 25;
+  string start_time = 31;
+  string end_time = 32;
+  int64 mission_type_value4 = 33;
+}
+
+message MissionMasters {
+  message mission_masters = 1;
+}

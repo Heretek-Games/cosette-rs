@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.equipment_exchange_masters;
+
+message EquipmentExchangeMaster {
+  string master_version = 1;
+  int64 equipment_exchange_master_id = 2;
+  string unchanged_equipments = 3;
+}
+
+message EquipmentExchangeMasters {
+  message equipment_exchange_masters = 1;
+}

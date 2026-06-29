@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message PlayerKeyValueStoreMasters {
+  message player_key_value_store_masters = 1;
+}
+
+message PlayerKeyValueStoreMaster {
+  string player_key_value_store_key = 1;
+  sint64 expired_at = 2;
+}

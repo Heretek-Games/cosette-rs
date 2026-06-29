@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_stage_masters;
+
+message BattleStageMaster {
+  string master_version = 1;
+  int64 battle_stage_master_id = 2;
+  int64 battle_type = 3;
+  string background_id = 4;
+  string start_camera_id = 5;
+  string bgm_id = 6;
+  int64 turn_max = 7;
+  int64 icon_enemy_id = 8;
+  int64 enemy_setting = 9;
+  int64 enemy_ai_setting = 10;
+  int64 reinforce_setting = 11;
+  int64 reinforce_ai_setting = 12;
+  int64 victory_condition_type = 13;
+  int64 victory_condition_parm = 14;
+  int64 defeat_condition_type = 15;
+  int64 defeats_condition_parm = 16;
+  int64 before_battle_story = 17;
+  int64 after_battle_story = 18;
+  int64 force_on_char = 19;
+  string battle_drop = 20;
+  int64 skip_prepare = 21;
+  int64 enable_auto = 22;
+  int64 enable_switch = 23;
+  int64 locked_position = 24;
+  int64 battle_event_id = 25;
+  bool check_star_num = 26;
+  int64 star_1_condition = 27;
+  int64 star_2_condition = 29;
+  int64 star_3_condition = 31;
+  int64 related_achievements = 32;
+}
+
+message BattleStageMasters {
+  message battle_stage_masters = 1;
+}

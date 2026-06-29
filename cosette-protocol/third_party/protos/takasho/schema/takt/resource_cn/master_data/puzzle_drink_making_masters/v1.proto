@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.puzzle_drink_making_masters;
+
+message PuzzleDrinkMakingMaster {
+  string master_version = 1;
+  int64 puzzle_drink_making_master_id = 2;
+  int64 puzzle_explore_master_id = 3;
+  string target_drink = 4;
+  string costs = 5;
+  int64 favored_accessories = 6;
+  int64 normal_accessories = 7;
+  int64 unsuitable_accessories = 8;
+  string s_level_rewards = 11;
+  string a_level_rewards = 12;
+  string b_level_rewards = 13;
+}
+
+message PuzzleDrinkMakingMasters {
+  message puzzle_drink_making_masters = 1;
+}

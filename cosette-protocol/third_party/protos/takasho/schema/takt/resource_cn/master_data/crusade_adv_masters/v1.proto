@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_adv_masters;
+
+message CrusadeAdvMaster {
+  string master_version = 1;
+  int64 crusade_adv_master_id = 2;
+}
+
+message CrusadeAdvMasters {
+  message crusade_adv_masters = 1;
+}

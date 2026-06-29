@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.outside_buff_masters;
+
+message OutsideBuffMaster {
+  string master_version = 1;
+  int64 outside_buff_master_id = 2;
+  enumeration = "OutsideBuffBenefitType" benefit_type = 3;
+  int64 job_limint = 4;
+  int64 tag_limit = 5;
+  int64 character_limit = 6;
+  int64 hp = 7;
+  int64 hp_percent = 8;
+  int64 atk = 9;
+  int64 atk_percent = 10;
+  int64 def = 11;
+  int64 def_percent = 12;
+  int64 int_atk = 13;
+  int64 int_percent = 14;
+  int64 res = 15;
+  int64 res_percent = 16;
+  int64 dex = 17;
+  int64 dex_percent = 18;
+  int64 crt = 19;
+  int64 crt_percent = 20;
+  int64 crd = 21;
+  int64 crd_percent = 22;
+  int64 acrt = 23;
+  int64 acrt_percent = 24;
+  int64 crdr = 25;
+  int64 crdr_percnet = 26;
+  int64 ap = 27;
+  int64 ap_percent = 28;
+  int64 buff_id = 29;
+  int64 attach_type = 30;
+  int64 attach_type_param1 = 31;
+  int64 attach_type_param2 = 32;
+  int64 attach_type_param3 = 33;
+}
+
+message OutsideBuffMasters {
+  message outside_buff_masters = 1;
+}

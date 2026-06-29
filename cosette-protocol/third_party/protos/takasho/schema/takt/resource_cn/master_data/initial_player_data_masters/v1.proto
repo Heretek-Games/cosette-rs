@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.initial_player_data_masters;
+
+message InitialPlayerDataMaster {
+  string master_version = 1;
+  int64 initial_player_data_master_id = 2;
+  string initial_resources = 3;
+  string initial_items = 4;
+  string initial_icon_frames = 5;
+  string initial_battle_characters = 6;
+  string initial_equipments = 7;
+  string initial_backgrounds = 8;
+}
+
+message InitialPlayerDataMasters {
+  message initial_player_data_masters = 1;
+}

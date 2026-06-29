@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.strategy_masters;
+
+message StrategyMaster {
+  string master_version = 1;
+  int64 strategy_master_id = 2;
+  string strategy_type = 3;
+  int64 priority = 4;
+  int64 effect_value1 = 5;
+  int64 effect_value2 = 6;
+  int64 effect_value3 = 7;
+  int64 effect_value4 = 8;
+}
+
+message StrategyMasters {
+  message strategy_masters = 1;
+}

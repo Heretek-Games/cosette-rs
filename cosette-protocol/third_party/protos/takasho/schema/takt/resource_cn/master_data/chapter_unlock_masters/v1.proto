@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.chapter_unlock_masters;
+
+message ChapterUnlockMaster {
+  string master_version = 1;
+  int64 chapter_unlock_master_id = 2;
+  string item = 3;
+}
+
+message ChapterUnlockMasters {
+  message chapter_unlock_masters = 1;
+}

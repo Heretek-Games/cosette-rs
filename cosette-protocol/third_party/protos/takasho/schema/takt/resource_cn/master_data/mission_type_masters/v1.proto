@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.mission_type_masters;
+
+message MissionTypeMaster {
+  string master_version = 1;
+  enumeration = "MissionType" mission_type_master_id = 2;
+}
+
+message MissionTypeMasters {
+  message mission_type_masters = 1;
+}

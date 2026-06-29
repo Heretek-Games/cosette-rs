@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.daily_quest_masters;
+
+message DailyQuestMaster {
+  string master_version = 1;
+  int64 daily_quest_master_id = 2;
+  int64 chapter_master_id = 3;
+  int64 pre_daily_quest_master_id = 4;
+  int64 require_player_level = 5;
+  int64 use_stamina = 6;
+  int64 exp_player = 7;
+  int64 battle_master_id = 8;
+  int64 exp_battle_character = 9;
+  int64 game_money = 10;
+  string first_clear_reward_contents = 11;
+  int64 drop_master_ids = 12;
+  string skip_reward_contents = 13;
+  int64 bonus_drop_master_ids = 14;
+  int64 display_drop_reward_contents = 15;
+  int64 daily_quest_type = 16;
+}
+
+message DailyQuestMasters {
+  message daily_quest_masters = 1;
+}

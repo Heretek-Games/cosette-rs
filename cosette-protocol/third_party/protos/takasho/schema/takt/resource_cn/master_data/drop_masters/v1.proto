@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.drop_masters;
+
+message DropMaster {
+  string master_version = 1;
+  int64 drop_master_id = 2;
+  string fixed_drop = 3;
+  string random_drop = 4;
+  string random_drop_num = 5;
+  enumeration = "DropType" drop_type = 6;
+  int64 pick_num = 7;
+}
+
+message DropMasters {
+  message drop_masters = 1;
+}

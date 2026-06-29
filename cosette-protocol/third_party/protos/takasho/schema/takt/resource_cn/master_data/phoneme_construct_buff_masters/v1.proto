@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.phoneme_construct_buff_masters;
+
+message PhonemeConstructBuffMaster {
+  string master_version = 1;
+  int64 phoneme_construct_buff_master_id = 2;
+  string name = 3;
+  int64 weight = 4;
+  int64 job_limit = 5;
+  int64 value = 6;
+}
+
+message PhonemeConstructBuffMasters {
+  message phoneme_construct_buff_masters = 1;
+}

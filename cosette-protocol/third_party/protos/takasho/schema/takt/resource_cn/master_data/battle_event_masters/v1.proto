@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_event_masters;
+
+message BattleEventMaster {
+  string master_version = 1;
+  int64 battle_event_master_id = 2;
+  string event_type = 3;
+  int64 trigger_id = 4;
+  int64 effect_values = 5;
+}
+
+message BattleEventMasters {
+  message battle_event_masters = 1;
+}

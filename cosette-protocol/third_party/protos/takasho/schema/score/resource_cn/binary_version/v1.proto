@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.binary_version;
+
+message RealmBinaryVersionBinding {
+  string realm_binary_version_binding_id = 1;
+  string binary_version_id = 2;
+  string affcode_ids = 3;
+  int64 initial_realm_ids = 4;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+import "takasho/schema/super/super/super/common_featureset/resource/system/v1/PlatformType.proto";
+
+message BinaryVersion {
+  string binary_version_id = 1;
+  string binary_version = 2;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message BinaryVersionMasterAssetBinding {
+  string binary_version_master_asset_binding_id = 1;
+  string binary_version_id = 2;
+  string affcode_ids = 3;
+  string master_version = 4;
+  string asset_bundle_version_id = 5;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

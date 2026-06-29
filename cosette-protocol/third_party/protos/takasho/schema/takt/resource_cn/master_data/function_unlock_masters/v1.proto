@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.function_unlock_masters;
+
+message FunctionUnlockMaster {
+  string master_version = 1;
+  enumeration = "FunctionId" function_unlock_master_id = 2;
+  string require_condition = 3;
+}
+
+message FunctionUnlockMasters {
+  message function_unlock_masters = 1;
+}

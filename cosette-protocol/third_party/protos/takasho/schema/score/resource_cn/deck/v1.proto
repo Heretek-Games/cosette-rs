@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.deck;
+
+message PlayerDeck {
+  string player_id = 1;
+  string deck_id = 2;
+  int64 battle_character_master_ids = 3;
+  string name = 4;
+  enumeration = "DeckType" deck_type = 5;
+  int64 leader_id = 6;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

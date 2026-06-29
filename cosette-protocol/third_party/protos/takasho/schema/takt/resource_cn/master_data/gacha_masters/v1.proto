@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.gacha_masters;
+
+import "takasho/schema/super/super/super/super/score/resource_cn/common/v1/LimitType.proto";
+
+message GachaMaster {
+  string master_version = 1;
+  int64 gacha_master_id = 2;
+  string name = 90;
+  enumeration = "Kind" kind = 3;
+  int64 up_group_id = 5;
+  bool has_daily_limit = 6;
+  string daily_limit_cost = 7;
+  string draw_one_cost = 8;
+  string draw_one_cost2 = 81;
+  int64 ssr_guaranteed_gacha_odd_master_id = 9;
+  int64 ssr_guaranteed_count = 10;
+  int64 sr_guaranteed_count = 11;
+  int64 up_weight_start_count = 12;
+  int64 up_weight_percentage = 13;
+  int64 maximum_count_per_day = 14;
+  bool skip_history = 15;
+  int64 limit_count = 17;
+  int64 limit_cooldown_hours = 18;
+  int64 up_weight_upper_limit = 19;
+  int64 up_icon_ids = 20;
+  bool reset_security = 21;
+  int64 common_guaranteed_count = 22;
+  int64 common_guaranteed_gacha_odd_master_id = 23;
+  bool allow_gem_convert_stone = 24;
+  string unlock_condition = 25;
+}
+
+message GachaMasters {
+  message gacha_masters = 1;
+}

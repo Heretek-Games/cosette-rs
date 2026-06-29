@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.gacha;
+
+import "takasho/schema/super/common/v1/Limit.proto";
+
+message PlayerGacha {
+  string player_id = 1;
+  int64 gacha_master_id = 2;
+  int64 single_gacha_count = 3;
+  int64 combo_gacha_count = 4;
+  int64 no_sr_count = 5;
+  int64 no_ssr_count = 6;
+  sint64 last_gacha_at = 7;
+  sint64 daily_limit_gacha_at = 8;
+  int64 daily_single_gacha_count = 9;
+  int64 daily_combo_gacha_count = 10;
+  sint64 next_cycle_start_at = 11;
+  int64 finish_count = 13;
+  message limit = 14;
+  string limit_db = 15;
+  int64 prefer = 16;
+  int64 no_common_count = 17;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerGachaHistory {
+  string player_gacha_history_id = 1;
+  string player_id = 2;
+  int64 gacha_master_id = 3;
+  bool is_single = 4;
+  bool is_combo = 5;
+  bool is_daily_limit = 6;
+  string db_result = 7;
+  message result = 8;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message AvailableGacha {
+  int64 gacha_master_id = 1;
+  bool is_open = 2;
+  sint64 open_at = 3;
+  sint64 close_at = 4;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

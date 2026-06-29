@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.tutorial_trigger_masters;
+
+message TutorialTriggerMaster {
+  string master_version = 1;
+  int64 tutorial_trigger_master_id = 2;
+  int64 start_step = 11;
+}
+
+message TutorialTriggerMasters {
+  message tutorial_trigger_masters = 1;
+}

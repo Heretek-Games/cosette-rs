@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.stamina_purchase_masters;
+
+message StaminaPurchaseMaster {
+  string master_version = 1;
+  int64 stamina_purchase_master_id = 2;
+  int64 purchase_count = 3;
+  enumeration = "CostType" cost_type = 24;
+  string require_content = 4;
+  int64 recover_count = 5;
+}
+
+message StaminaPurchaseMasters {
+  message stamina_purchase_masters = 1;
+}

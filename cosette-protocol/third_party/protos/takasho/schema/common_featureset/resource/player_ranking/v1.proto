@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.player_ranking;
+
+message PlayerRankInfo {
+  string ranking_key = 1;
+  string player_id = 2;
+  int64 score = 3;
+  int64 rank = 4;
+  string nickname = 5;
+}
+
+message RankingMaster {
+  string ranking_key = 1;
+  sint64 opened_at = 2;
+  sint64 closed_at = 3;
+  bytes = "vec" value = 4;
+}

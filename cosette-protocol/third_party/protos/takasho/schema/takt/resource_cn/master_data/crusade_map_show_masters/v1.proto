@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_map_show_masters;
+
+message CrusadeMapShowMaster {
+  string master_version = 1;
+  int64 crusade_map_show_master_id = 2;
+  string start = 3;
+  string end = 4;
+}
+
+message CrusadeMapShowMasters {
+  message crusade_map_show_masters = 1;
+}

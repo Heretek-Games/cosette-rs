@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.explore_bubble_masters;
+
+message ExploreBubbleMaster {
+  string master_version = 1;
+  int64 explore_bubble_master_id = 2;
+  int64 mini_character_id = 3;
+}
+
+message ExploreBubbleMasters {
+  message explore_bubble_masters = 1;
+}

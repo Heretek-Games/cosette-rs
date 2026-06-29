@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.chapter_masters;
+
+message ChapterMaster {
+  string master_version = 1;
+  int64 chapter_master_id = 2;
+  int64 chapter = 3;
+  int64 section = 4;
+  int64 pre_id = 5;
+  int64 require_player_level = 6;
+  string unlock_condition = 62;
+  int64 require_memory_quest_master_id = 61;
+  enumeration = "SectionType" section_type = 7;
+  int64 battle_zone_id = 12;
+  string first_clear_rewards = 8;
+  int64 adv_battle_id = 9;
+  string scenario_id = 10;
+  int64 character_master_id = 11;
+  int64 consume_stamina = 21;
+}
+
+message ChapterMasters {
+  message chapter_masters = 1;
+}

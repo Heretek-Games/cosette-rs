@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.language_masters;
+
+message LanguageMaster {
+  string master_version = 1;
+  int64 language_master_id = 2;
+  string key = 20;
+  string jp = 30;
+  string en = 40;
+  string cn = 50;
+}
+
+message LanguageMasters {
+  message language_masters = 1;
+}

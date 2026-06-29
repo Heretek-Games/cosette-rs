@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.mail_sender_masters;
+
+message MailSenderMaster {
+  string master_version = 1;
+  int64 mail_sender_master_id = 2;
+  string sender_key = 3;
+  string sender_key_desc = 4;
+}
+
+message MailSenderMasters {
+  message mail_sender_masters = 1;
+}

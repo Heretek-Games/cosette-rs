@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.shop_product_masters;
+
+message ShopProductMaster {
+  string master_version = 1;
+  int64 shop_product_master_id = 2;
+  string name = 3;
+  int64 content_id = 4;
+  int64 content_amount = 5;
+  int64 shop_category_master_id = 6;
+  int64 shop_master_id = 7;
+  int64 former_product_id = 8;
+  bool is_former_product = 9;
+  enumeration = "CostType" cost_type = 11;
+  int64 cost_id = 12;
+  int64 labeled_price = 13;
+  int64 discounted_price = 14;
+  string discount = 15;
+  enumeration = "PurchaseCountLimitType" purchase_count_limit_type = 21;
+  int64 purchase_limit = 22;
+  enumeration = "ConstrainType" constrain_type = 23;
+  int64 constrain_value = 24;
+  int64 sort_id = 25;
+  string start_time = 26;
+  string end_time = 27;
+  string lcx_product_id = 28;
+  string gift_diamond = 29;
+  int64 rebate_content = 31;
+  string extra_cost = 30;
+  string extra_cost1 = 40;
+  string extra_prize = 50;
+}
+
+message ShopProductMasters {
+  message shop_product_masters = 1;
+}

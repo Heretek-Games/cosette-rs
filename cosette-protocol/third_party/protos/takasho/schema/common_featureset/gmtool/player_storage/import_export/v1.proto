@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.gmtool.player_storage.import_export;
+
+message PlayerStorage {
+  message revisions = 1;
+  message entries = 2;
+}
+
+message Revision {
+  string revision_id = 1;
+  string updated_keys = 2;
+}
+
+message Entry {
+  string key = 1;
+  string value_path = 2;
+}

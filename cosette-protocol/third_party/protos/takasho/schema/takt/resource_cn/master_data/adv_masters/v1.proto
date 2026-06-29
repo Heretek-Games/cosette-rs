@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.adv_masters;
+
+message AdvMaster {
+  string master_version = 1;
+  int64 adv_master_id = 2;
+  int64 chapter = 3;
+  int64 section = 4;
+  int64 adv_battle_id = 5;
+}
+
+message AdvMasters {
+  message adv_masters = 1;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.monthly_checkin;
+
+message PlayerMonthlyCheckin {
+  string player_id = 1;
+  int64 monthly_checkin_count = 2;
+  sint64 last_received_rewards_at = 3;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message RankingEvents {
+  message ranking_events = 1;
+}
+
+message RankingEvent {
+  string ranking_event_id = 1;
+  string schema_key = 2;
+  string value_path = 3;
+  sint64 opened_at = 4;
+  sint64 closed_at = 5;
+}

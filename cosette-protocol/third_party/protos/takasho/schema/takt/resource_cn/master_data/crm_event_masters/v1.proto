@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crm_event_masters;
+
+message CrmEventMaster {
+  string master_version = 1;
+  int64 crm_event_master_id = 2;
+  string name = 3;
+}
+
+message CrmEventMasters {
+  message crm_event_masters = 1;
+}

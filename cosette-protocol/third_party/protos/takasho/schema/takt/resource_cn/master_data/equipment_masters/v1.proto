@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.equipment_masters;
+
+message EquipmentMaster {
+  string master_version = 1;
+  int64 equipment_master_id = 2;
+  string name = 3;
+  int64 rarity = 11;
+  int64 initial_grade = 12;
+  int64 initial_rank = 13;
+  int64 exp_supply = 14;
+  enumeration = "Position" position = 15;
+  int64 equipable_jobs = 16;
+  int64 initial_hp = 20;
+  int64 max_hp = 21;
+  int64 initial_atk = 22;
+  int64 max_atk = 23;
+  int64 initial_def = 24;
+  int64 max_def = 25;
+  int64 initial_int = 26;
+  int64 max_int = 27;
+  int64 initial_res = 28;
+  int64 max_res = 29;
+  int64 initial_dex = 30;
+  int64 max_dex = 31;
+  int64 initial_crt = 32;
+  int64 max_crt = 33;
+  int64 initial_crd = 34;
+  int64 max_crd = 35;
+  int64 initial_acrt = 36;
+  int64 max_acrt = 37;
+  int64 initial_crdr = 38;
+  int64 max_crdr = 39;
+  int64 skill_id = 41;
+  int64 skill_available_character_master_id = 42;
+  int64 max_level = 43;
+  bool is_unchanged = 50;
+  string decompose_content = 51;
+}
+
+message EquipmentMasters {
+  message equipment_masters = 1;
+}

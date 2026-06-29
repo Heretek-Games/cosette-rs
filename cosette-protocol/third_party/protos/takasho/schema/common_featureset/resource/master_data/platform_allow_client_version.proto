@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message PlatformAllowClientVersions {
+  message platform_allow_client_versions = 1;
+}
+
+import "takasho/schema/super/system/v1/PlatformType.proto";
+
+message PlatformAllowClientVersion {
+  enumeration = "super::super::system::v1::PlatformType" platform_type = 1;
+  string client_version = 2;
+}

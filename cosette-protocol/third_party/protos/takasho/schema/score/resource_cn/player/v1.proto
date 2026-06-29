@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.player;
+
+message PlayerPlacement {
+  string player_id = 1;
+  int64 item_master_id = 2;
+  string position = 3;
+  int64 status = 4;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message Player {
+  string player_id = 1;
+  string player_short_id = 11;
+  int64 exp = 2;
+  string intro_text = 3;
+  string db_profile_decks = 4;
+  int64 profile_icon_id = 5;
+  int64 profile_icon_frame = 6;
+  int64 owned_icon_frames = 7;
+  int64 profile_background = 8;
+  int64 owned_backgrounds = 9;
+  message profile_decks = 10;
+  int64 stamina = 21;
+  sint64 stamina_updated_time = 22;
+  sint64 stamina_purchase_time = 23;
+  int64 stamina_purchase_count = 24;
+  sint64 stamina_purchase_time2 = 25;
+  int64 stamina_purchase_count2 = 26;
+  string name = 31;
+  sint64 name_latest_change_at = 32;
+  string initial_affcode = 33;
+  int64 explore_coin_received = 41;
+  int64 explore_coin_limit = 42;
+  int64 explore_coin_drop = 44;
+  sint64 explore_coin_limit_updated_at = 43;
+  string location = 51;
+  int64 recharge_reward_at = 52;
+  int64 profile_badges = 61;
+  string db_profile_badge_list = 161;
+  message profile_badge_list = 162;
+  int64 pop_gift_queue = 62;
+  string rank_version = 100;
+  int64 rank_last_reset_at = 101;
+  sint64 latest_share_at = 71;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message ProfileDeck {
+  int64 battle_character_master_id = 1;
+  int32 action_id = 2;
+  int32 direction = 3;
+}
+
+message ProfileBadge {
+  int64 badge_id = 1;
+  string x = 2;
+  string y = 3;
+}
+
+message PlayerTutorialInfo {
+  string player_id = 1;
+  int64 step = 2;
+  int64 feature_ids = 3;
+}
+
+message PlayerWallet {
+  string player_id = 1;
+  int64 gold = 11;
+  int64 paid_gem = 12;
+  int64 free_gem = 13;
+  int64 gacha_ticket_1 = 14;
+  int64 paid_stone = 21;
+  int64 free_stone = 22;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerWalletResponse {
+  message resources = 1;
+  int64 gold = 11;
+  int64 paid_gem = 12;
+  int64 free_gem = 13;
+  int64 paid_stone = 21;
+  int64 free_stone = 22;
+  int64 gacha_ticket_1 = 41;
+}
+
+message PlayerWalletChangeLog {
+  string player_wallet_change_log_id = 1;
+  string player_id = 2;
+  string takasho_transaction_id = 3;
+  int64 paid_gem_diff = 11;
+  int64 paid_gem_remain = 12;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerVersion {
+  string player_id = 1;
+  int64 version = 2;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message RechargeRebate {
+  string account_id = 10;
+  int64 month_pass = 20;
+  string items = 30;
+  sint64 send_at = 90;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message PlayerHistory {
+  string player_id = 1;
+  int64 login_count = 11;
+  sint64 latest_login_time = 12;
+  int64 stamina_cost_count = 13;
+  int64 accumulated_won_game_money = 14;
+  int64 accumulated_lost_game_money = 15;
+  int64 purchase_stamina_with_gem_count = 16;
+  int64 continuous_login_count = 17;
+  int64 battle_character_level_up_count = 21;
+  int64 equipment_level_up_count = 31;
+  int64 equipment_set = 32;
+  int64 deleted_equipments_level_counts = 33;
+  int64 deleted_equipments_rank_counts = 34;
+  int64 equipment_fitted_count = 35;
+  string sending_gift_count = 41;
+  int64 finished_puzzle_set = 42;
+  int64 puzzle_play_through_count = 43;
+  int64 s_level_drink_making_count = 44;
+  string finished_explore_puzzle_count = 45;
+  int64 drink_making_count = 46;
+  string draw_card_with_characters = 47;
+  int64 s_level_drink_making_type = 48;
+  string received_global_mail_ids = 51;
+  int64 battle_win_count = 61;
+  int64 play_through_memory_quest_count = 62;
+  int64 play_through_daily_quest_count = 63;
+  int64 monster_kill_count = 64;
+  int64 melody_attack_count = 65;
+  int64 beat_off_enemy_count = 66;
+  int64 pull_enemy_count = 67;
+  int64 beaten_off_by_enemy_count = 68;
+  int64 pulled_by_enemy_count = 69;
+  string buffed_counts = 70;
+  int64 battle_support_count = 71;
+  int64 battle_lose_count = 72;
+  int64 finished_daily_quests = 81;
+  bool finished_newbie_activity = 82;
+  int64 equipped_suits = 83;
+  int64 total_get_phonemes = 84;
+  int64 total_levelup_phoneme_times = 85;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

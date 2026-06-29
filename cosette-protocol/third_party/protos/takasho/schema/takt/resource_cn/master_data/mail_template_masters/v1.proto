@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.mail_template_masters;
+
+message MailTemplateMaster {
+  string master_version = 1;
+  int64 mail_template_master_id = 2;
+  int64 mail_sender_id = 3;
+  string mail_template_title = 4;
+  string mail_template_content = 5;
+  int64 life_time_before_read = 6;
+  int64 life_time_after_read = 7;
+}
+
+message MailTemplateMasters {
+  message mail_template_masters = 1;
+}

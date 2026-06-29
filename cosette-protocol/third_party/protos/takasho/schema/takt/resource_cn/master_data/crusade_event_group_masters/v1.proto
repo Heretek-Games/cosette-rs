@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.crusade_event_group_masters;
+
+message CrusadeEventGroupMaster {
+  string master_version = 1;
+  int64 crusade_event_group_master_id = 2;
+  int64 crusade_event_master_ids = 3;
+}
+
+message CrusadeEventGroupMasters {
+  message crusade_event_group_masters = 1;
+}

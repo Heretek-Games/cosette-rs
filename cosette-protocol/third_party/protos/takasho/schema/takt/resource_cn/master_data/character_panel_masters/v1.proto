@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.character_panel_masters;
+
+message CharacterPanelMaster {
+  string master_version = 1;
+  int64 character_panel_master_id = 2;
+  int64 battle_character_master_id = 3;
+  int64 page_id = 4;
+  string get_attributes = 11;
+  int64 get_skill_id = 13;
+  int64 get_battle_character_grade = 14;
+  int64 require_battle_character_lv = 21;
+  int64 require_character_panel_master_ids = 22;
+  string require_contents = 23;
+}
+
+message CharacterPanelMasters {
+  message character_panel_masters = 1;
+}

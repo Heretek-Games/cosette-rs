@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.maintenance.import_export;
+
+message Maintenances {
+  message maintenances = 1;
+}
+
+message Maintenance {
+  string id = 1;
+  string message = 2;
+  sint64 opened_at = 3;
+  sint64 closed_at = 4;
+}

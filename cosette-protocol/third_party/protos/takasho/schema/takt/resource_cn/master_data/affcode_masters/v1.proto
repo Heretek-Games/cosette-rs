@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.affcode_masters;
+
+message AffcodeMaster {
+  string master_version = 1;
+  int64 affcode_master_id = 2;
+  string affcode = 3;
+  string affcode_name = 4;
+}
+
+message AffcodeMasters {
+  message affcode_masters = 1;
+}

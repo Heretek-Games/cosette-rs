@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.master_data;
+
+message GameProducts {
+  message game_products = 1;
+}
+
+import "takasho/schema/consume_resource_set/ConsumeResourceSet.proto";
+
+import "takasho/schema/super/player_inventory/v1/ItemType.proto";
+
+message GameProduct {
+  string game_product_id = 1;
+  string schema_key = 2;
+  string value_path = 3;
+  string inventory_message = 4;
+  sint64 opened_at = 5;
+  sint64 closed_at = 6;
+  sint64 receivable_sec = 7;
+  message consume_resource_sets = 8;
+  string search_label = 9;
+  string transaction_payload = 10;
+  enumeration = "super::super::player_inventory::v1::ItemType" item_type = 50;
+  string system_resource_name = 51;
+  sint64 system_resource_num = 52;
+}

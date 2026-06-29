@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.game_share_masters;
+
+import "takasho/schema/super/super/super/super/score/resource_cn/system/v1/Region.proto";
+
+message GameShareMaster {
+  string master_version = 1;
+  int64 game_share_master_id = 2;
+  string contents = 3;
+  int64 mail_template_id = 5;
+}
+
+message GameShareMasters {
+  message game_share_masters = 1;
+}

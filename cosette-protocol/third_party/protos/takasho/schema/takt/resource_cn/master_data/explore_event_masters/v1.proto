@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.explore_event_masters;
+
+import "takasho/schema/super/super/super/super/score/resource_cn/common/v1/TriggerType.proto";
+
+import "takasho/schema/super/super/super/super/score/resource_cn/common/v1/LimitType.proto";
+
+message ExploreEventMaster {
+  string master_version = 1;
+  int64 explore_event_master_id = 2;
+  string name = 3;
+  int64 energy_cost = 4;
+  int64 total_clock = 5;
+  int64 lifetime_hours = 6;
+  string trigger_param_1 = 12;
+  string trigger_param_2 = 13;
+  string trigger_param_3 = 14;
+  string unlock_condition = 21;
+  string start_condition = 22;
+  enumeration = "ExploreEventType" event_type = 23;
+  int64 limit_count = 42;
+  int64 limit_cooldown_hours = 43;
+  string rewards = 51;
+  string bond_rewards = 52;
+  int64 display_character = 53;
+  string first_time_rewards = 54;
+  int64 battle_character_master_id = 61;
+  bool need_bond_teabreak = 62;
+}
+
+message ExploreEventMasters {
+  message explore_event_masters = 1;
+}

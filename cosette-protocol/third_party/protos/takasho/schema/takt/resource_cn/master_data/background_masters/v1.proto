@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.background_masters;
+
+message BackgroundMaster {
+  string master_version = 1;
+  int64 background_master_id = 2;
+}
+
+message BackgroundMasters {
+  message background_masters = 1;
+}

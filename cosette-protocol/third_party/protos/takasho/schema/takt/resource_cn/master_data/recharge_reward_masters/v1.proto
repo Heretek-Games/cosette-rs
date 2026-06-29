@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.recharge_reward_masters;
+
+message RechargeRewardMaster {
+  string master_version = 1;
+  int64 recharge_reward_master_id = 2;
+  string rewards = 3;
+  int64 mail_template_id = 4;
+}
+
+message RechargeRewardMasters {
+  message recharge_reward_masters = 1;
+}

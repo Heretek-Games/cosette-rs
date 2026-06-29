@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.pop_gift;
+
+message PlayerPopGift {
+  string player_id = 1;
+  int64 shop_pop_gift_master_id = 2;
+  int64 buy_count = 4;
+  int64 expired_count = 5;
+  sint64 start_pop_at = 11;
+  sint64 end_pop_at = 12;
+  sint64 purchased_at = 13;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+import "takasho/schema/super/super/super/takt/resource_cn/master_data/shop_pop_gift_masters/v1/GiftPopType.proto";
+
+message PlayerPopGiftHistory {
+  string player_id = 1;
+  int64 stamina_cost_count = 3;
+  int64 battle_lose_count = 4;
+  sint64 last_updated_at = 11;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

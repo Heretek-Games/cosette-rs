@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_finish_condition_masters;
+
+message BattleFinishConditionMaster {
+  string master_version = 1;
+  int64 battle_finish_condition_master_id = 2;
+  int64 finish_type = 3;
+  int64 enum_num = 4;
+  int64 character_master_id = 5;
+  int64 param_value1 = 6;
+}
+
+message BattleFinishConditionMasters {
+  message battle_finish_condition_masters = 1;
+}

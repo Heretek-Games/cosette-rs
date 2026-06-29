@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.global_server_settings;
+
+message GlobalServerSettings {
+  string id = 1;
+  bool use_yidun_heartbeat_check = 2;
+  string db_maintenance = 3;
+  message maintenance = 4;
+  string in_game_announcement_url = 5;
+  bool open_battle_check = 6;
+  int64 battle_min_dur_seconds = 8;
+  int64 battle_min_dur_rounds = 9;
+  string server_name = 10;
+  enumeration = "AnnouncementPopType" announcement_pop_type = 11;
+}
+
+message Maintenance {
+  bool is_active = 1;
+  string message = 2;
+  sint64 start_at = 3;
+  sint64 visible_at = 4;
+  string ja_message = 5;
+  string zh_tw_message = 6;
+  string en_message = 7;
+  string ko_message = 8;
+  string th_message = 9;
+}

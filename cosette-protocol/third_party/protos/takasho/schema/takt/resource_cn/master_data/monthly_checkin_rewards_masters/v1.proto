@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.monthly_checkin_rewards_masters;
+
+message MonthlyCheckinRewardsMaster {
+  string master_version = 1;
+  int64 monthly_checkin_rewards_master_id = 2;
+  int64 month = 3;
+  int64 date = 4;
+  string rewards = 5;
+}
+
+message MonthlyCheckinRewardsMasters {
+  message monthly_checkin_rewards_masters = 1;
+}

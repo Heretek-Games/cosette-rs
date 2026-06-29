@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package takasho.schema.score.resource_cn.gift_code;
+
+message PlayerGiftCode {
+  string player_gift_code_id = 1;
+  string player_id = 2;
+  string gift_code = 3;
+  string batch_series_name = 4;
+  string batch_text = 5;
+  string batch_id = 6;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}
+
+message GiftCodeBatch {
+  string gift_code_batch_id = 1;
+  bool is_customized_batch = 2;
+  string batch_series_name = 3;
+  string batch_text = 4;
+  string parent_batch_id = 5;
+  int64 reuse_limit_count = 11;
+  int64 user_own_codes_limit_count = 12;
+  int64 codes_count = 13;
+  sint64 end_time = 14;
+  string affcode_ids = 15;
+  int64 realm_ids = 16;
+  bool enabled = 17;
+  string rewards = 18;
+  string comment = 21;
+  sint64 created_at = 91;
+  sint64 updated_at = 92;
+}

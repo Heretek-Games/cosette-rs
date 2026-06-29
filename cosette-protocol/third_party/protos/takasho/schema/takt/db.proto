@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package takasho.schema.takt;
+
+message ParentTableOption {
+  string name = 1;
+  bool on_delete_cascade = 2;
+}
+
+message SecondaryCache {
+  string name = 1;
+  bool array = 2;
+  string key = 3;
+}
+
+message IndexOption {
+  string name = 1;
+  string order = 2;
+  bool unique = 3;
+  bool null_filtered = 4;
+}

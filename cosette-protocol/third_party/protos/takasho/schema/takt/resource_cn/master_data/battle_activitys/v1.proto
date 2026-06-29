@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.battle_activitys;
+
+message BattleActivity {
+  int64 battle_activity_master_id = 2;
+  string name = 5;
+  string start_time = 9;
+  string end_time = 10;
+  string show_start_time = 11;
+  string show_end_time = 12;
+}

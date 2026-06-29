@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.monthly_billing_limit;
+
+message MonthlyBillingLimit {
+  int64 min_age = 1;
+  int64 max_age = 2;
+  int64 billing_limit = 3;
+}

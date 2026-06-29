@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.bonds_info_masters;
+
+message BondsInfoMaster {
+  string master_version = 1;
+  int64 bonds_info_master_id = 2;
+  int64 battle_character_master_id = 3;
+  int64 mission_master_id = 4;
+  string reward_contents = 5;
+}
+
+message BondsInfoMasters {
+  message bonds_info_masters = 1;
+}

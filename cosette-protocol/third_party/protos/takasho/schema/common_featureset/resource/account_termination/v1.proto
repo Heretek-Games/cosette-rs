@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package takasho.schema.common_featureset.resource.account_termination;
+
+message BannedPlayer {
+  string player_id = 1;
+  sint64 status = 2;
+  string description = 3;
+  sint64 created_at = 4;
+  sint64 updated_at = 5;
+  sint64 expired_at = 6;
+  bool has_expired_at = 7;
+}

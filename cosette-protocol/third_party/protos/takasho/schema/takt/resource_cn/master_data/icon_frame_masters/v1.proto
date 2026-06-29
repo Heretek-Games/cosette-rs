@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.icon_frame_masters;
+
+message IconFrameMaster {
+  string master_version = 1;
+  int64 icon_frame_master_id = 2;
+}
+
+message IconFrameMasters {
+  message icon_frame_masters = 1;
+}

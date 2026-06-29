@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.phoneme_battle_character_masters;
+
+message PhonemeBattleCharacterMaster {
+  string master_version = 1;
+  int64 phoneme_battle_character_master_id = 2;
+  string slot_1_condition = 11;
+  string slot_2_condition = 12;
+  string slot_3_condition = 13;
+  string slot_4_condition = 14;
+  string slot_5_condition = 15;
+  string slot_6_condition = 16;
+  string slot_tracks = 17;
+  string slot_7_condition = 18;
+}
+
+message PhonemeBattleCharacterMasters {
+  message phoneme_battle_character_masters = 1;
+}

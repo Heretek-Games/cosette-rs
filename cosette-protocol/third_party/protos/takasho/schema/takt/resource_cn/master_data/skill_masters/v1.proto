@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package takasho.schema.takt.resource_cn.master_data.skill_masters;
+
+message SkillMaster {
+  string master_version = 1;
+  int64 skill_master_id = 2;
+  int64 skill_type = 3;
+  int64 group_id = 4;
+  string name = 5;
+  int64 level = 6;
+  string icon_path = 7;
+  string time_line_name = 8;
+  int64 effect_tabled_id = 9;
+  string intro_message = 10;
+  string intro_time_line_name = 11;
+  string musical_effect_bg = 12;
+  int64 musical_effect_turn = 13;
+  string bgm_id = 14;
+  int64 cuntin_message_id = 15;
+  string cuntin_path = 16;
+  int64 strategy_type_id = 17;
+  int64 target_type = 18;
+  bool self_position = 19;
+  bool target_position = 20;
+  int64 damage_type = 21;
+  int64 cd = 22;
+  int64 energy_decrease = 23;
+  int64 energy_increase = 24;
+  int64 time_scale = 25;
+  int64 tempo_milli_seconds = 26;
+  int64 hit_count = 27;
+  int64 hit_rate = 28;
+  int64 hit_delay = 29;
+  int64 hit_effect_id = 30;
+  int64 all_hit_effect_id = 31;
+  int64 unique_hit_effect_id = 32;
+  bool enable_counter = 33;
+  bool enable_dual_guard = 34;
+  bool enable_chain_attack = 35;
+  int64 passive_buff = 36;
+  int64 passive_buff_stock = 361;
+  int64 create_buff = 37;
+  int64 create_buff_stock = 371;
+  int64 impact = 38;
+  int64 shake_id = 39;
+}
+
+message SkillMasters {
+  message skill_masters = 1;
+}
