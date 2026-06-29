@@ -28,10 +28,11 @@ fi
 TMP_HAR="$(mktemp --suffix=.har)"
 trap 'rm -f "$TMP_HAR"' EXIT
 
-mitmdump -nr "$FLOW_FILE" --export-har "$TMP_HAR" >/dev/null 2>&1 || true
+# mitmproxy 12.x replaced --export-har with the hardump addon option.
+mitmdump -nr "$FLOW_FILE" --set "hardump=$TMP_HAR" >/dev/null 2>&1 || true
 
 if [[ ! -s "$TMP_HAR" ]]; then
-    echo "import_flows: mitmdump -export-har produced no output" >&2
+    echo "import_flows: mitmdump --set hardump produced no output" >&2
     exit 1
 fi
 
@@ -39,7 +40,9 @@ python3 - "$DB_PATH" "$TMP_HAR" <<'PY'
 import json
 import sqlite3
 import sys
+import time
 import uuid
+from datetime import datetime
 
 db_path, har_path = sys.argv[1], sys.argv[2]
 with open(har_path, "r", encoding="utf-8") as f:
@@ -62,7 +65,19 @@ for entry in har.get("log", {}).get("entries", []):
         part.get("text", "") for part in req.get("postData", {}).get("params", [])
     ) if req.get("postData") else ""
     resp_body_b64 = resp.get("content", {}).get("text", "")
-    timestamp = entry.get("startedDateTime", "")
+    # HAR startedDateTime is ISO-8601 (e.g. "2026-06-29T18:06:57.000Z").
+    # The flows.timestamp column is REAL; convert to epoch seconds so
+    # ORDER BY timestamp sorts chronologically. Fall back to now() when
+    # missing or unparseable.
+    raw_ts = entry.get("startedDateTime", "")
+    timestamp = time.time()
+    if raw_ts:
+        try:
+            # fromisoformat handles "...+00:00" but not trailing "Z" pre-3.11.
+            normalized = raw_ts.replace("Z", "+00:00") if raw_ts.endswith("Z") else raw_ts
+            timestamp = datetime.fromisoformat(normalized).timestamp()
+        except ValueError:
+            pass
     size = resp.get("bodySize", 0)
     cur.execute(
         """INSERT OR IGNORE INTO flows
