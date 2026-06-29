@@ -1,0 +1,12 @@
+# Decode samples + capture notes are committed (small, useful).
+# Extracted APK assets are huge and rebuildable.
+
+apk/
+decoded/*_raw_hex.bin
+captures/*.log
+captures/*.tmp
+
+# Allow the inventory + decoded JSON samples
+!endpoints.md
+!decoded/*.json
+!captures/*.md
